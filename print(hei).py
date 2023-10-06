@@ -6,4 +6,4 @@ str = "Test nr. 3"
 for i in range(2):
     print(str)
 
-    
+print("Nå tror jeg det er i orden gutta")
