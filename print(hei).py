@@ -12,6 +12,8 @@ def ErikFunc():
 
 ErikFunc()
 
-print("test")
+def JonasFunc():
+    print("Jonas er en streit fyr)
 
-print("Test2")
+JonasFunc()
+          
