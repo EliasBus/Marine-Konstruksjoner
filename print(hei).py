@@ -13,7 +13,7 @@ def ErikFunc():
 ErikFunc()
 
 def JonasFunc():
-    print("Jonas er en streit fyr)
+    print("Jonas er en streit fyr")
 
 JonasFunc()
           
