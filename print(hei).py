@@ -12,3 +12,5 @@ def ErikFunc():
 
 ErikFunc()
 
+print("test")
+
