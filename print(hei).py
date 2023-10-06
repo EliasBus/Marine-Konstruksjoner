@@ -11,5 +11,3 @@ def ErikFunc():
     print("Erik er en brønnpisser og en loffer")
 
 ErikFunc()
-
-print("Tester en gang til")
