@@ -12,4 +12,3 @@ def ErikFunc():
 
 ErikFunc()
 
-print("Tester en gang til")
