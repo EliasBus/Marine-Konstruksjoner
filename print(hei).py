@@ -14,3 +14,4 @@ ErikFunc()
 
 print("test")
 
+print("Test2"
