@@ -5,3 +5,9 @@ def printFunc():
 
 printFunc()
 
+print("Dette er ordentlig kult")
+
+def ErikFunc():
+    print("Erik er en brønnpisser og en loffer")
+
+ErikFunc()
