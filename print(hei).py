@@ -1,15 +1,7 @@
-print("hei, erik fikk c i marin grunnlag, Don fikk B, we're not the same")
-print("Tester om git oppdateres")
+print("Fjerner og tester på nytt")
 
-str = "Test nr. 3"
+def printFunc():
+    print("Test test")
 
-for i in range(2):
-    print(str)
+printFunc()
 
-print("Nå tror jeg det er i orden gutta")
-
-def test(tallverdi):
-    print(tallverdi)
-    return tallverdi
-
-test(6)
