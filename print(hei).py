@@ -1,19 +1,7 @@
 print("Fjerner og tester på nytt")
 
-def printFunc():
-    print("Test test")
+print("OKei gutta:")
+print("CTRL + SHIFT + P og så Git: sync for å oppdatere desktop vsCode")
 
-printFunc()
-
-print("Dette er ordentlig kult")
-
-def ErikFunc():
-    print("Erik er en brønnpisser og en loffer")
-
-ErikFunc()
-
-def JonasFunc():
-    print("Jonas er en streit fyr")
-
-JonasFunc()
+print("Fn + F5 for å oppdatere selve github-siden")
           
