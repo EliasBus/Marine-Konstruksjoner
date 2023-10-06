@@ -13,3 +13,4 @@ def ErikFunc():
 ErikFunc()
 
 print('Jeg, Erik, pusher dette til GitHub ')
+
