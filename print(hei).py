@@ -7,3 +7,4 @@ for i in range(2):
     print(str)
 
 print("Nå tror jeg det er i orden gutta")
+print("Test kodeoppdatering fra browser popup")
