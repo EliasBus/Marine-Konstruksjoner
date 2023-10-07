@@ -29,9 +29,9 @@ for ind, line in enumerate(linjer):
     if forste_pkt_ind <= ind < (forste_pkt_ind + antall_pkt):
         pkt.append(line)
 
-
+print(f'Første punkt har indeks {forste_pkt_ind}, og vi har {antall_pkt} knutepunkter.\n')
 for line in pkt:
     print(line)
 
-print(forste_pkt_ind, antall_pkt)
+
 
