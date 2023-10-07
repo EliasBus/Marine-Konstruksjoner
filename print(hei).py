@@ -10,3 +10,9 @@ print("Fn + F5 for å oppdatere selve github-siden")
 #For å teste hele koden CTRL + SHIFT + P så skriv git clone, velg riktig prosjekt
 #lag så ny mappe, deretter så har du en klone av hele prosjektet
 #Send melding hvis noe er uklart, ses på søndag tommel opp
+
+txt = "welcome to the jungle"
+
+x = txt.split()
+
+print(x)
