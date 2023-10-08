@@ -19,27 +19,27 @@
 
 
 #Her kommer informasjon om hvert element i rekkefolgen:
-#Knutepunkt 1, Knutepunkt 2, E-modul [Gpa], Geometri (0 for ror(indre radius, ytre radius), 1 for I-profil(bredde flens, høyde flens, høyde stag, bredde stag), 2 for boks(bredde boks, høyde boks, bredde stag, høyde flens)), Dimensjonene til profilene [mm]  
+#Element-ID, Knutepunkt 1, Knutepunkt 2, E-modul [Gpa], Geometri (0 for ror(indre radius, ytre radius), 1 for I-profil(bredde flens, høyde flens, høyde stag, bredde stag), 2 for boks(bredde boks, høyde boks, bredde stag, høyde flens)), Dimensjonene til profilene [mm] (0: indre_radius,ytre_radius 1: b_flens, h_flens, h_stag, b_stag 2: b_boks, h_boks, b_stag, h_flens)
 #Elementer:
-1, 2, 210, 0, 980, 1200
-2, 3, 210, 0, 980, 1200
-3, 4, 210, 0, 1260, 1500
-4, 5, 210, 0, 1080, 1300
-5, 6, 210, 0, 1080, 1300
-6, 7, 210, 0, 1260, 1500
-7, 8, 210, 0, 980, 1200
-8, 9, 210, 0, 980, 1200
-9, 10, 210, 0, 1260, 1500
-1, 10, 210, 0, 1080, 1300
-1, 9, 210, 0, 1080, 1300
-2, 10, 210, 0, 1260, 1500
-2, 9, 210, 0, 980, 1200
-2, 8, 210, 0, 980, 1200
-3, 9, 210, 0, 1260, 1500
-3, 8, 210, 0, 1080, 1300
-3, 7, 210, 0, 1080, 1300
-4, 8, 210, 0, 1260, 1500
-4, 7, 210, 0, 980, 1200
+12, 1, 2, 210, 0, 490, 600
+23, 2, 3, 210, 0, 490, 600
+34, 3, 4, 210, 0, 490, 600
+45, 4, 5, 70, 2, 1000, 1200, 400, 400
+56, 5, 6, 70, 1, 500, 75, 1500, 150 
+67, 6, 7, 70, 2, 1000, 1200, 400, 400
+78, 7, 8, 210, 0, 490, 600
+89, 8, 9, 210, 0, 490, 600
+910, 9, 10, 210, 0, 490, 600
+110, 1, 10, 210, 0, 420, 490
+19, 1, 9, 210, 0, 420, 490
+210, 2, 10, 210, 0, 1260, 1500
+29, 2, 9, 210, 0, 980, 1200
+28, 2, 8, 210, 0, 980, 1200
+39, 3, 9, 210, 0, 1260, 1500
+38, 3, 8, 210, 0, 1080, 1300
+37, 3, 7, 210, 0, 1080, 1300
+48, 4, 8, 210, 1, 1260, 1500,  10, 40
+47, 4, 7, 210, 0, 980, 1200
 
 
 #Antall fordelte laster
