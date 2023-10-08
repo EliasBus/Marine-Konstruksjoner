@@ -1,13 +1,12 @@
 #Antall knutepunkt
-14
+10
 #Antall element
-23
+2319
 
 #Her kommer info om alle knutepunktene i rekkefÃ¸lgen:
 #knutepunktsnummer, x-koordinat [m], y-koordinat [m], Hvordan det er innspent(0 for fri, 1 for fast innspent)
 #Knutepunkter:
-0, 0, 0,  1
-1, 160.5, 0, 0
+1, 0, 0, 0
 2, 330, 0, 1
 3, 2.5, 25, 0
 4, 16.5, 25, 0
