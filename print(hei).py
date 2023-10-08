@@ -16,3 +16,5 @@ txt = "welcome to the jungle"
 x = txt.split()
 
 print(x)
+
+print("Test fra jonas")
