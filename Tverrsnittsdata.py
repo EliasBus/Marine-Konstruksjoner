@@ -32,8 +32,8 @@ for i in inn.elementer_matrise:
         #                 areal_ytre_boks - areal_indre_boks
         andrearealmoment= 2 * (i[5]*i[8]**(3) /12 + ((i[6]/2-i[8]/2)**2 * i[5]*i[8])) + 2 * (i[7]*(i[6]-2*i[8])**(3) /12)
         #                 2 * (I_flens            + steinerbidrag_flens)              + 2 * (I_stag)
-        bøyestivhet=      i[3] * andrearealmoment
-        #                 andrearealmoment * E-modul
+        bøyestivhet=      i[3]    * andrearealmoment
+        #                 E-modul * andrearealmoment
     else:
     #hvis vi har ugyldig verdi i input_fil
         areal='input feil'
@@ -43,16 +43,18 @@ for i in inn.elementer_matrise:
     tverrsnittsdata.append(i[0])
     tverrsnittsdata.append(i[1])
     tverrsnittsdata.append(i[2])
+    tverrsnittsdata.append(i[3])
     tverrsnittsdata.append(areal)
     tverrsnittsdata.append(andrearealmoment)
     tverrsnittsdata.append(bøyestivhet)
-    #Legger inn element_ID, startpunkt, sluttpunkt
+    #Legger inn element_ID, startpunkt, sluttpunkt, E-modul
     #Legger inn hver av verdiene inn i en liste for hver av elementene
 
     tverrsnittsdata_matrise.append(tverrsnittsdata)
     #Legger til hver liste i en matrise for alle elementer
 
-print ('\n\nTversnittsdata_matrise:\n')
+
+print ('\n\nTversnittsdata_matrise:  [ID, Knutepunkt 1, Knutepunkt 2, E-modul, Areal, Andrearealmoment, Bøyestivhet]\n')
 for line in tverrsnittsdata_matrise:
     print(line)
 

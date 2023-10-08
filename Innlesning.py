@@ -49,9 +49,7 @@ for line in linjer:
             index+=1
 
 
-
-
-
+'''
 print(f"\n\nAntall knutepunkt: {antall_knutepunkt}\n")
 for line in knutepunkter_matrise:
     print(line)
@@ -64,3 +62,4 @@ for line in fordelte_laster_matrise:
 print(f"\n\nAntall punktlaster: {antall_punktlaster}\n")
 for line in punktlaster_matrise:
     print(line)
+'''

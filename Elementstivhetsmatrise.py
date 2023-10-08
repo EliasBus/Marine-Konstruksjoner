@@ -1,40 +1,58 @@
 import Tverrsnittsdata as tve
 import Innlesning as inn
+#importerer data fra Tversnittsdata.py som 'tve'
+#importerer data fra Innlesning.py som 'inn'
 
 
 str_matrise=inn.antall_knutepunkt
-elementstivhetsmatrise = [[0 for i in range(str_matrise)] for i in range(str_matrise)]
+#finner dimensjonen på systemstivhetsmatrisen
+systemstivhetsmatrise = [[0 for i in range(str_matrise)] for i in range(str_matrise)]
+#lager matrisen med bare 'nuller'
 
-print ('\n\nelementstivhetsmatrise\n')
-for line in elementstivhetsmatrise:
-    print(line)
 
 for elem in tve.tverrsnittsdata_matrise:
+    #iterer gjennom hvert element i konstruksjonen
+
     knutepunkt_1 = int(elem[1])
     knutepunkt_2 = int(elem[2])
-    #print(f'element {elem[0]} , knute_1 {knutepunkt_1}, knute_2 {knutepunkt_2}')
+    #finner 1. og 2. knutepunkt til elementet
+
     knutepunkt_1_indeks = knutepunkt_1 -1
     knutepunkt_2_indeks = knutepunkt_2 -1
+    #finner indeksen knutepunktet skal ha i systemstivhetsmatrisen
+
     x_1 = inn.knutepunkter_matrise[knutepunkt_1_indeks][1]
     y_1 = inn.knutepunkter_matrise[knutepunkt_1_indeks][2]
     x_2 = inn.knutepunkter_matrise[knutepunkt_2_indeks][1]
     y_2 = inn.knutepunkter_matrise[knutepunkt_2_indeks][2]
-    print(f'\nelement {elem[0]} , (x, y)_{knutepunkt_1}: ({x_1}, {y_1}), (x, y)_{knutepunkt_2}: ({x_2}, {y_2})')
+    #finner koordinatene til 1. og 2. knutepunkt i elemntet
+
+    #print(f'element {elem[0]} --> (x, y)_{knutepunkt_1}: ({x_1}, {y_1}), (x, y)_{knutepunkt_2}: ({x_2}, {y_2})')
+
 
     lengde = ((x_1-x_2)**2 + (y_1-y_2)**2)**(1/2)
-    #lengde for hver av elementene
-    #print(f'element: {elem[0]} , lengde: {lengde} m')
-    
-    k_11 = int(4*elem[5]/lengde)
-    k_12 = int(4*elem[5]/lengde *1/2)
-    k_21 = int(4*elem[5]/lengde *1/2)
-    k_22 = int(4*elem[5]/lengde)
-    print(f'knutepunkt_1_indeks: {knutepunkt_1_indeks},  knutepunkt_2_indeks: {knutepunkt_2_indeks}')
-    elementstivhetsmatrise[knutepunkt_1_indeks][knutepunkt_1_indeks] += k_11
-    elementstivhetsmatrise[knutepunkt_1_indeks][knutepunkt_2_indeks] += k_12
-    elementstivhetsmatrise[knutepunkt_2_indeks][knutepunkt_1_indeks] += k_21
-    elementstivhetsmatrise[knutepunkt_2_indeks][knutepunkt_2_indeks] += k_22
+    #finner lengde for hvert av elementene
+    print(f'\n{int(elem[0])}:               ({int(elem[1])}, {int(elem[2])})')
+    print(f'lengde:           {round(lengde,2)}      [m]')
+    print(f'E-modul:          {elem[3]}      [kN/mm^2]')
+    print(f'Andrearealmoment: {round(elem[5]/(10**9),2)}*10^9 [mm^4]')
 
-print ('\n\nelementstivhetsmatrise\n')
-for line in elementstivhetsmatrise:
+    
+    
+    k_11 = int((4*elem[6]/lengde)        /(10**9))
+    k_12 = int((4*elem[6]/lengde *1/2)   /(10**9))
+    k_21 = int((4*elem[6]/lengde *1/2)   /(10**9))
+    k_22 = int((4*elem[6]/lengde)        /(10**9))
+    #regner stivhetsbidraget til elementstivhetsmatrisen
+      
+    #print(f'knutepunkt_1_indeks: {knutepunkt_1_indeks},  knutepunkt_2_indeks: {knutepunkt_2_indeks}')
+    
+    systemstivhetsmatrise[knutepunkt_1_indeks][knutepunkt_1_indeks] += k_11
+    systemstivhetsmatrise[knutepunkt_1_indeks][knutepunkt_2_indeks] += k_12
+    systemstivhetsmatrise[knutepunkt_2_indeks][knutepunkt_1_indeks] += k_21
+    systemstivhetsmatrise[knutepunkt_2_indeks][knutepunkt_2_indeks] += k_22
+    #legger til stivhetsbidraget fra elementstivhetsmatrisen til systemstivhetsmatrisen på riktig indeks
+
+print ('\n\nSystemstivhetsmatrise:  [(kN/mm^2 * mm^4)/m = N*mm] * 10^9\n')
+for line in systemstivhetsmatrise:
     print(line)
