@@ -62,7 +62,7 @@
 3, 7, 16000, 48000 
 4, 8, 15000, 48000 
 
-#Antall punktlaster. Har delt overste tverrbjelke i to for Ã¥ kun fÃ¥ punktlast der.
+#Antall punktlaster
 3
 #Info om punktlastene kommer i rekkefÃ¸lge:
 #x-koordinat, y-koordinat, Hvilken retning det virker i (i forhold til globalt aksesystem), Intensitet [N]

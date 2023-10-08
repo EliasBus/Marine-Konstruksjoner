@@ -1,11 +1,11 @@
 
 
-#Knutepunkter:
-#Format: 
-# 1. knutepunktsnummer
-# 2. x-koordinat
-# 3. y-koordinat
-# 4. Fast innspent(1), ikke fast innspent(0)
+#Python-fil med kode som tar inn strings fra txt-fil og legger det inn i variabler og matriser.
+
+knutepunkter_matrise=[]
+elementer_matrise=[]
+fordelte_laster_matrise=[]
+punktlaster_matrise=[]
 
 with open('input_fil.txt', 'r') as input_fil:
     linjer = input_fil.readlines()
@@ -20,11 +20,6 @@ for line in linjer:
     elif line.startswith("#Antall punktlaster"):
         antall_punktlaster = int(linjer[linjer.index(line) + 1])
 
-
-knutepunkter_matrise=[]
-elementer_matrise=[]
-fordelte_laster_matrise=[]
-punktlaster_matrise=[]
 
 
 for line in linjer:
@@ -69,6 +64,3 @@ for line in fordelte_laster_matrise:
 print(f"\n\nAntall punktlaster: {antall_punktlaster}\n")
 for line in punktlaster_matrise:
     print(line)
-
-
-
