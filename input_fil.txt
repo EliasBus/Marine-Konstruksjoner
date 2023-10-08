@@ -1,68 +1,75 @@
 #Antall knutepunkt
-10
+11
 #Antall element
-19
+20
 
 #Her kommer info om alle knutepunktene i rekkefÃ¸lgen:
 #knutepunktsnummer, x-koordinat [m], y-koordinat [m], Hvordan det er innspent(0 for fri, 1 for fast innspent)
 #Knutepunkter:
-1, 0, 0,  1
-2, 3.438, 28, 0
-3, 6.876, 56, 0
-4, 10.314, 84, 0
-5, 10.314, 98, 0
-6, 26.314, 98, 0
-7, 26.314, 84, 0
-8, 29.752, 56, 0
-9, 33.190, 28, 0
-10, 36.628, 0, 1
+1, 0, 0, 1
+2, 36.628, 0, 1
+3, 3.438, 28, 0
+4, 33.190, 28, 0
+5, 6.876, 56, 0
+6, 29.752, 56, 0
+7, 10.314, 84, 0
+8, 26.314, 84, 0
+9, 10.314, 98, 0
+10, 26.314, 98, 0
+11, 18.314, 98, 0
+
+
+
+
+
 
 
 #Her kommer informasjon om hvert element i rekkefolgen:
 #Element-ID, Knutepunkt 1, Knutepunkt 2, E-modul [Gpa], Geometri (0 for ror, 1 for I-profil, 2 for boks), Dimensjonene til profilene [mm] (0: indre_radius,ytre_radius 1: b_flens, h_flens, h_stag, b_stag 2: b_boks, h_boks, b_stag, h_flens)
 #Elementer:
-12, 1, 2, 210, 0, 490, 600
-23, 2, 3, 210, 0, 490, 600
-34, 3, 4, 210, 0, 490, 600
-45, 4, 5, 70, 2, 1000, 1200, 400, 400
-56, 5, 6, 70, 1, 500, 75, 1500, 150 
-67, 6, 7, 70, 2, 1000, 1200, 400, 400
-78, 7, 8, 210, 0, 490, 600
-89, 8, 9, 210, 0, 490, 600
-910, 9, 10, 210, 0, 490, 600
-110, 1, 10, 210, 0, 420, 490
-19, 1, 9, 210, 0, 420, 490
-210, 2, 10, 210, 0, 420, 490
-29, 2, 9, 210, 0, 420, 490
-28, 2, 8, 210, 0, 420, 490
-39, 3, 9, 210, 0, 420, 490
-38, 3, 8, 210, 0, 420, 490
-37, 3, 7, 210, 0, 420, 490
-48, 4, 8, 210, 0, 420, 490
-47, 4, 7, 210, 0, 420, 490
+13, 1, 3, 210, 0, 490, 600
+35, 3, 5, 210, 0, 490, 600
+57, 5, 7, 210, 0, 490, 600
+79, 7, 9, 70, 2, 1000, 1200, 400, 400
+911, 9, 11, 70, 1, 500, 75, 1500, 150
+1011, 10, 11, 70, 1, 500, 75, 1500, 150 
+810, 8, 10, 70, 2, 1000, 1200, 400, 400
+68, 6, 8, 210, 0, 490, 600
+46, 4, 6, 210, 0, 490, 600
+24, 2, 4, 210, 0, 490, 600
+12, 1, 2, 210, 0, 420, 490
+14, 1, 4, 210, 0, 420, 490
+32, 3, 2, 210, 0, 420, 490
+34, 3, 4, 210, 0, 420, 490
+36, 3, 6, 210, 0, 420, 490
+54, 5, 4, 210, 0, 420, 490
+56, 5, 6, 210, 0, 420, 490
+58, 5, 8, 210, 0, 420, 490
+76, 7, 6, 210, 0, 420, 490
+78, 7, 8, 210, 0, 420, 490
 
 
 #Antall fordelte laster
-8
+6
 
 #Info om de fordelte lastene, de vil bli behandlet med medlemsfunksjonen til klassen for fordelte laster.
 #Info kommer i rekkefolgen:
 #Element-ID,Knutepunkt 1 den virker på, knutepunkt 2 den virker på, Intensitet ved lokalt knutepunkt 1 [N], Intensitet ved knutepunkt 2 [N]
 #Fordelte laster:
-23, 2, 3, 0, 180000
-34, 3, 4, 180000, 540000
-98, 9, 8, 0, 180000
-87, 8, 7, 180000, 540000 
-37, 3, 7, 180000, 54000 
-48, 4, 8, 540000, 180000 
-28, 2, 8, 0, 180000
-39, 3, 9, 180000, 0
+35, 3, 5, 0, 180000
+57, 5, 7, 180000, 540000
+46, 4, 6, 0, 180000
+68, 6, 8, 180000, 540000 
+58, 5, 8, 180000, 54000 
+76, 7, 6, 540000, 180000 
+
 
 #Antall punktlaster
 3
+
 #Info om punktlastene kommer i rekkefÃ¸lge:
-#x-koordinat, y-koordinat, Hvilken retning det virker i (i forhold til globalt aksesystem), Intensitet [N]
+#knutepunktsnummer, Hvilken retning det virker i (i forhold til globalt aksesystem), Intensitet [N]
 #Punktlaster:
-10.314, 98, 270, 4000000 
-18.314, 98, 270, 1000000
-26.314, 98, 270, 4000000
+9, 270, 4000000 
+11, 270, 1000000
+10, 270, 4000000

@@ -1,11 +1,12 @@
 import Innlesning as inn
 import math
+#importerer data fra Innlesning.py som 'inn'
+#importerer math for å bruke math.pi
 
 tverrsnittsdata_matrise=[]
+#etablerer en matrise som skal inneholde tversnittsdata for alle elementer
 
-areal=0
-andrearealmoment=0
-bøyestivhet=0
+
 for i in inn.elementer_matrise:
     tverrsnittsdata=[]
     #Nuller listen for hver iterasjon
@@ -33,7 +34,11 @@ for i in inn.elementer_matrise:
         #                 2 * (I_flens            + steinerbidrag_flens)              + 2 * (I_stag)
         bøyestivhet=      i[3] * andrearealmoment
         #                 andrearealmoment * E-modul
-    
+    else:
+    #hvis vi har ugyldig verdi i input_fil
+        areal='input feil'
+        andrearealmoment='input feil'
+        bøyestivhet='input feil'
 
     tverrsnittsdata.append(i[0])
     tverrsnittsdata.append(areal)
@@ -44,7 +49,7 @@ for i in inn.elementer_matrise:
     tverrsnittsdata_matrise.append(tverrsnittsdata)
     #Legger til hver liste i en matrise for alle elementer
 
-print ('Tversnittsda\n\n')
+print ('Tversnittsdata\n\n')
 for line in tverrsnittsdata_matrise:
     print(line)
 
