@@ -52,7 +52,7 @@ for i in inn.elementer_matrise:
     tverrsnittsdata_matrise.append(tverrsnittsdata)
     #Legger til hver liste i en matrise for alle elementer
 
-print ('Tversnittsdata\n\n')
+print ('\n\nTversnittsdata_matrise:\n')
 for line in tverrsnittsdata_matrise:
     print(line)
 
