@@ -1,5 +1,6 @@
 #Antall knutepunkt
 10
+10
 #Antall element
 19
 
