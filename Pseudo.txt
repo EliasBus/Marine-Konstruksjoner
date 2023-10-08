@@ -1,0 +1,14 @@
+
+Her skal pseudokode komme
+
+OPPGAVE a:
+
+Lager kode som leser inn data fra txt-fil (Innlesning.py);
+Lagrer antall knutepunkt, elementer, fordelte laster, punktlastene i variabler.
+Lagrer knutepunktene, elementer, fordelte laster, punktlaster i matriser.
+
+
+Lager kode som regner ut tverrsnittsdata (Tverrsnittsdata.py);
+Finner areal for tverrsnitt
+Finner andre arealmoment om z-aksen (I)
+Regner ut boyestivheten for tverrsnitt(EI)
