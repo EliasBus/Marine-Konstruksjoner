@@ -19,7 +19,7 @@
 
 
 #Her kommer informasjon om hvert element i rekkefolgen:
-#Element-ID, Knutepunkt 1, Knutepunkt 2, E-modul [Gpa], Geometri (0 for ror(indre radius, ytre radius), 1 for I-profil(bredde flens, høyde flens, høyde stag, bredde stag), 2 for boks(bredde boks, høyde boks, bredde stag, høyde flens)), Dimensjonene til profilene [mm] (0: indre_radius,ytre_radius 1: b_flens, h_flens, h_stag, b_stag 2: b_boks, h_boks, b_stag, h_flens)
+#Element-ID, Knutepunkt 1, Knutepunkt 2, E-modul [Gpa], Geometri (0 for ror, 1 for I-profil, 2 for boks), Dimensjonene til profilene [mm] (0: indre_radius,ytre_radius 1: b_flens, h_flens, h_stag, b_stag 2: b_boks, h_boks, b_stag, h_flens)
 #Elementer:
 12, 1, 2, 210, 0, 490, 600
 23, 2, 3, 210, 0, 490, 600
@@ -32,29 +32,31 @@
 910, 9, 10, 210, 0, 490, 600
 110, 1, 10, 210, 0, 420, 490
 19, 1, 9, 210, 0, 420, 490
-210, 2, 10, 210, 0, 1260, 1500
-29, 2, 9, 210, 0, 980, 1200
-28, 2, 8, 210, 0, 980, 1200
-39, 3, 9, 210, 0, 1260, 1500
-38, 3, 8, 210, 0, 1080, 1300
-37, 3, 7, 210, 0, 1080, 1300
-48, 4, 8, 210, 1, 1260, 1500,  10, 40
-47, 4, 7, 210, 0, 980, 1200
+210, 2, 10, 210, 0, 420, 490
+29, 2, 9, 210, 0, 420, 490
+28, 2, 8, 210, 0, 420, 490
+39, 3, 9, 210, 0, 420, 490
+38, 3, 8, 210, 0, 420, 490
+37, 3, 7, 210, 0, 420, 490
+48, 4, 8, 210, 0, 420, 490
+47, 4, 7, 210, 0, 420, 490
 
 
 #Antall fordelte laster
-6
+8
 
 #Info om de fordelte lastene, de vil bli behandlet med medlemsfunksjonen til klassen for fordelte laster.
 #Info kommer i rekkefolgen:
-#Knutepunkt 1 den virker på, knutepunkt 2 den virker på, Intensitet ved knutepunkt 1 [N], Intensitet ved knutepunkt 2 [N]
+#Element-ID,Knutepunkt 1 den virker på, knutepunkt 2 den virker på, Intensitet ved lokalt knutepunkt 1 [N], Intensitet ved knutepunkt 2 [N]
 #Fordelte laster:
-2, 3, 0, 180000
-3, 4, 180000, 540000
-9, 8, 0, 180000
-8, 7, 180000, 540000 
-3, 7, 16000, 48000 
-4, 8, 15000, 48000 
+23, 2, 3, 0, 180000
+34, 3, 4, 180000, 540000
+98, 9, 8, 0, 180000
+87, 8, 7, 180000, 540000 
+37, 3, 7, 180000, 54000 
+48, 4, 8, 540000, 180000 
+28, 2, 8, 0, 180000
+39, 3, 9, 180000, 0
 
 #Antall punktlaster
 3
