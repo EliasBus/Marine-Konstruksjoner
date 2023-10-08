@@ -41,9 +41,12 @@ for i in inn.elementer_matrise:
         bøyestivhet='input feil'
 
     tverrsnittsdata.append(i[0])
+    tverrsnittsdata.append(i[1])
+    tverrsnittsdata.append(i[2])
     tverrsnittsdata.append(areal)
     tverrsnittsdata.append(andrearealmoment)
     tverrsnittsdata.append(bøyestivhet)
+    #Legger inn element_ID, startpunkt, sluttpunkt
     #Legger inn hver av verdiene inn i en liste for hver av elementene
 
     tverrsnittsdata_matrise.append(tverrsnittsdata)
