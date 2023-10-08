@@ -1,7 +1,7 @@
 #Antall knutepunkt
 10
 #Antall element
-2319
+19
 
 #Her kommer info om alle knutepunktene i rekkefÃ¸lgen:
 #knutepunktsnummer, x-koordinat [m], y-koordinat [m], Hvordan det er innspent(0 for fri, 1 for fast innspent)
