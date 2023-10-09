@@ -1,16 +1,19 @@
-import Elementer_utvidet_matrise as ele
+import Systemstivhetsmatrise as sys
 import math
 
-for i in ele.elementer_utvidet_matrise:
+elementer_vinkler_liste=[]
+
+for i in sys.koordinater_lengde_matrise:
     #iterer gjennom alle elementer
-    hosliggende = (i[10]-i[8])
-    motstående = (i[11]-i[9])
-    #finner lengde på hosliggende og motstående katet
-    if hosliggende == 0:
-        theta = math.pi/2
-        #for å ikke dele på 0
-    else:
-        theta= math.atan(motstående / hosliggende)
-        #regner ellers vinkelen med tangens
+    hosliggende = (i[2]-i[0])
+    lengde = i[4]
+    #finner lengde på hosliggende katet
     
-    print(f'Element {i[0]}: {round(theta*180/math.pi)}')
+    theta= math.acos(hosliggende / lengde)
+    #regner vinkelen med cosinus
+    if i[2]>i[0] and i[3]<i[1] and theta<(math.pi/2):
+        theta+=math.pi/2
+    
+    elementer_vinkler_liste.append(theta)
+
+    #print(f'Element {i[0]}: {round(theta*180/math.pi)}')
