@@ -6,7 +6,6 @@ import math
 tverrsnittsdata_matrise=[]
 #etablerer en matrise som skal inneholde tversnittsdata for alle elementer
 
-
 for i in inn.elementer_matrise:
     tverrsnittsdata=[]
     #Nuller listen for hver iterasjon
@@ -53,9 +52,5 @@ for i in inn.elementer_matrise:
     tverrsnittsdata_matrise.append(tverrsnittsdata)
     #Legger til hver liste i en matrise for alle elementer
 
-'''
-print ('\n\nTversnittsdata_matrise:  [ID, Knutepunkt 1, Knutepunkt 2, E-modul, Areal, Andrearealmoment, Bøyestivhet]\n')
-for line in tverrsnittsdata_matrise:
-    print(line)
-'''
+
 

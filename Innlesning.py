@@ -9,6 +9,7 @@ punktlaster_matrise=[]
 
 with open('input_fil.txt', 'r') as input_fil:
     linjer = input_fil.readlines()
+    #åpner filer og leser inn linje for linje
 
 for line in linjer:
     if line.startswith("#Antall knutepunkt"):
@@ -19,8 +20,7 @@ for line in linjer:
         antall_fordelte_laster = int(linjer[linjer.index(line) + 1])
     elif line.startswith("#Antall punktlaster"):
         antall_punktlaster = int(linjer[linjer.index(line) + 1])
-
-
+#lagrer variabler
 
 for line in linjer:
     if line.startswith("#Knutepunkter:"):
@@ -47,19 +47,6 @@ for line in linjer:
             punktlast = [float(x.strip()) for x in linjer[linjer.index(line) + index].split(',')]
             punktlaster_matrise.append(punktlast)
             index+=1
+#lagrer listene med data
 
 
-'''
-print(f"\n\nAntall knutepunkt: {antall_knutepunkt}\n")
-for line in knutepunkter_matrise:
-    print(line)
-print(f"\n\nAntall element: {antall_element}\n")
-for line in elementer_matrise:
-    print(line)
-print(f"\n\nAntall fordelte laster: {antall_fordelte_laster}\n")
-for line in fordelte_laster_matrise:
-    print(line)
-print(f"\n\nAntall punktlaster: {antall_punktlaster}\n")
-for line in punktlaster_matrise:
-    print(line)
-'''

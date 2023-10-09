@@ -3,20 +3,19 @@ import Innlesning as inn
 #importerer data fra Tversnittsdata.py som 'tve'
 #importerer data fra Innlesning.py som 'inn'
 
-
 str_matrise=inn.antall_knutepunkt
 #finner dimensjonen på systemstivhetsmatrisen
 systemstivhetsmatrise = [[0 for i in range(str_matrise)] for i in range(str_matrise)]
 #lager matrisen med bare 'nuller'
 
 koordinater_lengde_matrise=[]
-
-
+#oppretter tom matrise
 
 for elem in tve.tverrsnittsdata_matrise:
-    #iterer gjennom hvert element i konstruksjonen
+#iterer gjennom hvert element i konstruksjonen
 
     koordinater_lengde_liste=[]
+    #lager tom liste som skal inneholde koordinater og legder
 
     knutepunkt_1 = int(elem[1])
     knutepunkt_2 = int(elem[2])
@@ -37,22 +36,13 @@ for elem in tve.tverrsnittsdata_matrise:
     koordinater_lengde_liste.append(y_1)
     koordinater_lengde_liste.append(x_2)
     koordinater_lengde_liste.append(y_2)
-
-    #print(f'element {elem[0]} --> (x, y)_{knutepunkt_1}: ({x_1}, {y_1}), (x, y)_{knutepunkt_2}: ({x_2}, {y_2})')
-
-
+    #legger til koordinater
+    
     lengde = ((x_1-x_2)**2 + (y_1-y_2)**2)**(1/2)
-    #finner lengde for hvert av elementene
+    #finner lengde for hvert av elementene ved Pythagoras
 
     koordinater_lengde_liste.append(lengde)
-
-    '''
-    print(f'\n{int(elem[0])}:               ({int(elem[1])}, {int(elem[2])})')
-    print(f'lengde:           {round(lengde,2)}      [m]')
-    print(f'E-modul:          {elem[3]}      [kN/mm^2]')
-    print(f'Andrearealmoment: {round(elem[5]/(10**9),2)}*10^9 [mm^4]')
-    '''
-    
+    #legger til lengden i listen
     
     k_11 = int((4*elem[6]/lengde)        /(10**9))
     k_12 = int((4*elem[6]/lengde *1/2)   /(10**9))
@@ -60,20 +50,12 @@ for elem in tve.tverrsnittsdata_matrise:
     k_22 = int((4*elem[6]/lengde)        /(10**9))
     #regner stivhetsbidraget til elementstivhetsmatrisen
       
-    #print(f'knutepunkt_1_indeks: {knutepunkt_1_indeks},  knutepunkt_2_indeks: {knutepunkt_2_indeks}')
-    
     systemstivhetsmatrise[knutepunkt_1_indeks][knutepunkt_1_indeks] += k_11
     systemstivhetsmatrise[knutepunkt_1_indeks][knutepunkt_2_indeks] += k_12
     systemstivhetsmatrise[knutepunkt_2_indeks][knutepunkt_1_indeks] += k_21
     systemstivhetsmatrise[knutepunkt_2_indeks][knutepunkt_2_indeks] += k_22
     #legger til stivhetsbidraget fra elementstivhetsmatrisen til systemstivhetsmatrisen på riktig indeks
 
-
-
     koordinater_lengde_matrise.append(koordinater_lengde_liste)
+    #legger listen til i matrisen med dataene
 
-'''
-print ('\n\nSystemstivhetsmatrise:  [(kN/mm^2 * mm^4)/m = N*mm] * 10^9\n')
-for line in systemstivhetsmatrise:
-    print(line)
-'''
