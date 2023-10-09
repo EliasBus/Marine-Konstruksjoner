@@ -43,7 +43,7 @@ for i in range(inn.antall_element):
     # [8] x-koord første knutepunkt, [9] y-koord første knutepunkt, [10] x-koord andre knutepunkt, [11] y-koord andre knutepunkt,   
     # [12] Lengden på elementet
 
-print(elementer_utvidet_matrise[8][12])
+#print(elementer_utvidet_matrise[8][12])
 
 '''
 print ('\n\nElementer utvidet matrise:  [(kN/mm^2 * mm^4)/m = N*mm] * 10^9\n')
