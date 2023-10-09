@@ -17,3 +17,4 @@ for i in sys.koordinater_lengde_matrise:
     elementer_vinkler_liste.append(theta)
 
     #print(f'Element {i[0]}: {round(theta*180/math.pi)}')
+

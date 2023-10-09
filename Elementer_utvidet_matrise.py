@@ -4,6 +4,8 @@ import Systemstivhetsmatrise as sys
 import Transformasjonsmatrise as tra
 import math
 
+  
+
 elementer_utvidet_matrise=[]
 #etablerer en matrise som skal inneholde alle data for alle elementer
 
@@ -40,16 +42,28 @@ for i in range(inn.antall_element):
     elementer_utvidet_matrise.append(elementdata)
     #Legger til alle data for hvert element inn i den utvidede matrisen
 
-    #Matrisen er på formen: 
-    # [0] Element_ID, [1] Første knutepunkt, [2] Andre knutepunkt, [3] E-modul, [4] Tverrsnitts-type
-    # [5] Areal, [6] Andre arealmoment, [7] Bøyestivhet, 
-    # [8] x-koord første knutepunkt, [9] y-koord første knutepunkt, [10] x-koord andre knutepunkt, [11] y-koord andre knutepunkt,   
-    # [12] Lengden på elementet, [13] Vinkelen til elementet i forhold til x-aksen
 
-print(elementer_utvidet_matrise[18][13]*180/math.pi)
+
+
+#Matrisen er på formen: 
+# [0] Element_ID, [1] Første knutepunkt, [2] Andre knutepunkt, [3] E-modul, [4] Tverrsnitts-type
+# [5] Areal, [6] Andre arealmoment, [7] Bøyestivhet, 
+# [8] x-koord første knutepunkt, [9] y-koord første knutepunkt, [10] x-koord andre knutepunkt, [11] y-koord andre knutepunkt,   
+# [12] Lengden på elementet, [13] Vinkelen til elementet i forhold til x-aksen
+
+
+
+for elem in elementer_utvidet_matrise:  
+    print(f'Element {round(elem[0])}: {round(elem[13]*180/math.pi)}')
+
+
+ 
+
+
+#print(elementer_utvidet_matrise[18][13]*180/math.pi)    
 
 '''
-print ('\n\nElementer utvidet matrise:  [(kN/mm^2 * mm^4)/m = N*mm] * 10^9\n')
+print ('\n\nElementer utvidet matrise:  \n')
 for line in elementer_utvidet_matrise:
     print(line)
 '''
