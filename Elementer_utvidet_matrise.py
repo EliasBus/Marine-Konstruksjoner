@@ -52,9 +52,11 @@ for i in range(inn.antall_element):
 # [12] Lengden på elementet, [13] Vinkelen til elementet i forhold til x-aksen
 
 
-
+'''
 for elem in elementer_utvidet_matrise:  
     print(f'Element {round(elem[0])}: {round(elem[13]*180/math.pi)}')
+'''
+
 
 
  
