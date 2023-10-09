@@ -53,9 +53,9 @@ for i in inn.elementer_matrise:
     tverrsnittsdata_matrise.append(tverrsnittsdata)
     #Legger til hver liste i en matrise for alle elementer
 
-
+'''
 print ('\n\nTversnittsdata_matrise:  [ID, Knutepunkt 1, Knutepunkt 2, E-modul, Areal, Andrearealmoment, Bøyestivhet]\n')
 for line in tverrsnittsdata_matrise:
     print(line)
-
+'''
 
