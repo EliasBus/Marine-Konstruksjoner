@@ -1,0 +1,2 @@
+-Putte filer i mapper og organisere filstier
+-regne ut systemet for hånd
