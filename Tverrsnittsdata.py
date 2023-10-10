@@ -39,10 +39,7 @@ for i in inn.elementer_matrise:
         andrearealmoment='input feil'
         bøyestivhet='input feil'
 
-    tverrsnittsdata.append(i[0])
-    tverrsnittsdata.append(i[1])
-    tverrsnittsdata.append(i[2])
-    tverrsnittsdata.append(i[3])
+    
     tverrsnittsdata.append(areal)
     tverrsnittsdata.append(andrearealmoment)
     tverrsnittsdata.append(bøyestivhet)

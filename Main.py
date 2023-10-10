@@ -38,21 +38,10 @@ for line in tve.tverrsnittsdata_matrise:
 
 
 #Data fra Systemstivhetsmatrise.py
-'''
 
-for elem in sys.systemstivhetsmatrise:
-    print(f'\n{int(elem[0])}:               ({int(elem[1])}, {int(elem[2])})')
-    print(f'lengde:           {round(lengde,2)}      [m]')
-    print(f'E-modul:          {elem[3]}      [kN/mm^2]')
-    print(f'Andrearealmoment: {round(elem[5]/(10**9),2)}*10^9 [mm^4]')
-
-    
-print ('\n\nSystemstivhetsmatrise:  [(kN/mm^2 * mm^4)/m = N*mm] * 10^9\n')
-for line in sys.systemstivhetsmatrise:
+systemstivhetsmatrise = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
+for line in systemstivhetsmatrise:
     print(line)
-
-
-'''
 
 #Data fra Elementer_utvidet_matrise:
 '''

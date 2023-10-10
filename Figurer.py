@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 def plot_elements(elementer, knutepunkter):
-#Definere en funksjon som kan kalles for å tegne figur
+#Definerer en funksjon som kan kalles for å tegne figur
 
     min_x=0
     max_x=0
@@ -11,25 +11,25 @@ def plot_elements(elementer, knutepunkter):
 
     for elem in elementer:
 
-        x_verdier= [elem[8],elem[10]]
-        y_verdier= [elem[9], elem[11]]
+        x_verdier= [elem[3],elem[5]]
+        y_verdier= [elem[4], elem[6]]
         #finner x/y-koordinatene til hvert av knutepunktene i elemntet
         
-        plt.plot(x_verdier, y_verdier, 'y', linewidth=elem[7]/(10**12), linestyle="-")
+        plt.plot(x_verdier, y_verdier, 'y', linewidth=elem[12]/(10**12), linestyle="-")
         #plotter elementet som en linje med tykkelse proposjanalt med bøyestivheten til elementet
 
-        if elem[8]<elem[10]:
-            x_koord=elem[8]+ abs(elem[8]-elem[10])/2
-        elif elem[8]>elem[10]:
-            x_koord=elem[8]- abs(elem[8]-elem[10])/2
+        if elem[3]<elem[5]:
+            x_koord=elem[3]+ abs(elem[3]-elem[5])/2
+        elif elem[3]>elem[5]:
+            x_koord=elem[3]- abs(elem[3]-elem[5])/2
         else:
-            x_koord=elem[8]
-        if elem[9]<elem[11]:
-            y_koord=elem[9]+ abs(elem[9]-elem[11])/2
-        elif elem[9]>elem[11]:
-            y_koord=elem[9]- abs(elem[9]-elem[11])/2
+            x_koord=elem[3]
+        if elem[4]<elem[6]:
+            y_koord=elem[4]+ abs(elem[4]-elem[6])/2
+        elif elem[4]>elem[6]:
+            y_koord=elem[4]- abs(elem[4]-elem[6])/2
         else:
-            y_koord=elem[9]
+            y_koord=elem[4]
         #finner koordinatene hvor label til element-ID skal plottes
     
         plt.text(x_koord, y_koord, f'{int(elem[0])}', fontsize=8)
