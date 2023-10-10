@@ -1,5 +1,3 @@
-import Elementer_utvidet_matrise as ele
-import Innlesning as inn
 import matplotlib.pyplot as plt
 
 def plot_elements(elementer, knutepunkter):
@@ -11,7 +9,7 @@ def plot_elements(elementer, knutepunkter):
     max_y=0
     #Definerer min/max-verdier for koordinatene til knutepunktene
 
-    for elem in ele.elementer_utvidet_matrise:
+    for elem in elementer:
 
         x_verdier= [elem[8],elem[10]]
         y_verdier= [elem[9], elem[11]]
@@ -37,7 +35,7 @@ def plot_elements(elementer, knutepunkter):
         plt.text(x_koord, y_koord, f'{int(elem[0])}', fontsize=8)
         #plotter label til hvert av elementene
 
-        for knute in inn.knutepunkter_matrise:
+        for knute in knutepunkter:
             plt.plot(knute[1],knute[2], 'ro')
             plt.text(knute[1]+0.5,knute[2]-2,int(knute[0]), fontsize=14)
         #plotter første knutepunkt i hvert element samt label til knutepunktet
