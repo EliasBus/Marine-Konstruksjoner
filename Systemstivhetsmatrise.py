@@ -55,12 +55,14 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
         ])   
         #ovenfor er elementstivhetsmatrisen
         
-        #Her skal transformasjon k_glob = T_Transp * k * T
+        
         trans = tra.transformasjonsmatrise_funksjon(elem)
+        #henter transformasjonsmatrisen fra Transformasjonsmatrise.py
         trans_transponert = np.linalg.inv(trans)
+        #transponerer matrisen
         
         elementstivhetsmatrise_glob = np.dot( np.dot(trans_transponert, elementstivhetsmatrise), trans)
-        
+        #finner global elementstivhetsmatrise
         
 
         for x in range(lokale_frihetsgrader):
