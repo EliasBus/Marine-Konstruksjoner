@@ -44,8 +44,10 @@ for line in systemstivhetsmatrise:
     print(line)
 '''
 
-syst = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
 
+syst = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
+for line in syst:
+    print(np.round(line))
 
 #Data fra Elementer_utvidet_matrise:
 '''
