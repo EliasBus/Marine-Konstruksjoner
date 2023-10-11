@@ -5,7 +5,7 @@ import Elementer_utvidet_matrise as ele
 import Transformasjonsmatrise as tra
 import Figurer as fig
 
-import math
+import numpy as np
 
 
 
@@ -38,10 +38,14 @@ for line in tve.tverrsnittsdata_matrise:
 
 
 #Data fra Systemstivhetsmatrise.py
-
+'''
 systemstivhetsmatrise = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
 for line in systemstivhetsmatrise:
     print(line)
+'''
+
+syst = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
+
 
 #Data fra Elementer_utvidet_matrise:
 '''
@@ -67,4 +71,6 @@ for i in range(inn.antall_element):
 
 #Data fra Figurer.py:
 
+'''
 fig.plot_elements(ele.elementer_utvidet_matrise, inn.knutepunkter_matrise)
+'''
