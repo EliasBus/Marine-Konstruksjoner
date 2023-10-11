@@ -1,3 +1,4 @@
+import Transformasjonsmatrise as tra
 import numpy as np
 
 def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
@@ -44,7 +45,7 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
         A=elem[10]
         L=elem[7]
         I=elem[11]
-        Stivhetsmatrise=np.array([
+        elementstivhetsmatrise=np.array([
         [E*A/L , 0             , 0            , -E*A/L, 0             , 0            ],
         [0     , 12*E*I/(L**3) , -6*E*I/(L**2), 0     , -12*E*I/(L**3), -6*E*I/(L**2)],
         [0     , -6*E*I/(L**2) , 4*E*I/L      , 0     , 6*E*I/(L**2)  , 2*E*I/L      ],
@@ -54,7 +55,12 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
         ])   
         #ovenfor er elementstivhetsmatrisen
         
-        #Her skal transformasjon
+        #Her skal transformasjon k_glob = T_Transp * k * T
+        trans = tra.transformasjonsmatrise_funksjon(elem)
+        trans_transponert = np.linalg.inv(trans)
+        
+        elementstivhetsmatrise_glob = np.dot( np.dot(trans_transponert, elementstivhetsmatrise), trans)
+        
         
 
         for x in range(lokale_frihetsgrader):
@@ -64,7 +70,7 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
                 kol=int(konnektivitetstabell[y,2])-1
                 #Finner koordinatet til bidraget i den globale systemstivhetsmatrisen
 
-                systemstivhetsmatrise[rad,kol] += Stivhetsmatrise[x][y]
+                systemstivhetsmatrise[rad,kol] += elementstivhetsmatrise_glob[x][y]
                 #Legger til bidraget i systemstivhetsmatrisen
 
 

@@ -11,10 +11,19 @@ print("Fn + F5 for å oppdatere selve github-siden")
 #lag så ny mappe, deretter så har du en klone av hele prosjektet
 #Send melding hvis noe er uklart, ses på søndag tommel opp
 
-txt = "welcome to the jungle"
+import numpy as np
+theta = np.pi/4
 
-x = txt.split()
+transformasjon_matrise=np.array(
+        [[np.cos(theta),np.sin(theta),0,0,0,0],
+        [-np.sin(theta),np.cos(theta),0,0,0,0],
+        [0,0,1,0,0,0],
+        [0,0,0,np.cos(theta),np.sin(theta),0],
+        [0,0,0,-np.sin(theta),np.cos(theta),0],
+        [0,0,0,0,0,1]])
+print(transformasjon_matrise)
+print('\n\n')
 
-print(x)
+K_trans = np.linalg.inv(transformasjon_matrise)
 
-print("Test fra jonas")
+print(K_trans)
