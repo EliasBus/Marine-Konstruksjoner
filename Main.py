@@ -65,6 +65,7 @@ for i in range(inn.antall_element):
 
 '''
 
+
 #Data fra Figurer.py:
 
 fig.plot_elements(ele.elementer_utvidet_matrise, inn.knutepunkter_matrise)

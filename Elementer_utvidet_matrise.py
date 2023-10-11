@@ -7,6 +7,8 @@ import math
 elementer_utvidet_matrise=[]
 #etablerer en matrise som skal inneholde alle data for alle elementer
 
+
+
 for i in range(inn.antall_element):
 
     elementdata=[]
