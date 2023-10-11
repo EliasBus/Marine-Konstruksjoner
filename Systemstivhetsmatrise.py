@@ -39,7 +39,8 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
                 rad = np.append(rad, 3*(knutepunkt_2 - 1) + (i - 3))
 
             konnektivitetstabell[i-1] = rad
-            #lager konnektivitetstabell     
+            #lager konnektivitetstabell    
+        
             
 
         E=elem[8]
@@ -55,7 +56,7 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
         [0     , -6*E*I/(L**2) , 2*E*I/L      , 0     , 6*E*I/(L**2)  , 4*E*I/L      ],
         ])   
 
-        print(f'{elem[0]}: {Stivhetsmatrise[0][0]}')
+        
 
         
 
@@ -66,9 +67,10 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
             for y in range(lokale_frihetsgrader):
                 rad=int(konnektivitetstabell[x,2])
                 kol=int(konnektivitetstabell[y,2])
-                systemstivhetsmatrise[rad-1,kol-1] += int(Stivhetsmatrise[x][y])
+                systemstivhetsmatrise[rad-1,kol-1] += Stivhetsmatrise[x][y]
 
-    print(systemstivhetsmatrise)
+    for rad in systemstivhetsmatrise:
+        print(np.round(rad/(10**9)))
         
       
         
