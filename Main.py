@@ -69,6 +69,7 @@ for i in range(inn.antall_element):
 
 '''
 
+
 #Data fra Figurer.py:
 
 '''
