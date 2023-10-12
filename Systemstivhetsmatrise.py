@@ -61,9 +61,10 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
         trans_transponert = np.linalg.inv(trans)
         #transponerer matrisen
         
-        elementstivhetsmatrise_glob = np.dot( np.dot(trans_transponert, elementstivhetsmatrise), trans)
-        #finner global elementstivhetsmatrise
-        
+        #elementstivhetsmatrise_glob = np.dot( np.dot(trans_transponert, elementstivhetsmatrise), trans)
+        elementstivhetsmatrise_glob = trans_transponert * elementstivhetsmatrise * trans
+        #finner global elementstivhetsmatrise (T_transp * k * T)
+        print(elementstivhetsmatrise_glob)
 
         for x in range(lokale_frihetsgrader):
             for y in range(lokale_frihetsgrader):

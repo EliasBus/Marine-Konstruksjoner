@@ -90,3 +90,4 @@ for i in range(inn.antall_element):
 # [11] Andre arealmoment, 
 # [12] Bøyestivhet, 
 # [13] Vinkelen til elementet i forhold til x-aksen
+
