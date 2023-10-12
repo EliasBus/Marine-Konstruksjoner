@@ -4,6 +4,7 @@ import Systemstivhetsmatrise as sys
 import Elementer_utvidet_matrise as ele
 import Transformasjonsmatrise as tra
 import Figurer as fig
+import Lastvektor as las
 
 import numpy as np
 
@@ -42,12 +43,14 @@ for line in tve.tverrsnittsdata_matrise:
 systemstivhetsmatrise = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
 for line in systemstivhetsmatrise:
     print(line)
-'''
-
 
 syst = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
 for line in syst:
     print(line)
+'''
+
+
+
 
 #Data fra Elementer_utvidet_matrise:
 '''
@@ -76,3 +79,8 @@ for i in range(inn.antall_element):
 
 
 fig.plot_elements(ele.elementer_utvidet_matrise, inn.knutepunkter_matrise)
+
+
+#Data fra lastvektor.py
+
+R=las.lastvektor_funk(inn.antall_knutepunkt, inn.antall_element, ele.elementer_utvidet_matrise, inn.antall_punktlaster, inn.punktlaster_matrise, inn.antall_fordelte_laster, inn.fordelte_laster_matrise)

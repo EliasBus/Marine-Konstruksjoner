@@ -12,18 +12,5 @@ print("Fn + F5 for å oppdatere selve github-siden")
 #Send melding hvis noe er uklart, ses på søndag tommel opp
 
 import numpy as np
-theta = np.pi/4
 
-transformasjon_matrise=np.array(
-        [[np.cos(theta),np.sin(theta),0,0,0,0],
-        [-np.sin(theta),np.cos(theta),0,0,0,0],
-        [0,0,1,0,0,0],
-        [0,0,0,np.cos(theta),np.sin(theta),0],
-        [0,0,0,-np.sin(theta),np.cos(theta),0],
-        [0,0,0,0,0,1]])
-print(transformasjon_matrise)
-print('\n\n')
-
-K_trans = np.linalg.inv(transformasjon_matrise)
-
-print(K_trans)
+import Lastvektor as lst
