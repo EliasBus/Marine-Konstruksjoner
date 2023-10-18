@@ -4,8 +4,6 @@ import numpy as np
 def systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkt):
     #definerer en funkssjon som tar inn elementer_utvidet og antall knutepunkt
     
-
-    
     lokale_frihetsgrader=6
 
     str_matrise= 3*(antall_knutepunkt) 

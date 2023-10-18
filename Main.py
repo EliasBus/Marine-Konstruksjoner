@@ -1,18 +1,18 @@
-import Innlesning as inn
-import Tverrsnittsdata as tve
-import Systemstivhetsmatrise as sys
-import Elementer_utvidet_matrise as ele
-import Transformasjonsmatrise as tra
-import Figurer as fig
-import Lastvektor as las
-import Enderotasjoner as end
+import Innlesning                   as inn
+import Tverrsnittsdata              as tve
+import Systemstivhetsmatrise        as sys
+import Elementer_utvidet_matrise    as ele
+import Transformasjonsmatrise       as tra
+import Figurer                      as fig
+import Lastvektor                   as las
+import Enderotasjoner               as end
 
-import numpy as np
+import numpy                        as np
 
 
 
 #Data fra Innlesning.py:
-fil='test_input.txt'
+fil='test_fil.txt'
 
 antall_knutepunkt = inn.innlesning_funk(fil)[0]
 antall_element = inn.innlesning_funk(fil)[1]
@@ -33,7 +33,7 @@ tverrsnittsdata = tve.tverrsnittsdata_funk(elementer)
 
 
 elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
-
+print(elementer_utvidet[0][13])
 
 #Data fra Systemstivhetsmatrise.py
 

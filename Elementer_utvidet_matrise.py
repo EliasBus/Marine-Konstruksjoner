@@ -1,7 +1,3 @@
-import Innlesning as inn
-import Tverrsnittsdata as tve
-import Systemstivhetsmatrise as sys
-import Transformasjonsmatrise as tra
 import math
 
 def elementer_utvidet_matrise_funk(antall_element, elementer_matrise, knutepunkter_matrise, tverrsnittsdata_matrise):

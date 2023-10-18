@@ -1,6 +1,5 @@
 import numpy as np
-import math
-import Elementer_utvidet_matrise as ele
+
 
 def transformasjonsmatrise_funksjon(element):
     #definerer en funksjon som tar inn et element

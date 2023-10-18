@@ -1,7 +1,6 @@
-import Innlesning as inn
-import math
+import numpy as np
 #importerer data fra Innlesning.py som 'inn'
-#importerer math for å bruke math.pi
+#importerer np for å bruke np.pi
 
 tverrsnittsdata_matrise=[]
 #etablerer en matrise som skal inneholde tversnittsdata for alle elementer
@@ -14,9 +13,9 @@ def tverrsnittsdata_funk(elementer_matrise):
         #Nuller listen for hver iterasjon
         if i[4]==0:
         #hvis rør
-            areal=            math.pi * (i[6]**2 - i[5]**2)
+            areal=            np.pi * (i[6]**2 - i[5]**2)
             #                 pi      * (ytre_radius^2 - indre_radius^2)
-            andrearealmoment= math.pi * (i[6]**4 - i[5]**4) / 4
+            andrearealmoment= np.pi * (i[6]**4 - i[5]**4) / 4
             #                 pi      * (ytre_radius^4 - indre_radius^4) / 4
             bøyestivhet=      i[3] * andrearealmoment
             #                 andrearealmoment * E-modul

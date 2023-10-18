@@ -1,6 +1,3 @@
-import Elementer_utvidet_matrise as ele
-import Innlesning as inn
-
 import numpy as np
 
 
@@ -19,12 +16,13 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         knute_2 = elem[2]
 
         for ford in fordelte_laster:
-            if int(ford[1])==int(knute_1):
-                q1 = ford[3]
-                q2 = ford[4]
-            elif int(ford[1])==int(knute_2):
-                q2 = ford[3]
-                q1 = ford[4]
+            if int(ford[0])==int(elem[0]):
+                if int(ford[1])==int(knute_1):
+                    q1 = ford[3]
+                    q2 = ford[4]
+                elif int(ford[1])==int(knute_2):
+                    q2 = ford[3]
+                    q1 = ford[4]
         #finner lastintensitet i knutepunktpunkt 1 og 2
         
 
@@ -33,18 +31,27 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         M1 = (-1/20*q1  - 1/30*q2) *l**2
         M2 = ( 1/20*q2  + 1/30*q1) *l**2
 
+        
+        #print(f'Element: {elem[0]}\nV1: {V1} \nV2: {V2} \nM1: {M1} \nM2: {M2} \n')
+
 
         theta = elem[13]
+    
 
         R[(knute_1 -1)*3 + 0] += 0
         R[(knute_2 -1)*3 + 0] += 0
         #Legger til aksialspennigsbidrag til i hver første indeks i R
-        R[(knute_1 -1)*3 + 1] += -V1 * np.cos(theta)
-        R[(knute_2 -1)*3 + 1] += -V2 * np.cos(theta)
+        R[(knute_1 -1)*3 + 1] += -V1 
+        R[(knute_2 -1)*3 + 1] += -V2 
         #Legger til skjærspenningsbidrag til i hver andre indeks i R
         R[(knute_1 -1)*3 + 2] += -M1
         R[(knute_2 -1)*3 + 2] += -M2
         #Legger til bidrag fra fas2_innsp_mom til hver tredje indeks i R
+
+    for kraft in punktlaster:
+        punkt = int(kraft[0])
+        R[(punkt-1)*3 + 0] += kraft[2] * np.sin(kraft[1]*np.pi / 180)
+        #legger til aksialkraft fra punktlaster på konstruksjonen i retning den virker i
 
     return R
 
