@@ -50,20 +50,20 @@
 
 #Info om de fordelte lastene, de vil bli behandlet med medlemsfunksjonen til klassen for fordelte laster.
 #Info kommer i rekkefolgen:
-#Element-ID,Knutepunkt 1 den virker på, knutepunkt 2 den virker på, Intensitet ved lokalt knutepunkt 1 [N], Intensitet ved knutepunkt 2 [N]
+#Element-ID,Knutepunkt 1 den virker på, knutepunkt 2 den virker på, Intensitet ved lokalt knutepunkt 1 [N/mm], Intensitet ved knutepunkt 2 [N/mm]
 #Fordelte laster:
-35, 3, 5, 0, 180000
-57, 5, 7, 180000, 540000
-46, 4, 6, 0, 180000
-68, 6, 8, 180000, 540000 
-58, 5, 8, 180000, 54000 
-76, 7, 6, 540000, 180000 
+35, 3, 5, 0, 180
+57, 5, 7, 180, 540
+46, 4, 6, 0, 180
+68, 6, 8, 180, 540 
+58, 5, 8, 180, 540 
+76, 7, 6, 540, 180 
 
 
 #Antall punktlaster
 3
 
-#Info om punktlastene kommer i rekkefÃ¸lge:
+#Info om punktlastene kommer i rekkefølge:
 #knutepunktsnummer, Hvilken retning det virker i (i forhold til globalt aksesystem), Intensitet [N]
 #Punktlaster:
 9, 270, 4000000 

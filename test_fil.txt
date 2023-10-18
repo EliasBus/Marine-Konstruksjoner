@@ -33,7 +33,7 @@
 #Info kommer i rekkefolgen:
 #Element-ID,Knutepunkt 1 den virker på, knutepunkt 2 den virker på, Intensitet ved lokalt knutepunkt 1 [N], Intensitet ved knutepunkt 2 [N]
 #Fordelte laster:
-23, 2, 3, 0, 180000
+23, 2, 3, 0, 180
  
 
 
