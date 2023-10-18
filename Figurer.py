@@ -73,7 +73,7 @@ def plot_deformasjon(elementer, knutepunkter, deformasjoner):
         knute_1 = elem[1]
         knute_2 = elem[2]
 
-        skalar=10
+        skalar=50
 
         x_verdi_1= knutepunkter[knute_1-1][1] + deformasjoner[(knute_1-1)*3]   *skalar
         y_verdi_1= knutepunkter[knute_1-1][2] + deformasjoner[(knute_1-1)*3 +1]*skalar

@@ -12,7 +12,7 @@ import matplotlib.pyplot            as plt
 
 
 #Data fra Innlesning.py:
-fil='test_fil.txt'
+fil='input_fil.txt'
 
 antall_knutepunkt       = inn.innlesning_funk(fil)[0]
 antall_element          = inn.innlesning_funk(fil)[1]

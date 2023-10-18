@@ -50,10 +50,11 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
 
     for kraft in punktlaster:
         punkt = int(kraft[0])
-        R[(punkt-1)*3 + 0] += kraft[2] * np.sin(kraft[1]*np.pi / 180)
+        R[(punkt   -1)*3 + 0] += kraft[2] * np.sin(kraft[1] *np.pi /180)
+        print(f'punkt {punkt}, kraft {kraft[2]}, retning {np.sin(kraft[1]*np.pi/180)}')
         #legger til aksialkraft fra punktlaster på konstruksjonen i retning den virker i
 
-    return R
+    return -R
 
 
 
