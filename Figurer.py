@@ -15,7 +15,7 @@ def plot_elements(elementer, knutepunkter):
         y_verdier= [elem[4], elem[6]]
         #finner x/y-koordinatene til hvert av knutepunktene i elemntet
         
-        plt.plot(x_verdier, y_verdier, 'y', linewidth=elem[12]/(10**12), linestyle="-")
+        plt.plot(x_verdier, y_verdier, 'y', linewidth=elem[12]/(10**15), linestyle="-")
         #plotter elementet som en linje med tykkelse proposjanalt med bøyestivheten til elementet
 
         if elem[3]<elem[5]:
@@ -55,7 +55,7 @@ def plot_elements(elementer, knutepunkter):
     plt.xlabel('x-koordinater')
     plt.ylabel('y-koordinater')
     plt.title('Konstruksjon')
-    plt.xlim(min_x -10 , max_x +10)
-    plt.ylim(min_y -30 , max_y +30)
+    plt.xlim(min_x -10000 , max_x +10000)
+    plt.ylim(min_y -30000 , max_y +30000)
     plt.show()    
     #setter sammen og plotter figuren

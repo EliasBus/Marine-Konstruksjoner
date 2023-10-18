@@ -5,6 +5,7 @@ import Elementer_utvidet_matrise as ele
 import Transformasjonsmatrise as tra
 import Figurer as fig
 import Lastvektor as las
+import Enderotasjoner as end
 
 import numpy as np
 
@@ -39,16 +40,16 @@ for line in tve.tverrsnittsdata_matrise:
 
 
 #Data fra Systemstivhetsmatrise.py
-
+'''
 systemstivhetsmatrise = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt, inn.knutepunkter_matrise)
 for line in systemstivhetsmatrise:
     print(line)
-'''
-syst = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
+
+syst = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt, inn.knutepunkter_matrise)
 for line in syst:
     print(line)
-'''
 
+'''
 
 
 
@@ -57,15 +58,14 @@ for line in syst:
 for elem in ele.elementer_utvidet_matrise:  
     print(f'Element {round(elem[0])}: {round(elem[13]*180/math.pi)}')
 
-print(ele.elementer_utvidet_matrise[18][13]*180/math.pi)    
+print(ele.elementer_utvidet_matrise[18][13]*180/math.pi)  
 
+'''
 print ('\n\nElementer utvidet matrise:  \n')
 for line in ele.elementer_utvidet_matrise:
     print(line)
-'''
 
-print(inn.elementer_matrise[4])
-print(ele.elementer_utvidet_matrise[4])
+
 
 
 #Data fra Transformasjonsmatrise.py:
@@ -86,3 +86,10 @@ fig.plot_elements(ele.elementer_utvidet_matrise, inn.knutepunkter_matrise)
 #Data fra lastvektor.py
 
 R=las.lastvektor_funk(inn.antall_knutepunkt, inn.antall_element, ele.elementer_utvidet_matrise, inn.antall_punktlaster, inn.punktlaster_matrise, inn.antall_fordelte_laster, inn.fordelte_laster_matrise)
+
+#Data fra enderotasjoner.py
+
+K = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt, inn.knutepunkter_matrise)
+n_knuter = inn.antall_knutepunkt
+
+r= end.enderotasjoner_funk(R, K, n_knuter)
