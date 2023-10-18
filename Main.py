@@ -28,16 +28,17 @@ punktlaster = inn.innlesning_funk(fil)[7]
 tverrsnittsdata = tve.tverrsnittsdata_funk(elementer)
 
 
-#Data fra Systemstivhetsmatrise.py
-
-
 
 #Data fra Elementer_utvidet_matrise:
+
 
 elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
 
 
+#Data fra Systemstivhetsmatrise.py
 
+
+K = sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
 
 
 #Data fra Transformasjonsmatrise.py:
@@ -51,6 +52,8 @@ fig.plot_elements(elementer_utvidet, knutepunkter)
 
 
 #Data fra lastvektor.py
+
+
 print('\nlastvektor:')
 R=las.lastvektor_funk(antall_knutepunkt, antall_element, elementer_utvidet, antall_punktlaster, punktlaster, antall_fordelte_laster, fordelte_laster)
 print(R)
@@ -58,7 +61,6 @@ print(R)
 
 #Data fra enderotasjoner.py
 
-K = sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
 
 print('\nenderotasjoner:')
 r= end.enderotasjoner_funk(R, K, antall_knutepunkt)

@@ -6,10 +6,9 @@ import numpy as np
 
 def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, punktlaster, n_fordelte_laster, fordelte_laster):
 
-    fast_innsp_mom = np.zeros((n_elementer,2))
-    fast_innsp_skj = np.zeros((n_elementer,2))
 
-    idx=0
+    R=np.zeros(n_knutepunkt *3)
+    #oppretter lastvektor
 
     for elem in elementer_utvidet:
         q1=0
@@ -18,43 +17,34 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         l = elem[7]
         knute_1 = elem[1]
         knute_2 = elem[2]
+
         for ford in fordelte_laster:
-            if ford[0]==elem[0]:
+            if int(ford[1])==int(knute_1):
                 q1 = ford[3]
                 q2 = ford[4]
+            elif int(ford[1])==int(knute_2):
+                q2 = ford[3]
+                q1 = ford[4]
+        #finner lastintensitet i knutepunktpunkt 1 og 2
         
 
-        Q1 = (7/20*q1 +3/20*q2) *l     
-        Q2 = (7/20*q2 +3/20*q1) *l   
-        M1 = (-1/20*q1*l**2 -1/30*q2*l**2 )
-        M2 = (1/20*q2*l**2 + 1/30*q1*l**2)
+        V1 = ( 7/20*q1  + 3/20*q2) *l     
+        V2 = ( 7/20*q2  + 3/20*q1) *l   
+        M1 = (-1/20*q1  - 1/30*q2) *l**2
+        M2 = ( 1/20*q2  + 1/30*q1) *l**2
 
-        #NB!
-        #Antagelse! punktlast P2 vil alltid virke i punkt 11!
 
-        
+        theta = elem[13]
 
-        fast_innsp_skj[idx][0] = Q1
-        fast_innsp_skj[idx][1] = Q2
-        fast_innsp_mom[idx][0] = M1
-        fast_innsp_mom[idx][1] = M2
-        #legger til M1 og M2 til matrisen med
-
-        idx+=1
-
-    R=np.zeros(n_knutepunkt *3)
-    for i in range(n_elementer):
-        theta = elementer_utvidet[i][13]
-
-        R[(elementer_utvidet[i][1] -1)*3 + 0] += -fast_innsp_skj[i][0] * np.sin(theta)
-        R[(elementer_utvidet[i][2] -1)*3 + 0] += -fast_innsp_skj[i][1] * np.sin(theta)
+        R[(knute_1 -1)*3 + 0] += 0
+        R[(knute_2 -1)*3 + 0] += 0
         #Legger til aksialspennigsbidrag til i hver første indeks i R
-        R[(elementer_utvidet[i][1] -1)*3 + 1] += -fast_innsp_skj[i][0] * np.cos(theta)
-        R[(elementer_utvidet[i][2] -1)*3 + 1] += -fast_innsp_skj[i][1] * np.cos(theta)
+        R[(knute_1 -1)*3 + 1] += -V1 * np.cos(theta)
+        R[(knute_2 -1)*3 + 1] += -V2 * np.cos(theta)
         #Legger til skjærspenningsbidrag til i hver andre indeks i R
-        R[(elementer_utvidet[i][1] -1)*3 + 2] += -fast_innsp_mom[i][0]
-        R[(elementer_utvidet[i][2] -1)*3 + 2] += -fast_innsp_mom[i][1]
-        #Legger til bidrag fra fast_innsp_mom til hver tredje indeks i R
+        R[(knute_1 -1)*3 + 2] += -M1
+        R[(knute_2 -1)*3 + 2] += -M2
+        #Legger til bidrag fra fas2_innsp_mom til hver tredje indeks i R
 
     return R
 
