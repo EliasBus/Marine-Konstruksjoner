@@ -75,13 +75,15 @@ def systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepun
                 systemstivhetsmatrise[rad][kol] += elementstivhetsmatrise_glob[x][y]
                 #Legger til bidraget i systemstivhetsmatrisen
         
-       
-        if knutepunkt[knutepunkt_1-1][3]==1:
-                systemstivhetsmatrise[(knutepunkt_1-1)*3][(knutepunkt_1-1)*3] +=10^8
-                systemstivhetsmatrise[(knutepunkt_1-1)*3+1][(knutepunkt_1-1)*3+1] +=10^8
-                systemstivhetsmatrise[(knutepunkt_1-1)*3+2][(knutepunkt_1-1)*3+2] +=10^8
-
-        #Legger til fjærstivhet til systemstivhetsmatrise på diagonalen hvor innspenningen er fast
+    for knute in knutepunkt:
+        if knute[3]==1:
+                #sjekker om punktet er fast innspent
+                knute_indeks = int(knute[0]-1)
+                
+                systemstivhetsmatrise[knute_indeks*3+0][knute_indeks*3+0] +=10**8
+                systemstivhetsmatrise[knute_indeks*3+1][knute_indeks*3+1] +=10**8
+                systemstivhetsmatrise[knute_indeks*3+2][knute_indeks*3+2] +=10**8
+                #Legger til fjærstivhet til systemstivhetsmatrise på diagonalen hvor innspenningen er fast
 
     return systemstivhetsmatrise
     #returnerer matrisen

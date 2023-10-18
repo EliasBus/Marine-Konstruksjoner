@@ -39,8 +39,10 @@ elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, 
 
 
 K = sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
+'''
 for line in K:
     print(line)
+'''
 
 #Data fra Transformasjonsmatrise.py:
 
@@ -63,6 +65,7 @@ print(R)
 #Data fra enderotasjoner.py
 
 
-print('\nenderotasjoner:')
+print('\ndeformasjoner: (x, y, theta)')
 r= end.enderotasjoner_funk(R, K, antall_knutepunkt)
-print(r)
+for i in range(0,len(r),3):
+    print(f'KNUTEPUNKT {int(i/3+1)}: x {int(r[i])} mm,  y {int(r[i+1])} mm,  theta {round(r[i+2]*180/np.pi,3)} grader\n')
