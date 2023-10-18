@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 def plot_elements(elementer_utvidet, knutepunkter):
 #Definerer en funksjon som kan kalles for å tegne figur
@@ -55,6 +56,76 @@ def plot_elements(elementer_utvidet, knutepunkter):
     plt.xlabel('x-koordinater')
     plt.ylabel('y-koordinater')
     plt.title('Konstruksjon')
+    margin = max_x *0.2
+    plt.xlim(min_x -margin , max_x +margin)
+    plt.ylim(min_y -margin , max_y +margin)
+    plt.show()    
+    #setter sammen og plotter figuren
+
+
+
+def plot_deformasjon(elementer, knutepunkter, deformasjoner):
+    #Definerer en funksjon som kan kalles for å tegne figur med deformasjoner
+
+    min_x=0
+    max_x=0
+    min_y=0
+    max_y=0
+    #Definerer min/max-verdier for koordinatene til knutepunktene
+
+    for elem in elementer:
+        knute_1 = elem[1]
+        knute_2 = elem[2]
+
+        x_verdi_1= knutepunkter[knute_1-1][1] + deformasjoner[(knute_1-1)*3]
+        y_verdi_1= knutepunkter[knute_1-1][2] + deformasjoner[(knute_1-1)*3 +1]
+        x_verdi_2= knutepunkter[knute_2-1][1] + deformasjoner[(knute_2-1)*3]
+        y_verdi_2= knutepunkter[knute_2-1][2] + deformasjoner[(knute_2-1)*3 +1]
+
+        x_verdier=np.array([x_verdi_1,x_verdi_2])
+        y_verdier=np.array([y_verdi_1,y_verdi_2])
+        #finner x/y-koordinatene til hvert av knutepunktene i elemntet
+        
+        plt.plot(x_verdier, y_verdier, 'r', linewidth=2, linestyle="--")
+        #plotter element
+
+        if x_verdi_1<x_verdi_2:
+            x_koord=x_verdi_1+ abs(x_verdi_1-x_verdi_2)/2
+        elif x_verdi_1>x_verdi_2:
+            x_koord=x_verdi_1- abs(x_verdi_1-x_verdi_2)/2
+        else:
+            x_koord=x_verdi_1
+        if y_verdi_1<y_verdi_2:
+            y_koord=y_verdi_1+ abs(y_verdi_1-y_verdi_2)/2
+        elif y_verdi_1>y_verdi_2:
+            y_koord=y_verdi_1- abs(y_verdi_1-y_verdi_2)/2
+        else:
+            y_koord=y_verdi_1
+        #finner koordinatene hvor label til element-ID skal plottes
+    
+        plt.text(x_koord, y_koord, f'{int(elem[0])}', fontsize=8)
+        #plotter label til hvert av elementene
+
+        for knute in knutepunkter:
+            plt.plot(knute[1],knute[2], 'ro')
+            plt.text(knute[1]+0.5,knute[2]-2,int(knute[0]), fontsize=14)
+        #plotter knutepunktene samt label til knutepunktet
+    
+            if knute[1] < min_x:
+                min_x = knute[1]
+            if knute[1] > max_x:
+                max_x = knute[1]
+            if knute[2] < min_y:
+                min_y = knute[2]
+            if knute[2] > max_y:
+                max_y = knute[2]
+            #eventuelt oppdaterer min/max-verdier til koordinatene
+
+
+    plt.legend()
+    plt.xlabel('x-koordinater')
+    plt.ylabel('y-koordinater')
+    plt.title('Deformasjon')
     margin = max_x *0.2
     plt.xlim(min_x -margin , max_x +margin)
     plt.ylim(min_y -margin , max_y +margin)
