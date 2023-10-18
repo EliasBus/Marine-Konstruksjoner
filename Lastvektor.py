@@ -4,14 +4,14 @@ import Innlesning as inn
 import numpy as np
 
 
-def lastvektor_funk(n_knutepunkt,n_elementer, elementer, n_punktlaster, punktlaster, n_fordelte_laster, fordelte_laster):
+def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, punktlaster, n_fordelte_laster, fordelte_laster):
 
     fast_innsp_mom = np.zeros((n_elementer,2))
     fast_innsp_skj = np.zeros((n_elementer,2))
 
     idx=0
 
-    for elem in elementer:
+    for elem in elementer_utvidet:
         q1=0
         q2=0
 
@@ -44,16 +44,16 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer, n_punktlaster, punktlas
 
     R=np.zeros(n_knutepunkt *3)
     for i in range(n_elementer):
-        theta = elementer[i][13]
+        theta = elementer_utvidet[i][13]
 
-        R[(elementer[i][1] -1)*3 + 0] += -fast_innsp_skj[i][0] * np.sin(theta)
-        R[(elementer[i][2] -1)*3 + 0] += -fast_innsp_skj[i][1] * np.sin(theta)
+        R[(elementer_utvidet[i][1] -1)*3 + 0] += -fast_innsp_skj[i][0] * np.sin(theta)
+        R[(elementer_utvidet[i][2] -1)*3 + 0] += -fast_innsp_skj[i][1] * np.sin(theta)
         #Legger til aksialspennigsbidrag til i hver første indeks i R
-        R[(elementer[i][1] -1)*3 + 1] += -fast_innsp_skj[i][0] * np.cos(theta)
-        R[(elementer[i][2] -1)*3 + 1] += -fast_innsp_skj[i][1] * np.cos(theta)
+        R[(elementer_utvidet[i][1] -1)*3 + 1] += -fast_innsp_skj[i][0] * np.cos(theta)
+        R[(elementer_utvidet[i][2] -1)*3 + 1] += -fast_innsp_skj[i][1] * np.cos(theta)
         #Legger til skjærspenningsbidrag til i hver andre indeks i R
-        R[(elementer[i][1] -1)*3 + 2] += -fast_innsp_mom[i][0]
-        R[(elementer[i][2] -1)*3 + 2] += -fast_innsp_mom[i][1]
+        R[(elementer_utvidet[i][1] -1)*3 + 2] += -fast_innsp_mom[i][0]
+        R[(elementer_utvidet[i][2] -1)*3 + 2] += -fast_innsp_mom[i][1]
         #Legger til bidrag fra fast_innsp_mom til hver tredje indeks i R
 
     return R

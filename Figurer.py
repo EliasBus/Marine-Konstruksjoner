@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def plot_elements(elementer, knutepunkter):
+def plot_elements(elementer_utvidet, knutepunkter):
 #Definerer en funksjon som kan kalles for å tegne figur
 
     min_x=0
@@ -9,7 +9,7 @@ def plot_elements(elementer, knutepunkter):
     max_y=0
     #Definerer min/max-verdier for koordinatene til knutepunktene
 
-    for elem in elementer:
+    for elem in elementer_utvidet:
 
         x_verdier= [elem[3],elem[5]]
         y_verdier= [elem[4], elem[6]]
@@ -38,7 +38,7 @@ def plot_elements(elementer, knutepunkter):
         for knute in knutepunkter:
             plt.plot(knute[1],knute[2], 'ro')
             plt.text(knute[1]+0.5,knute[2]-2,int(knute[0]), fontsize=14)
-        #plotter første knutepunkt i hvert element samt label til knutepunktet
+        #plotter knutepunktene samt label til knutepunktet
     
             if knute[1] < min_x:
                 min_x = knute[1]
@@ -55,7 +55,8 @@ def plot_elements(elementer, knutepunkter):
     plt.xlabel('x-koordinater')
     plt.ylabel('y-koordinater')
     plt.title('Konstruksjon')
-    plt.xlim(min_x -10000 , max_x +10000)
-    plt.ylim(min_y -30000 , max_y +30000)
+    margin = max_x *0.2
+    plt.xlim(min_x -margin , max_x +margin)
+    plt.ylim(min_y -margin , max_y +margin)
     plt.show()    
     #setter sammen og plotter figuren

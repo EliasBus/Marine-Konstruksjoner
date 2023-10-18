@@ -1,8 +1,8 @@
 import Transformasjonsmatrise as tra
 import numpy as np
 
-def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt, knutepunkt):
-    #definerer en funkssjon som tar inn elementer og antall knutepunkt
+def systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkt):
+    #definerer en funkssjon som tar inn elementer_utvidet og antall knutepunkt
     
 
     
@@ -14,7 +14,7 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt, knutepunkt):
     #lager matrisen med bare 'nuller'
     
 
-    for elem in elementer:
+    for elem in elementer_utvidet:
     #iterer gjennom hvert element i konstruksjonen
 
         knutepunkt_1 = elem[1]

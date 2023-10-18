@@ -12,87 +12,54 @@ import numpy as np
 
 
 #Data fra Innlesning.py:
-'''
+fil='test_input.txt'
 
-print(f"\n\nAntall knutepunkt: {inn.antall_knutepunkt}\n")
-for line in inn.knutepunkter_matrise:
-    print(line)
-print(f"\n\nAntall element: {inn.antall_element}\n")
-for line in inn.elementer_matrise:
-    print(line)
-print(f"\n\nAntall fordelte laster: {inn.antall_fordelte_laster}\n")
-for line in inn.fordelte_laster_matrise:
-    print(line)
-print(f"\n\nAntall punktlaster: {inn.antall_punktlaster}\n")
-for line in inn.punktlaster_matrise:
-    print(line)
-
-'''
+antall_knutepunkt = inn.innlesning_funk(fil)[0]
+antall_element = inn.innlesning_funk(fil)[1]
+antall_fordelte_laster = inn.innlesning_funk(fil)[2]
+antall_punktlaster = inn.innlesning_funk(fil)[3]
+knutepunkter = inn.innlesning_funk(fil)[4]
+elementer = inn.innlesning_funk(fil)[5]
+fordelte_laster = inn.innlesning_funk(fil)[6]
+punktlaster = inn.innlesning_funk(fil)[7]
 
 #Data fra Tverrsnittsdata.py:
-'''
 
-print ('\n\nTversnittsdata_matrise:  [ID, Knutepunkt 1, Knutepunkt 2, E-modul, Areal, Andrearealmoment, Bøyestivhet]\n')
-for line in tve.tverrsnittsdata_matrise:
-    print(line)
-
-'''
+tverrsnittsdata = tve.tverrsnittsdata_funk(elementer)
 
 
 #Data fra Systemstivhetsmatrise.py
-'''
-systemstivhetsmatrise = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt, inn.knutepunkter_matrise)
-for line in systemstivhetsmatrise:
-    print(line)
-
-syst = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt, inn.knutepunkter_matrise)
-for line in syst:
-    print(line)
-
-'''
 
 
 
 #Data fra Elementer_utvidet_matrise:
-'''
-for elem in ele.elementer_utvidet_matrise:  
-    print(f'Element {round(elem[0])}: {round(elem[13]*180/math.pi)}')
 
-print(ele.elementer_utvidet_matrise[18][13]*180/math.pi)  
+elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
 
 
-print ('\n\nElementer utvidet matrise:  \n')
-for line in ele.elementer_utvidet_matrise:
-    print(line)
-'''
 
 
 
 #Data fra Transformasjonsmatrise.py:
-'''
 
-for i in range(inn.antall_element):
-    print(f'Element {round(ele.elementer_utvidet_matrise[i][0])}: {round(tra.elementer_vinkler_liste[i]*180/math.pi)} grader')
-
-'''
 
 
 #Data fra Figurer.py:
 
 
-fig.plot_elements(ele.elementer_utvidet_matrise, inn.knutepunkter_matrise)
+fig.plot_elements(elementer_utvidet, knutepunkter)
 
 
 #Data fra lastvektor.py
 print('\nlastvektor:')
-R=las.lastvektor_funk(inn.antall_knutepunkt, inn.antall_element, ele.elementer_utvidet_matrise, inn.antall_punktlaster, inn.punktlaster_matrise, inn.antall_fordelte_laster, inn.fordelte_laster_matrise)
+R=las.lastvektor_funk(antall_knutepunkt, antall_element, elementer_utvidet, antall_punktlaster, punktlaster, antall_fordelte_laster, fordelte_laster)
 print(R)
 
 
 #Data fra enderotasjoner.py
 
-K = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt, inn.knutepunkter_matrise)
-n_knuter = inn.antall_knutepunkt
+K = sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
+
 print('\nenderotasjoner:')
-r= end.enderotasjoner_funk(R, K, n_knuter)
+r= end.enderotasjoner_funk(R, K, antall_knutepunkt)
 print(r)
