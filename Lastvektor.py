@@ -32,16 +32,46 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer, n_punktlaster, punktlas
         #NB!
         #Antagelse! punktlast P2 vil alltid virke i punkt 11!
 
-        for punk in punktlaster:
+        
+
+        fast_innsp_skj[idx][0] = Q1
+        fast_innsp_skj[idx][1] = Q2
+        fast_innsp_mom[idx][0] = M1
+        fast_innsp_mom[idx][1] = M2
+        #legger til M1 og M2 til matrisen med
+
+        idx+=1
+
+    R=np.zeros(n_knutepunkt *3)
+    for i in range(n_elementer):
+        theta = elementer[i][13]
+
+        R[(elementer[i][1] -1)*3 + 0] += -fast_innsp_skj[i][0] * np.sin(theta)
+        R[(elementer[i][2] -1)*3 + 0] += -fast_innsp_skj[i][1] * np.sin(theta)
+        #Legger til aksialspennigsbidrag til i hver første indeks i R
+        R[(elementer[i][1] -1)*3 + 1] += -fast_innsp_skj[i][0] * np.cos(theta)
+        R[(elementer[i][2] -1)*3 + 1] += -fast_innsp_skj[i][1] * np.cos(theta)
+        #Legger til skjærspenningsbidrag til i hver andre indeks i R
+        R[(elementer[i][1] -1)*3 + 2] += -fast_innsp_mom[i][0]
+        R[(elementer[i][2] -1)*3 + 2] += -fast_innsp_mom[i][1]
+        #Legger til bidrag fra fast_innsp_mom til hver tredje indeks i R
+
+    return R
+
+
+
+'''
+
+for punk in punktlaster:
             if punk[0]==11:
                 P2 = punk[0]
                 P2_ortogonal = -np.sin(punk[1]) * P2
 
         if elem[0] == 911:
-            M1 += -P2_ortogonal *l/2
+            M1 += -P2_ortogonal *l
             #moment i punkt 9 fra P2
         elif elem[0] == 1011:
-            M1 += P2_ortogonal *l/2 
+            M1 += P2_ortogonal *l
             #moment i punkt 10 fra P2
 
         for punk in punktlaster:
@@ -57,39 +87,4 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer, n_punktlaster, punktlas
 
         #NB! Dette her er møkk*dritt!
 
-        fast_innsp_skj[idx][0] = Q1
-        fast_innsp_skj[idx][1] = Q2
-        fast_innsp_mom[idx][0] = M1
-        fast_innsp_mom[idx][1] = M2
-        #legger til M1 og M2 til matrisen med
-
-        idx+=1
-    R=np.zeros(n_knutepunkt *3)
-    for i in range(n_elementer):
-        theta = elementer[1][13]
-
-        R[(elementer[i][1] -1)*3 + 0] += -fast_innsp_skj[i][0] * np.sin(theta)
-        R[(elementer[i][2] -1)*3 + 0] += -fast_innsp_skj[i][1] * np.sin(theta)
-        #Legger til aksialspennigsbidrag til i hver første indeks i R
-        R[(elementer[i][1] -1)*3 + 1] += -fast_innsp_skj[i][0] * np.cos(theta)
-        R[(elementer[i][2] -1)*3 + 1] += -fast_innsp_skj[i][1] * np.cos(theta)
-        #Legger til skjærspenningsbidrag til i hver andre indeks i R
-        R[(elementer[i][1] -1)*3 + 2] += -fast_innsp_mom[i][0]
-        R[(elementer[i][2] -1)*3 + 2] += -fast_innsp_mom[i][1]
-        #Legger til bidrag fra fast_innsp_mom til hver tredje indeks i R
-        
-    print(R)
-
-    
-
-
-    return R
-
-'''
-if punk[0]==knute_1 and punk[0]==11:
-                p1 = punk[2]
-                p1_ortogonal = -np.sin(punk[1]) * p1
-            elif punk[0]==knute_2 and punk[0]==11:
-                p2 = punk[2]
-                p2_ortogonal = -np.sin(punk[1]) * p2
 '''

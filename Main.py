@@ -60,11 +60,11 @@ for elem in ele.elementer_utvidet_matrise:
 
 print(ele.elementer_utvidet_matrise[18][13]*180/math.pi)  
 
-'''
+
 print ('\n\nElementer utvidet matrise:  \n')
 for line in ele.elementer_utvidet_matrise:
     print(line)
-
+'''
 
 
 
@@ -84,12 +84,15 @@ fig.plot_elements(ele.elementer_utvidet_matrise, inn.knutepunkter_matrise)
 
 
 #Data fra lastvektor.py
-
+print('\nlastvektor:')
 R=las.lastvektor_funk(inn.antall_knutepunkt, inn.antall_element, ele.elementer_utvidet_matrise, inn.antall_punktlaster, inn.punktlaster_matrise, inn.antall_fordelte_laster, inn.fordelte_laster_matrise)
+print(R)
+
 
 #Data fra enderotasjoner.py
 
 K = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt, inn.knutepunkter_matrise)
 n_knuter = inn.antall_knutepunkt
-
+print('\nenderotasjoner:')
 r= end.enderotasjoner_funk(R, K, n_knuter)
+print(r)
