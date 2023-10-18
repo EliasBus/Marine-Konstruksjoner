@@ -12,7 +12,7 @@ import numpy                        as np
 
 
 #Data fra Innlesning.py:
-fil='test_fil.txt'
+fil='input_fil.txt'
 
 antall_knutepunkt = inn.innlesning_funk(fil)[0]
 antall_element = inn.innlesning_funk(fil)[1]
@@ -33,13 +33,14 @@ tverrsnittsdata = tve.tverrsnittsdata_funk(elementer)
 
 
 elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
-print(elementer_utvidet[0][13])
+
 
 #Data fra Systemstivhetsmatrise.py
 
 
 K = sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
-
+for line in K:
+    print(line)
 
 #Data fra Transformasjonsmatrise.py:
 
