@@ -8,7 +8,7 @@ import Lastvektor                   as las
 import Deformasjoner                as defo
 
 import numpy                        as np
-
+import matplotlib.pyplot            as plt
 
 
 #Data fra Innlesning.py:
@@ -48,11 +48,6 @@ for line in K:
 
 
 
-#Data fra Figurer.py:
-
-
-fig.plot_elements(elementer_utvidet, knutepunkter)
-
 
 #Data fra lastvektor.py
 
@@ -71,4 +66,11 @@ for i in range(0,len(r),3):
     print(f'KNUTEPUNKT {int(i/3+1)}: x {int(r[i])} mm,  y {int(r[i+1])} mm,  theta {round(r[i+2]*180/np.pi,3)} grader\n')
 
 
-fig.plot_deformasjon(elementer_utvidet, knutepunkter,r)
+
+#Data fra Figurer.py:
+
+fig.plot_vindu(knutepunkter)
+fig.plot_elements(elementer_utvidet, knutepunkter)
+fig.plot_deformasjon(elementer_utvidet, knutepunkter, r)
+
+plt.show()

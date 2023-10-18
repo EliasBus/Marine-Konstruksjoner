@@ -41,11 +41,11 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         R[(knute_1 -1)*3 + 0] += 0
         R[(knute_2 -1)*3 + 0] += 0
         #Legger til aksialspennigsbidrag til i hver første indeks i R
-        R[(knute_1 -1)*3 + 1] += -V1 
-        R[(knute_2 -1)*3 + 1] += -V2 
+        R[(knute_1 -1)*3 + 1] += V1 
+        R[(knute_2 -1)*3 + 1] += V2 
         #Legger til skjærspenningsbidrag til i hver andre indeks i R
-        R[(knute_1 -1)*3 + 2] += -M1
-        R[(knute_2 -1)*3 + 2] += -M2
+        R[(knute_1 -1)*3 + 2] += M1
+        R[(knute_2 -1)*3 + 2] += M2
         #Legger til bidrag fra fas2_innsp_mom til hver tredje indeks i R
 
     for kraft in punktlaster:
