@@ -12,16 +12,17 @@ import matplotlib.pyplot            as plt
 
 
 #Data fra Innlesning.py:
-fil='input_fil.txt'
+fil='test_fil.txt'
 
-antall_knutepunkt = inn.innlesning_funk(fil)[0]
-antall_element = inn.innlesning_funk(fil)[1]
-antall_fordelte_laster = inn.innlesning_funk(fil)[2]
-antall_punktlaster = inn.innlesning_funk(fil)[3]
-knutepunkter = inn.innlesning_funk(fil)[4]
-elementer = inn.innlesning_funk(fil)[5]
-fordelte_laster = inn.innlesning_funk(fil)[6]
-punktlaster = inn.innlesning_funk(fil)[7]
+antall_knutepunkt       = inn.innlesning_funk(fil)[0]
+antall_element          = inn.innlesning_funk(fil)[1]
+antall_fordelte_laster  = inn.innlesning_funk(fil)[2]
+antall_punktlaster      = inn.innlesning_funk(fil)[3]
+knutepunkter            = inn.innlesning_funk(fil)[4]
+elementer               = inn.innlesning_funk(fil)[5]
+fordelte_laster         = inn.innlesning_funk(fil)[6]
+punktlaster             = inn.innlesning_funk(fil)[7]
+
 
 #Data fra Tverrsnittsdata.py:
 
@@ -57,10 +58,10 @@ R=las.lastvektor_funk(antall_knutepunkt, antall_element, elementer_utvidet, anta
 print(R)
 
 
-#Data fra enderotasjoner.py
+#Data fra deformasjoner.py
 
 
-print('\ndeformasjoner: (x, y, theta)')
+print('\nDeformasjoner: \n')
 r= defo.deformasjoner_funk(R, K, antall_knutepunkt)
 for i in range(0,len(r),3):
     print(f'KNUTEPUNKT {int(i/3+1)}: x {int(r[i])} mm,  y {int(r[i+1])} mm,  theta {round(r[i+2]*180/np.pi,3)} grader\n')
