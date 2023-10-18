@@ -39,11 +39,11 @@ for line in tve.tverrsnittsdata_matrise:
 
 
 #Data fra Systemstivhetsmatrise.py
-'''
-systemstivhetsmatrise = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
+
+systemstivhetsmatrise = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt, inn.knutepunkter_matrise)
 for line in systemstivhetsmatrise:
     print(line)
-
+'''
 syst = sys.systemstivhetsmatrise_funksjon(ele.elementer_utvidet_matrise, inn.antall_knutepunkt)
 for line in syst:
     print(line)
@@ -54,7 +54,6 @@ for line in syst:
 
 #Data fra Elementer_utvidet_matrise:
 '''
-
 for elem in ele.elementer_utvidet_matrise:  
     print(f'Element {round(elem[0])}: {round(elem[13]*180/math.pi)}')
 
@@ -63,8 +62,11 @@ print(ele.elementer_utvidet_matrise[18][13]*180/math.pi)
 print ('\n\nElementer utvidet matrise:  \n')
 for line in ele.elementer_utvidet_matrise:
     print(line)
-
 '''
+
+print(inn.elementer_matrise[4])
+print(ele.elementer_utvidet_matrise[4])
+
 
 #Data fra Transformasjonsmatrise.py:
 '''

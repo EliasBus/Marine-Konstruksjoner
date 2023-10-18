@@ -24,9 +24,9 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer, n_punktlaster, punktlas
                 q2 = ford[4]
         
 
-        Q1 = (-7/20*q1 -3/20*q2) *l     
-        Q2 = (-7/20*q2 -3/20*q1) *l   
-        M1 = (-1/30*q2*l**2 - 1/20*q1*l**2)
+        Q1 = (7/20*q1 +3/20*q2) *l     
+        Q2 = (7/20*q2 +3/20*q1) *l   
+        M1 = (-1/20*q1*l**2 -1/30*q2*l**2 )
         M2 = (1/20*q2*l**2 + 1/30*q1*l**2)
 
         #NB!
@@ -75,7 +75,7 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer, n_punktlaster, punktlas
         R[(elementer[i][2] -1)*3 + 1] += -fast_innsp_skj[i][1] * np.cos(theta)
         #Legger til skjærspenningsbidrag til i hver andre indeks i R
         R[(elementer[i][1] -1)*3 + 2] += -fast_innsp_mom[i][0]
-        R[(elementer[i][2] -1)*3 + 2] += -fast_innsp_mom[i][0]
+        R[(elementer[i][2] -1)*3 + 2] += -fast_innsp_mom[i][1]
         #Legger til bidrag fra fast_innsp_mom til hver tredje indeks i R
         
     print(R)

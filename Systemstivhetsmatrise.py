@@ -1,7 +1,7 @@
 import Transformasjonsmatrise as tra
 import numpy as np
 
-def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
+def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt, knutepunkt):
     #definerer en funkssjon som tar inn elementer og antall knutepunkt
     
 
@@ -45,6 +45,7 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
         A=elem[10]
         L=elem[7]
         I=elem[11]
+
         elementstivhetsmatrise=np.array([
         [E*A/L , 0             , 0            , -E*A/L, 0             , 0            ],
         [0     , 12*E*I/(L**3) , -6*E*I/(L**2), 0     , -12*E*I/(L**3), -6*E*I/(L**2)],
@@ -62,9 +63,9 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
         #transponerer matrisen
         
         #elementstivhetsmatrise_glob = np.dot( np.dot(trans_transponert, elementstivhetsmatrise), trans)
-        elementstivhetsmatrise_glob = trans_transponert * elementstivhetsmatrise * trans
+        elementstivhetsmatrise_glob = trans_transponert @ elementstivhetsmatrise @ trans
         #finner global elementstivhetsmatrise (T_transp * k * T)
-        print(elementstivhetsmatrise_glob)
+        
 
         for x in range(lokale_frihetsgrader):
             for y in range(lokale_frihetsgrader):
@@ -73,12 +74,16 @@ def systemstivhetsmatrise_funksjon(elementer,antall_knutepunkt):
                 kol=int(konnektivitetstabell[y,2])-1
                 #Finner koordinatet til bidraget i den globale systemstivhetsmatrisen
 
-                systemstivhetsmatrise[rad,kol] += elementstivhetsmatrise_glob[x][y]
+                systemstivhetsmatrise[rad][kol] += elementstivhetsmatrise_glob[x][y]
                 #Legger til bidraget i systemstivhetsmatrisen
+        
+       
+        if knutepunkt[knutepunkt_1-1][3]==1:
+                systemstivhetsmatrise[(knutepunkt_1-1)*3][(knutepunkt_1-1)*3] +=10^8
+                systemstivhetsmatrise[(knutepunkt_1-1)*3+1][(knutepunkt_1-1)*3+1] +=10^8
+                systemstivhetsmatrise[(knutepunkt_1-1)*3+2][(knutepunkt_1-1)*3+2] +=10^8
 
-
-        #print(f'{elem[0]}: \n{konnektivitetstabell}')
-        #print(f'Stivhetsmatrise: {Stivhetsmatrise}')
+        #Legger til fjærstivhet til systemstivhetsmatrise på diagonalen hvor innspenningen er fast
 
     return systemstivhetsmatrise
     #returnerer matrisen
