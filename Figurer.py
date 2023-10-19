@@ -66,14 +66,14 @@ def plot_elements(elementer_utvidet, knutepunkter):
 
 
 
-def plot_deformasjon(elementer, knutepunkter, deformasjoner):
+def plot_deformasjon(elementer, knutepunkter, deformasjoner, skalar):
     #Definerer en funksjon som kan kalles for å tegne figur med deformasjoner
 
     for elem in elementer:
         knute_1 = elem[1]
         knute_2 = elem[2]
 
-        skalar=50
+        
 
         x_verdi_1= knutepunkter[knute_1-1][1] + deformasjoner[(knute_1-1)*3]   *skalar
         y_verdi_1= knutepunkter[knute_1-1][2] + deformasjoner[(knute_1-1)*3 +1]*skalar

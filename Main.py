@@ -70,8 +70,11 @@ for i in range(0,len(r),3):
 
 #Data fra Figurer.py:
 
+
+
 fig.plot_vindu(knutepunkter)
 fig.plot_elements(elementer_utvidet, knutepunkter)
-fig.plot_deformasjon(elementer_utvidet, knutepunkter, r)
+skalar=1
+fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
 
 plt.show()
