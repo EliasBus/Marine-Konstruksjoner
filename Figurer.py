@@ -40,7 +40,12 @@ def plot_elementer(elementer_utvidet, knutepunkter):
         y_verdier= [elem[4], elem[6]]
         #finner x/y-koordinatene til hvert av knutepunktene i elemntet
         
-        linjebredde=elem[12]/(10**15)
+        linjebredde=elem[12]
+        while linjebredde >20:
+            linjebredde /=10
+        #finner en linjebredde som er proposjonal med EI, men som ser bra ut i plottet
+
+
         plt.plot(x_verdier, y_verdier, 'y-', linewidth=linjebredde)
         #plotter elementet som en linje med tykkelse proposjanalt med bøyestivheten til elementet
 
