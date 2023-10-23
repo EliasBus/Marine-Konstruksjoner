@@ -12,7 +12,7 @@ import matplotlib.pyplot            as plt
 
 
 #Data fra Innlesning.py:
-fil='input_fil.txt'
+fil='test_fil.txt'
 
 antall_knutepunkt       = inn.innlesning_funk(fil)[0]
 antall_element          = inn.innlesning_funk(fil)[1]
@@ -74,7 +74,7 @@ for i in range(0,len(r),3):
 
 fig.plot_vindu(knutepunkter)
 fig.plot_elements(elementer_utvidet, knutepunkter)
-skalar=1
+skalar=50
 fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
 
 plt.show()
