@@ -26,11 +26,12 @@ def plot_vindu(knutepunkter):
     plt.title('Konstruksjon')
     margin = max_x *0.2
     plt.xlim(min_x -margin , max_x +margin)
-    plt.ylim(min_y -margin , max_y +margin)
+    plt.ylim(min_y -margin , max_y *1.5)
     #setter sammen og plotter figuren
 
 
-def plot_elements(elementer_utvidet, knutepunkter):
+
+def plot_elementer(elementer_utvidet, knutepunkter):
 #Definerer en funksjon som kan kalles for å tegne konsktruksjonen
 
     for elem in elementer_utvidet:
@@ -39,7 +40,8 @@ def plot_elements(elementer_utvidet, knutepunkter):
         y_verdier= [elem[4], elem[6]]
         #finner x/y-koordinatene til hvert av knutepunktene i elemntet
         
-        plt.plot(x_verdier, y_verdier, 'y', linewidth=elem[12]/(10**15), linestyle="-")
+        linjebredde=elem[12]/(10**15)
+        plt.plot(x_verdier, y_verdier, 'y-', linewidth=linjebredde)
         #plotter elementet som en linje med tykkelse proposjanalt med bøyestivheten til elementet
 
         if elem[3]<elem[5]:
@@ -64,6 +66,10 @@ def plot_elements(elementer_utvidet, knutepunkter):
             plt.text(knute[1]+0.5,knute[2]-2,int(knute[0]), fontsize=14)
         #plotter knutepunktene samt label til knutepunktet
 
+    plt.plot([], [], 'ro', label='Knutepunkter')
+    plt.plot([], [], 'y-', linewidth=6, label='Elementer')
+    plt.legend(loc='upper right')
+    #Plotter legend
 
 
 def plot_deformasjon(elementer, knutepunkter, deformasjoner, skalar):
@@ -84,8 +90,11 @@ def plot_deformasjon(elementer, knutepunkter, deformasjoner, skalar):
         y_verdier=np.array([y_verdi_1,y_verdi_2])
         #finner x/y-koordinatene til hvert av knutepunktene i elemntet
         
-        plt.plot(x_verdier, y_verdier, 'r', linewidth=1.5, linestyle="--")
+        
+        plt.plot(x_verdier, y_verdier, 'r--', linewidth=1.5)
         #plotter element
-
+    plt.plot([], [], 'r--', label='Deformasjonsskisse')
+    plt.legend(loc='upper right')
+    #plotter legend
         
        
