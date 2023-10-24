@@ -81,9 +81,9 @@ def elementer_utvidet_matrise_funk(antall_element, elementer_matrise, knutepunkt
     # [4] y-koord første knutepunkt, 
     # [5] x-koord andre knutepunkt, 
     # [6] y-koord andre knutepunkt,
-    # [7] Lengden
+    # [7] Lengden,
     # [8] E-modul, 
-    # [9] Tverrsnitts-type
+    # [9] Tverrsnitts-type,
     # [10] Areal, 
     # [11] Andre arealmoment, 
     # [12] Bøyestivhet, 

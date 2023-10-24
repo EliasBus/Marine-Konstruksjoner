@@ -6,7 +6,6 @@ tverrsnittsdata_matrise=[]
 #etablerer en matrise som skal inneholde tversnittsdata for alle elementer
 
 def tverrsnittsdata_funk(elementer_matrise):
-    
 
     for i in elementer_matrise:
         tverrsnittsdata=[]
@@ -24,7 +23,7 @@ def tverrsnittsdata_funk(elementer_matrise):
             areal=            2 * i[5]*i[6]   + i[7]*i[8] 
             #                 2 * areal flens + areal stag
             andrearealmoment= 2 * (i[5]*i[6]**(3) /12 + (i[7]/2+i[6]/2)**2 * (i[5]*i[6])) + i[7]**(3) *i[8] /12
-            #                 2 * (I_flens         + steinerbidrag_flens)                  + I_stag
+            #                 2 * (I_flens            + (steinerbidrag_flens            ) + I_stag
             bøyestivhet=      i[3] * andrearealmoment
             #                 andrearealmoment * E-modul
         elif i[4]==2:
@@ -32,7 +31,7 @@ def tverrsnittsdata_funk(elementer_matrise):
             areal=            i[5]*i[6]       - (i[5]-2*i[7])*(i[6]-2*i[8])
             #                 areal_ytre_boks - areal_indre_boks
             andrearealmoment= 2 * (i[5]*i[8]**(3) /12 + ((i[6]/2-i[8]/2)**2 * i[5]*i[8])) + 2 * (i[7]*(i[6]-2*i[8])**(3) /12)
-            #                 2 * (I_flens            + steinerbidrag_flens)              + 2 * (I_stag)
+            #                 2 * (I_flens            + (steinerbidrag_flens            ) + 2 * (I_stag)
             bøyestivhet=      i[3]    * andrearealmoment
             #                 E-modul * andrearealmoment
         else:

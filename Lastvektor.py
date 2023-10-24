@@ -4,7 +4,6 @@ import numpy as np
 
 def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, punktlaster, n_fordelte_laster, fordelte_laster):
 
-
     R=np.zeros(n_knutepunkt *3)
     #oppretter lastvektor
 
@@ -27,7 +26,6 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
                     q1 = ford[4]
                 #finner lastintensitet i knutepunktpunkt 1 og 2
         
-
         N1 = 0
         V1 = ( 7/20*q1  + 3/20*q2) *l 
         M1 = (-1/20*q1  - 1/30*q2) *l**2

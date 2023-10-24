@@ -29,8 +29,27 @@ tverrsnittsdata = tve.tverrsnittsdata_funk(elementer)
 #Data fra Elementer_utvidet_matrise:
 elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
 
+#Matrisen er på formen: 
+    # [0] Element_ID, 
+    # [1] Første knutepunkt, 
+    # [2] Andre knutepunkt, 
+    # [3] x-koord første knutepunkt, 
+    # [4] y-koord første knutepunkt, 
+    # [5] x-koord andre knutepunkt, 
+    # [6] y-koord andre knutepunkt,
+    # [7] Lengden,
+    # [8] E-modul, 
+    # [9] Tverrsnitts-type,
+    # [10] Areal, 
+    # [11] Andre arealmoment, 
+    # [12] Bøyestivhet, 
+    # [13] Vinkelen til elementet i forhold til x-aksen
+
+
 #Data fra Systemstivhetsmatrise.py:
 K = sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
+for line in K:
+    print (line)
 
 #Data fra Transformasjonsmatrise.py:
 
