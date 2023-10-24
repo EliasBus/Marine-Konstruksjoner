@@ -10,29 +10,48 @@ def tverrsnittsdata_funk(elementer_matrise):
     for i in elementer_matrise:
         tverrsnittsdata=[]
         #Nuller listen for hver iterasjon
-        if i[4]==0:
+
+        tverrsnittstype=i[5]
+        E=i[3]
+
+        if tverrsnittstype==0:
         #hvis rør
-            areal=            np.pi * (i[6]**2 - i[5]**2)
-            #                 pi      * (ytre_radius^2 - indre_radius^2)
-            andrearealmoment= np.pi * (i[6]**4 - i[5]**4) / 4
-            #                 pi      * (ytre_radius^4 - indre_radius^4) / 4
-            bøyestivhet=      i[3] * andrearealmoment
+            r_ytre=i[7]
+            r_indre=i[6]
+
+            areal=            np.pi * (r_ytre**2 - r_indre**2)
+            #                 pi    * (ytre_radius^2 - indre_radius^2)
+            andrearealmoment= np.pi * (r_ytre**4 - r_indre**4) / 4
+            #                 pi    * (ytre_radius^4 - indre_radius^4) / 4
+            bøyestivhet=      E * andrearealmoment
             #                 andrearealmoment * E-modul
-        elif i[4]==1:
+        
+        elif tverrsnittstype==1:
         #hvis I-profil
-            areal=            2 * i[5]*i[6]   + i[7]*i[8] 
-            #                 2 * areal flens + areal stag
-            andrearealmoment= 2 * (i[5]*i[6]**(3) /12 + (i[7]/2+i[6]/2)**2 * (i[5]*i[6])) + i[7]**(3) *i[8] /12
+            b_flens=i[6]
+            h_flens=i[7]
+            h_stag=i[8]
+            b_stag=i[9]
+
+            areal=            2 * b_flens*h_flens   + h_stag*b_stag
+            #                 2 * areal flens       + areal stag
+            andrearealmoment= 2 * (b_flens*h_flens**(3) /12 + (h_stag/2+h_flens/2)**2 * (b_flens*h_flens)) + h_stag**(3) *b_stag/12
             #                 2 * (I_flens            + (steinerbidrag_flens            ) + I_stag
-            bøyestivhet=      i[3] * andrearealmoment
+            bøyestivhet=      E * andrearealmoment
             #                 andrearealmoment * E-modul
-        elif i[4]==2:
+        
+        elif tverrsnittstype==2:
         #hvis boks-profil
-            areal=            i[5]*i[6]       - (i[5]-2*i[7])*(i[6]-2*i[8])
+            b_boks=i[6]
+            h_boks=i[7]
+            b_stag=i[8]
+            h_flens=i[9]
+
+            areal=            b_boks*h_boks       - (b_boks-2*b_stag)*(h_boks-2*h_flens)
             #                 areal_ytre_boks - areal_indre_boks
-            andrearealmoment= 2 * (i[5]*i[8]**(3) /12 + ((i[6]/2-i[8]/2)**2 * i[5]*i[8])) + 2 * (i[7]*(i[6]-2*i[8])**(3) /12)
+            andrearealmoment= 2 * (b_boks*h_flens**(3) /12 + ((h_boks/2-h_flens/2)**2 * b_boks*h_flens)) + 2 * (b_stag*(h_boks-2*h_flens)**(3) /12)
             #                 2 * (I_flens            + (steinerbidrag_flens            ) + 2 * (I_stag)
-            bøyestivhet=      i[3]    * andrearealmoment
+            bøyestivhet=      E    * andrearealmoment
             #                 E-modul * andrearealmoment
         else:
         #hvis vi har ugyldig verdi i input_fil

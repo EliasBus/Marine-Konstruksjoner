@@ -28,7 +28,8 @@ tverrsnittsdata = tve.tverrsnittsdata_funk(elementer)
 
 #Data fra Elementer_utvidet_matrise:
 elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
-
+for line in elementer_utvidet:
+    print(line)
 #Matrisen er på formen: 
     # [0] Element_ID, 
     # [1] Første knutepunkt, 
@@ -38,13 +39,13 @@ elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, 
     # [5] x-koord andre knutepunkt, 
     # [6] y-koord andre knutepunkt,
     # [7] Lengden,
-    # [8] E-modul, 
-    # [9] Tverrsnitts-type,
-    # [10] Areal, 
-    # [11] Andre arealmoment, 
-    # [12] Bøyestivhet, 
-    # [13] Vinkelen til elementet i forhold til x-aksen
-
+    # [8] E-modul,
+    # [9] Flytespenning, 
+    # [10] Tverrsnitts-type,
+    # [11] Areal, 
+    # [12] Andre arealmoment, 
+    # [13] Bøyestivhet, 
+    # [14] Vinkelen til elementet i forhold til x-aksen
 
 #Data fra Systemstivhetsmatrise.py:
 K = sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
@@ -67,7 +68,7 @@ for i in range(0,len(r),3):
 #Data fra Figurer.py:
 fig.plot_vindu(knutepunkter)
 fig.plot_elementer(elementer_utvidet, knutepunkter)
-skalar=1
+skalar=10
 fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
 
 plt.show()

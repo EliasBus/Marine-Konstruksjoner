@@ -40,9 +40,9 @@ def systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepun
             
 
         E=elem[8]
-        A=elem[10]
+        A=elem[11]
         L=elem[7]
-        I=elem[11]
+        I=elem[12]
 
         elementstivhetsmatrise=np.array([
         [E*A/L , 0             , 0            , -E*A/L, 0             , 0            ],

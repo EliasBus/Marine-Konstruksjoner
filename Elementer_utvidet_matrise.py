@@ -47,7 +47,8 @@ def elementer_utvidet_matrise_funk(antall_element, elementer_matrise, knutepunkt
 
         elementdata.append(elementer_matrise[i][3])
         elementdata.append(elementer_matrise[i][4])
-        #Legger til tversnittstype og E-Modul
+        elementdata.append(elementer_matrise[i][5])
+        #Legger til tversnittstype, E-Modul og flytespenning
 
         elementdata.append(tverrsnittsdata_matrise[i][0])
         elementdata.append(tverrsnittsdata_matrise[i][1])
@@ -82,10 +83,11 @@ def elementer_utvidet_matrise_funk(antall_element, elementer_matrise, knutepunkt
     # [5] x-koord andre knutepunkt, 
     # [6] y-koord andre knutepunkt,
     # [7] Lengden,
-    # [8] E-modul, 
-    # [9] Tverrsnitts-type,
-    # [10] Areal, 
-    # [11] Andre arealmoment, 
-    # [12] Bøyestivhet, 
-    # [13] Vinkelen til elementet i forhold til x-aksen
+    # [8] E-modul,
+    # [9] Flytespenning, 
+    # [10] Tverrsnitts-type,
+    # [11] Areal, 
+    # [12] Andre arealmoment, 
+    # [13] Bøyestivhet, 
+    # [14] Vinkelen til elementet i forhold til x-aksen
 
