@@ -6,6 +6,7 @@ import Transformasjonsmatrise       as tra
 import Figurer                      as fig
 import Lastvektor                   as las
 import Deformasjoner                as defo
+import Spenningsanalyse             as spe
 
 import numpy                        as np
 import matplotlib.pyplot            as plt
@@ -64,6 +65,11 @@ r= defo.deformasjoner_funk(R, K, antall_knutepunkt)
 print('\nDeformasjoner: \n')
 for i in range(0,len(r),3):
     print(f'KNUTEPUNKT {int(i/3+1)}: x {int(r[i])} mm,  y {int(r[i+1])} mm,  theta {round(r[i+2]*180/np.pi,3)} grader\n')
+
+#Data fra Spenningsanalyse.py:
+spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R)
+
+
 
 #Data fra Figurer.py:
 fig.plot_vindu(knutepunkter)
