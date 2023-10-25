@@ -23,13 +23,10 @@ def elementer_utvidet_matrise_funk(antall_element, elementer_matrise, knutepunkt
 
         
         
-        knutepunkt_1_indeks = knutepunkt_1 -1
-        knutepunkt_2_indeks = knutepunkt_2 -1
-        #finner indeksen knutepunktet
-        x_1 = knutepunkter_matrise[knutepunkt_1_indeks][1]
-        y_1 = knutepunkter_matrise[knutepunkt_1_indeks][2]
-        x_2 = knutepunkter_matrise[knutepunkt_2_indeks][1]
-        y_2 = knutepunkter_matrise[knutepunkt_2_indeks][2]
+        x_1 = knutepunkter_matrise[knutepunkt_1-1][1]
+        y_1 = knutepunkter_matrise[knutepunkt_1-1][2]
+        x_2 = knutepunkter_matrise[knutepunkt_2-1][1]
+        y_2 = knutepunkter_matrise[knutepunkt_2-1][2]
         #finner koordinatene til 1. og 2. knutepunkt i elemntet
         
 

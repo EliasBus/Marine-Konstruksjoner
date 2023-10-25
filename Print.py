@@ -5,9 +5,21 @@ import matplotlib.pyplot    as plt
 def print_elementer(elementer_utvidet):
     print('\n\n\n------------------------------------------------------ELEMENTOVERSIKT------------------------------------------------------')
     for elem in elementer_utvidet:
-        print(f'--Element {int(elem[0])} under-----------------------------------------------------------------------------------')
-        print(f'Koordinater: ({int(elem[3])},{int(elem[5])})-({int(elem[4])},{int(elem[6])}) , Lengde: {round(elem[7]/1000)}m, E-modul og flytgrense: {int(elem[8]/1000)} GPa, {int(elem[9])} MPa, \nAreal: {int(elem[11])} mm^2, I: {int(elem[13])} mm^4, Vinkel: {int(elem[14]*180/np.pi)}*\n')
+        print(f'{f'Element {int(elem[0])}-->':<17}{f'Koord:  ({round(elem[3]/1000,2)}, {round(elem[4]/1000,2)})':<21}{f'---({round(elem[5]/1000,2)}, {round(elem[6]/1000,2)})':<20}{f'L: {round(elem[7]/1000,1)}m,':<15}{f'E: {int(elem[8]/1000)} GPa,':<15}{f'Flytspenning: {int(elem[8]/1000)} GPa'}')
     print('------------------------------------------------------ELEMENTOVERSIKT------------------------------------------------------')
+
+def print_tversnittsdata(elementer_utvidet):
+    print('\n\n\n------------------------------------------------------TVERRSNITTSDATA------------------------------------------------------')
+    for elem in elementer_utvidet:
+        if elem[10]==0:
+            type='Rør'
+        elif elem[10]==1:
+            type='IPE'
+        elif elem[10]==2:
+            type='Boks'
+        print(f'{f'Element {int(elem[0])}-->':<17}{type:<7}{f'Areal: {int(elem[11])} mm^2':<25}{f'I_z: {int(elem[12])}':<18}{f'mm^4':<10}{f'EI: {int(elem[13]/(10**9))}':<13}{f'*10^9 mm^4':<15}{f'Vinkel: {round(elem[14],3)}*'}')
+    print('------------------------------------------------------TVERRSNITTSDATA------------------------------------------------------')
+
 
 
 def print_K(K):
