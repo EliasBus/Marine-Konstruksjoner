@@ -51,12 +51,12 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         R_tra = np.linalg.inv(T) @ R_lok
         #transformerer lokal lastvektor
 
-        R[int(konnektivitetstabell[0][2]-1)] -= R_tra[0]
-        R[int(konnektivitetstabell[1][2]-1)] -= R_tra[1]
-        R[int(konnektivitetstabell[2][2]-1)] -= R_tra[2]
-        R[int(konnektivitetstabell[3][2]-1)] -= R_tra[3]
-        R[int(konnektivitetstabell[4][2]-1)] -= R_tra[4]
-        R[int(konnektivitetstabell[5][2]-1)] -= R_tra[5]
+        R[int(konnektivitetstabell[0][2]-1)] += R_tra[0]
+        R[int(konnektivitetstabell[1][2]-1)] += R_tra[1]
+        R[int(konnektivitetstabell[2][2]-1)] += R_tra[2]
+        R[int(konnektivitetstabell[3][2]-1)] += R_tra[3]
+        R[int(konnektivitetstabell[4][2]-1)] += R_tra[4]
+        R[int(konnektivitetstabell[5][2]-1)] += R_tra[5]
         #legger inn i global lastvektor
 
     for kraft in punktlaster:
@@ -71,7 +71,7 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
 
         #legger til aksialkraft fra punktlaster på konstruksjonen i retning den virker i
 
-    return -R
+    return R
 
 
 

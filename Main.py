@@ -75,12 +75,13 @@ utnyttelse=spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R)
 
 
 #Data fra Figurer.py:
-skalar=200
+skalar=100
 
 
 #Data fra Print.py:
-pri.print_elementer(elementer_utvidet)
 pri.print_K(K)
+pri.print_elementer(elementer_utvidet)
+pri.print_R(R)
 pri.print_r(r)
 pri.print_utnyttelse(elementer, utnyttelse)
 pri.print_figurer(knutepunkter, elementer, elementer_utvidet,r,skalar)

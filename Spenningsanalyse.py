@@ -23,7 +23,7 @@ def spenningsanalyse_funksjon(elementer, elementer_utvidet,R):
             #høyde boks/2
         #finner z-verdien (høyde/2) til tverrsnittet
 
-        sigma = N/A + M*z/I
+        sigma = abs(N/A) + abs(M*z/I)
         #Naviers formel
 
         flytespenning=elem[9]
