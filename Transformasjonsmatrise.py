@@ -4,7 +4,7 @@ import numpy as np
 def transformasjonsmatrise_funksjon(element):
     #definerer en funksjon som tar inn et element
     #setter theta lik vinkelen til elementet
-    theta=element[13]
+    theta=element[14]
     #Oppretter transformasjonsmatrisen
     transformasjon_matrise=np.array([ 
         [np.cos(theta) ,np.sin(theta),0,0             ,0            ,0],

@@ -1,6 +1,7 @@
 import numpy as np
 
 def spenningsanalyse_funksjon(elementer, elementer_utvidet,R):
+    utnyttelse=[]
     ind=0
     for elem in elementer_utvidet:
         knute_1=elem[1]
@@ -28,6 +29,8 @@ def spenningsanalyse_funksjon(elementer, elementer_utvidet,R):
         flytespenning=elem[9]
         prosent = sigma/flytespenning * 100
         #prosent utnyttelse av f_y
-        print(prosent)
+        
 
         ind+=1
+        utnyttelse.append(prosent)
+    return utnyttelse

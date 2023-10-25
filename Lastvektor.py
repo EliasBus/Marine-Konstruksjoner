@@ -46,7 +46,7 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         #lokal lastvektor
 
         T = tra.transformasjonsmatrise_funksjon(elem)
-        R_tra = T @ R_lok
+        R_tra = np.linalg.inv(T) @ R_lok
         #transformerer lokal lastvektor
 
         R[(knute_1 -1)*3 + 0] += R_tra[0]
@@ -59,12 +59,20 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
 
     for kraft in punktlaster:
         knute_p = int(kraft[0])
-        R[(knute_p -1)*3 + 1] += kraft[2] * np.sin(kraft[1] *np.pi /180)
-        
-        print(f'punkt {knute_p}, kraft {kraft[2]}, retning {np.sin(kraft[1]*np.pi/180)}')
+        theta=kraft[1]
+        x_komp= kraft[2] * np.cos(theta *np.pi /180)
+        y_komp= kraft[2] * np.sin(theta *np.pi /180)
+        #x og y komponent til punktlasten
+
+
+        R[(knute_p -1)*3 + 0] += x_komp
+        R[(knute_p -1)*3 + 1] += y_komp
+
+
+        print(f'punkt {knute_p}, kraft_x {x_komp}, kraft_y {y_komp}')
         #legger til aksialkraft fra punktlaster på konstruksjonen i retning den virker i
 
-    return R
+    return -R
 
 
 

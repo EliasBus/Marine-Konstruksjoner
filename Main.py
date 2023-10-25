@@ -7,6 +7,7 @@ import Figurer                      as fig
 import Lastvektor                   as las
 import Deformasjoner                as defo
 import Spenningsanalyse             as spe
+import Konnektivitetstabell         as kon
 
 import numpy                        as np
 import matplotlib.pyplot            as plt
@@ -26,6 +27,9 @@ punktlaster             = inn.innlesning_funk(fil)[7]
 
 #Data fra Tverrsnittsdata.py:
 tverrsnittsdata = tve.tverrsnittsdata_funk(elementer)
+
+#Data fra Konnektivitetstabell.py:
+
 
 #Data fra Elementer_utvidet_matrise:
 elementer_utvidet=ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
@@ -67,15 +71,18 @@ for i in range(0,len(r),3):
     print(f'KNUTEPUNKT {int(i/3+1)}: x {int(r[i])} mm,  y {int(r[i+1])} mm,  theta {round(r[i+2]*180/np.pi,3)} grader\n')
 
 #Data fra Spenningsanalyse.py:
-spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R)
-
+utnyttelse=spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R)
+print(utnyttelse)
 
 
 #Data fra Figurer.py:
 fig.plot_vindu(knutepunkter)
 fig.plot_elementer(elementer_utvidet, knutepunkter)
-skalar=10
+skalar=100
 fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
 
 plt.show()
+
+print('K')
+print(K[28][28])
 
