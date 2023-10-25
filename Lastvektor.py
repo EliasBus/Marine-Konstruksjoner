@@ -1,4 +1,5 @@
 import Transformasjonsmatrise as tra
+import Konnektivitetstabell   as kon
 import numpy as np
 
 
@@ -10,6 +11,7 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
     for elem in elementer_utvidet:
         q1=0
         q2=0
+        konnektivitetstabell=kon.konnektivitetstabell_funksjon(elem)
 
         l = elem[7] #lengde
         knute_1 = elem[1]
@@ -49,12 +51,12 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         R_tra = np.linalg.inv(T) @ R_lok
         #transformerer lokal lastvektor
 
-        R[(knute_1 -1)*3 + 0] -= R_tra[0]
-        R[(knute_1 -1)*3 + 1] -= R_tra[1]
-        R[(knute_1 -1)*3 + 2] -= R_tra[2]
-        R[(knute_2 -1)*3 + 0] -= R_tra[3]
-        R[(knute_2 -1)*3 + 1] -= R_tra[4]
-        R[(knute_2 -1)*3 + 2] -= R_tra[5]
+        R[int(konnektivitetstabell[0][2]-1)] -= R_tra[0]
+        R[int(konnektivitetstabell[1][2]-1)] -= R_tra[1]
+        R[int(konnektivitetstabell[2][2]-1)] -= R_tra[2]
+        R[int(konnektivitetstabell[3][2]-1)] -= R_tra[3]
+        R[int(konnektivitetstabell[4][2]-1)] -= R_tra[4]
+        R[int(konnektivitetstabell[5][2]-1)] -= R_tra[5]
         #legger inn i global lastvektor
 
     for kraft in punktlaster:
@@ -67,7 +69,6 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         R[(knute_p -1)*3 + 0] += x_komp
         R[(knute_p -1)*3 + 1] += y_komp
 
-        print(f'punkt {knute_p}, kraft_x {x_komp}, kraft_y {y_komp}')
         #legger til aksialkraft fra punktlaster på konstruksjonen i retning den virker i
 
     return -R

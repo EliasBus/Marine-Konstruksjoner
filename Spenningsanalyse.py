@@ -19,8 +19,8 @@ def spenningsanalyse_funksjon(elementer, elementer_utvidet,R):
             z=elementer[ind][7] + elementer[ind][8]/2
             # høyde flens       + høyde stag/2
         elif tverrsnittstype == 2:
-            z=elementer[ind][7]
-            #høyde boks
+            z=elementer[ind][7]/2
+            #høyde boks/2
         #finner z-verdien (høyde/2) til tverrsnittet
 
         sigma = N/A + M*z/I
