@@ -30,7 +30,7 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         V1 = ( 7/20*q1  + 3/20*q2) *l 
         M1 = (-1/20*q1  - 1/30*q2) *l**2
         N2 = 0
-        V2 = ( 7/20*q2  + 3/20*q1) *l   
+        V2 = -( 7/20*q2  + 3/20*q1) *l   
         M2 = ( 1/20*q2  + 1/30*q1) *l**2
         #V fra momentlikevekt
         #M fra tabell for fastinnspenningmomenter
@@ -49,12 +49,12 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         R_tra = np.linalg.inv(T) @ R_lok
         #transformerer lokal lastvektor
 
-        R[(knute_1 -1)*3 + 0] += R_tra[0]
-        R[(knute_1 -1)*3 + 1] += R_tra[1]
-        R[(knute_1 -1)*3 + 2] += R_tra[2]
-        R[(knute_2 -1)*3 + 0] += R_tra[3]
-        R[(knute_2 -1)*3 + 1] += R_tra[4]
-        R[(knute_2 -1)*3 + 2] += R_tra[5]
+        R[(knute_1 -1)*3 + 0] -= R_tra[0]
+        R[(knute_1 -1)*3 + 1] -= R_tra[1]
+        R[(knute_1 -1)*3 + 2] -= R_tra[2]
+        R[(knute_2 -1)*3 + 0] -= R_tra[3]
+        R[(knute_2 -1)*3 + 1] -= R_tra[4]
+        R[(knute_2 -1)*3 + 2] -= R_tra[5]
         #legger inn i global lastvektor
 
     for kraft in punktlaster:
@@ -64,10 +64,8 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         y_komp= kraft[2] * np.sin(theta *np.pi /180)
         #x og y komponent til punktlasten
 
-
         R[(knute_p -1)*3 + 0] += x_komp
         R[(knute_p -1)*3 + 1] += y_komp
-
 
         print(f'punkt {knute_p}, kraft_x {x_komp}, kraft_y {y_komp}')
         #legger til aksialkraft fra punktlaster på konstruksjonen i retning den virker i

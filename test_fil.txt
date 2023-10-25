@@ -18,10 +18,10 @@
 #Her kommer informasjon om hvert element i rekkefolgen:
 #Element-ID, Knutepunkt 1, Knutepunkt 2, E-modul [Mpa = N/mm^2], Geometri (0 for ror, 1 for I-profil, 2 for boks), Dimensjonene til profilene [mm] (0: indre_radius,ytre_radius 1: b_flens, h_flens, h_stag, b_stag 2: b_boks, h_boks, b_stag, h_flens)
 #Elementer:
-12, 1, 2, 210000, 0, 490, 600
-23, 2, 3, 210000, 0, 490, 600
-34, 3, 4, 210000, 0, 490, 600
-35, 3, 5, 210000, 0, 490, 600
+12, 1, 2, 210000, 420, 0, 49, 60
+23, 2, 3, 210000, 420, 0, 49, 60
+34, 3, 4, 210000, 420, 0, 49, 60
+35, 3, 5, 210000, 420, 0, 49, 60
 
 
 
@@ -33,7 +33,7 @@
 #Info kommer i rekkefolgen:
 #Element-ID,Knutepunkt 1 den virker på, knutepunkt 2 den virker på, Intensitet ved lokalt knutepunkt 1 [N], Intensitet ved knutepunkt 2 [N]
 #Fordelte laster:
-23, 2, 3, 0, 180000
+23, 2, 3, 0, 180
  
 
 

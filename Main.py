@@ -14,7 +14,7 @@ import matplotlib.pyplot            as plt
 
 
 #Data fra Innlesning.py:
-fil='input_fil.txt'
+fil='test_fil.txt'
 
 antall_knutepunkt       = inn.innlesning_funk(fil)[0]
 antall_element          = inn.innlesning_funk(fil)[1]
@@ -61,8 +61,9 @@ for line in K:
 
 #Data fra lastvektor.py:
 R=las.lastvektor_funk(antall_knutepunkt, antall_element, elementer_utvidet, antall_punktlaster, punktlaster, antall_fordelte_laster, fordelte_laster)
-print('\nlastvektor:')
-print(R)
+print('\nLastvektor: \n')
+for i in range(0,len(R),3):
+    print(f'KNUTEPUNKT {int(i/3+1)}: x {int(R[i])/1000} kN,  y {(int(R[i+1])/1000)} kN,  Moment {int((R[i+2]*180/np.pi)/(10**6))} kNm\n')
 
 #Data fra deformasjoner.py:
 r= defo.deformasjoner_funk(R, K, antall_knutepunkt)
@@ -82,7 +83,4 @@ skalar=100
 fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
 
 plt.show()
-
-print('K')
-print(K[28][28])
 

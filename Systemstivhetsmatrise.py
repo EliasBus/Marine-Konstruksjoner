@@ -42,11 +42,9 @@ def systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepun
         #elementstivhetsmatrise_glob = np.dot( np.dot(trans_transponert, elementstivhetsmatrise), trans)
         elementstivhetsmatrise_glob = trans_transponert @ elementstivhetsmatrise @ trans
         #finner global elementstivhetsmatrise (T_transp * k * T)
-        print(f'ele_glob {elem[0]}\n {elementstivhetsmatrise_glob}')
         
         konnektivitetstabell=kon.konnektivitetstabell_funksjon(elem)
         lokale_frihetsgrader=6
-        print(f'konnekt \n{konnektivitetstabell}')
 
         for x in range(lokale_frihetsgrader):
             for y in range(lokale_frihetsgrader):
