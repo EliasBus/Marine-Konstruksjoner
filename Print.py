@@ -3,16 +3,16 @@ import numpy                as np
 import matplotlib.pyplot    as plt      
 
 def print_elementer(elementer_utvidet):
-    print('\n\n\n--------------------------------------------------------------ELEMENTOVERSIKT-------------------------------------------------------------')
-    print(f'{'|':>140}')
+    print('\n\n\n----------------------------------------------------------------ELEMENTOVERSIKT------------------------------------------------')
+    print(f'{'|':>128}')
     for elem in elementer_utvidet:
-        print(f'{f'Element {int(elem[0])}-->':<17}{f'| Koord ({int(elem[1])} - {int(elem[2])}):':<20}{f'({round(elem[3]/1000,2)}, {round(elem[4]/1000,2)})':<14}{f'-- ({round(elem[5]/1000,2)}, {round(elem[6]/1000,2)})':<25}{f'L: {round(elem[7]/1000,1)}m,':<15}{f'E: {int(elem[8]/1000)} GPa,':<15}{f'Fy: {int(elem[8]/1000)} MPa':<15}{f'Vinkel: {round(elem[14],3)}*':<18}{'|'}')
-    print(f'{'|':>140}')
-    print('--------------------------------------------------------------ELEMENTOVERSIKT-------------------------------------------------------------')
+        print(f'{f'Element {int(elem[0])}-->':<17}{f'| Koord ({int(elem[1])} - {int(elem[2])}):':<20}{f'({round(elem[3]/1000,2)}, {round(elem[4]/1000,2)})':<14}{f'-- ({round(elem[5]/1000,2)}, {round(elem[6]/1000,2)})':<20}{f'L: {round(elem[7]/1000,1)}m,':<13}{f'E: {int(elem[8]/1000)} GPa,':<15}{f'Fy: {int(elem[9])} MPa':<15}{f'\u03B8: {round(elem[14]*180/np.pi,3)}\u00B0':<13}{'|'}')
+    print(f'{'|':>128}')
+    print('----------------------------------------------------------------ELEMENTOVERSIKT------------------------------------------------')
 
 def print_tversnittsdata(elementer_utvidet):
-    print('\n\n\n------------------------------------------------------TVERRSNITTSDATA--------------------------------------------------')
-    print(f'{'|':>121}')
+    print('\n\n\n--------------------------------------TVERRSNITTSDATA-------------------------------------------------')
+    print(f'{'|':>103}')
     for elem in elementer_utvidet:
         if elem[10]==0:
             type='Rør'
@@ -20,9 +20,9 @@ def print_tversnittsdata(elementer_utvidet):
             type='IPE'
         elif elem[10]==2:
             type='Boks'
-        print(f'{f'Element {int(elem[0])}-->':<17}{f'| {type}':<10}{f'Areal: {int(elem[11])} mm^2':<30}{f'I_z: {int(elem[12])}':<18}{f'mm^4':<15}{f'EI: {int(elem[13]/(10**9))}':<13}{f'*10^9 mm^4':<17}{'|'}')
-    print(f'{'|':>121}')
-    print('------------------------------------------------------TVERRSNITTSDATA--------------------------------------------------')
+        print(f'{f'Element {int(elem[0])}-->':<17}{f'| {type}':<10}{f'Areal: {int(elem[11])} mm^2':<23}{f'I_z: {int(elem[12])}':<18}{f'mm^4':<8}{f'EI: {int(elem[13]/(10**9))}':<13}{f'*10^9 mm^4':<13}{'|'}')
+    print(f'{'|':>103}')
+    print('--------------------------------------TVERRSNITTSDATA-------------------------------------------------')
 
 
 def print_K(K):
@@ -48,7 +48,7 @@ def print_r(r):
     print('\n\n\n---------------------------------DEFORMASJONER--------------------------------')
     print(f'{'|':>79}')
     for i in range(0,len(r),3):
-        print(f'{f'Knutepunkt {int(i/3+1)}-->':<17}{f'| x: {int(r[i])} mm,':<20}{f'y: {int(r[i+1])} mm,':<20}{f'theta: {round(r[i+2]*180/np.pi,3)}*':<21}{'|'}')
+        print(f'{f'Knutepunkt {int(i/3+1)}-->':<17}{f'| x: {int(r[i])} mm,':<20}{f'y: {int(r[i+1])} mm,':<20}{f'\u03B8: {round(r[i+2]*180/np.pi,3)}\u00B0':<21}{'|'}')
     print(f'{'|':>79}')
     print('---------------------------------DEFORMASJONER--------------------------------')
 
