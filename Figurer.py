@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
 def plot_vindu(knutepunkter):
 #Definerer en funksjon som kan kalles for å tegne tomt vindu med riktige dimensjoner
@@ -88,7 +87,7 @@ def plot_elementer(elementer, elementer_utvidet, knutepunkter):
 
 
     plt.plot([], [], 'ro', label='Knutepunkter')
-    plt.plot([], [], 'y-', linewidth=6, label='\u3007-Profil')
+    plt.plot([], [], 'y-', linewidth=6, label='O-Profil')
     plt.plot([], [], 'c-', linewidth=6, label='I-Profil')
     plt.plot([], [], 'g-', linewidth=6, label='\uF790-Profil')
     plt.legend(loc='lower right')
