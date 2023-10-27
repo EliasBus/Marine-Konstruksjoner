@@ -18,7 +18,7 @@ beam  ='input_fil_3Dbeam.txt'
 test  ='test_fil.txt'
 
 #Data fra Innlesning.py:
-fil=beam
+fil=test
 
 antall_knutepunkt       = inn.innlesning_funk(fil)[0]
 antall_element          = inn.innlesning_funk(fil)[1]
@@ -85,4 +85,4 @@ pri.print_tversnittsdata(elementer_utvidet)
 pri.print_R(R)
 pri.print_r(r)
 pri.print_utnyttelse(elementer, utnyttelse)
-#pri.print_figurer(knutepunkter, elementer, elementer_utvidet,r,skalar)
+pri.print_figurer(knutepunkter, elementer, elementer_utvidet,r,skalar)

@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
 def plot_vindu(knutepunkter):
 #Definerer en funksjon som kan kalles for å tegne tomt vindu med riktige dimensjoner
@@ -84,10 +85,12 @@ def plot_elementer(elementer, elementer_utvidet, knutepunkter):
             plt.text(knute[1]+0.5,knute[2]-2,int(knute[0]), fontsize=14)
         #plotter knutepunktene samt label til knutepunktet
 
+
+
     plt.plot([], [], 'ro', label='Knutepunkter')
-    plt.plot([], [], 'y-', linewidth=6, label='Rør')
-    plt.plot([], [], 'c-', linewidth=6, label='I-profil')
-    plt.plot([], [], 'g-', linewidth=6, label='Boks-profil')
+    plt.plot([], [], 'y-', linewidth=6, label='\u3007-Profil')
+    plt.plot([], [], 'c-', linewidth=6, label='I-Profil')
+    plt.plot([], [], 'g-', linewidth=6, label='\uF790-Profil')
     plt.legend(loc='lower right')
     #Plotter legend
 

@@ -73,17 +73,17 @@ def print_r(r):
 
 
 def print_utnyttelse(elementer, utnyttelse):
-    print(f'{grønn}{'\n\n\n--------UTNYTTELSE---------'}{reset}')
-    print(f'{rød_u+'Element \031':<23}{'\u03c3/f\u1d67\u22c5100%':<11}{reset}{grønn}{'|'}{reset}')
+    print(f'{cyan}{'\n\n\n--------UTNYTTELSE---------'}{reset}')
+    print(f'{rød_u+'Element \031':<23}{'\u03c3/f\u1d67\u22c5100%':<11}{reset}{cyan}{'|'}{reset}')
     for i in range(len(elementer)):
         utnyttelsesgrad=utnyttelse[i]
         if utnyttelsesgrad >= 80:
-            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| '}{rød}{f'{round(utnyttelsesgrad,2)} %':<11}{reset}{grønn}{'|'}{reset}')
+            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| '}{rød}{f'{round(utnyttelsesgrad,2)} %':<11}{reset}{cyan}{'|'}{reset}')
         else:
-            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| {round(utnyttelsesgrad,2)} %':<13}{grønn}{'|'}{reset}')
+            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| {round(utnyttelsesgrad,2)} %':<13}{cyan}{'|'}{reset}')
         #printes i rødt om utnyttelsesgrad er større enn 80%
-    print(f'{grønn}{'|':>28}{reset}')
-    print(f'{grønn}{'--------UTNYTTELSE---------'}{reset}')
+    print(f'{cyan}{'|':>28}{reset}')
+    print(f'{cyan}{'--------UTNYTTELSE---------'}{reset}')
 
 
 def print_figurer(knutepunkter, elementer, elementer_utvidet, r, skalar):
