@@ -1,11 +1,11 @@
 import Transformasjonsmatrise as tra
 import Konnektivitetstabell   as kon
+import Elementstivhetsmatrise as elesti
 import numpy as np
 
 def systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkt):
     #definerer en funkssjon som tar inn elementer_utvidet og antall knutepunkt
     
-
     str_matrise= 3*(antall_knutepunkt) 
     #finner dimensjonen på systemstivhetsmatrisen
     systemstivhetsmatrise = np.zeros((str_matrise,str_matrise))
@@ -19,28 +19,15 @@ def systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepun
         knutepunkt_2 = elem[2]
         #Finner knutepunktene i elementet
 
-        E=elem[8]
-        A=elem[11]
-        L=elem[7]
-        I=elem[12]
-
-        elementstivhetsmatrise=np.array([
-        [E*A/L , 0             , 0            , -E*A/L, 0             , 0            ],
-        [0     , 12*E*I/(L**3) , -6*E*I/(L**2), 0     , -12*E*I/(L**3), -6*E*I/(L**2)],
-        [0     , -6*E*I/(L**2) , 4*E*I/L      , 0     , 6*E*I/(L**2)  , 2*E*I/L      ],
-        [-E*A/L, 0             , 0            , E*A/L , 0             , 0            ],
-        [0     , -12*E*I/(L**3), 6*E*I/(L**2) , 0     , 12*E*I/(L**3) , 6*E*I/(L**2) ],
-        [0     , -6*E*I/(L**2) , 2*E*I/L      , 0     , 6*E*I/(L**2)  , 4*E*I/L      ],
-        ])   
-        #ovenfor er elementstivhetsmatrisen
+        elementstivhetsmatrise = elesti.elementsivhetsmatrise_funskjon(elem)
         
-        trans = tra.transformasjonsmatrise_funksjon(elem)
+        T = tra.transformasjonsmatrise_funksjon(elem)
         #henter transformasjonsmatrisen fra Transformasjonsmatrise.py
-        trans_transponert = np.linalg.inv(trans)
+        T_transponert = np.linalg.inv(T)
         #transponerer matrisen
         
         #elementstivhetsmatrise_glob = np.dot( np.dot(trans_transponert, elementstivhetsmatrise), trans)
-        elementstivhetsmatrise_glob = trans_transponert @ elementstivhetsmatrise @ trans
+        elementstivhetsmatrise_glob = T_transponert @ elementstivhetsmatrise @ T
         #finner global elementstivhetsmatrise (T_transp * k * T)
         
         konnektivitetstabell=kon.konnektivitetstabell_funksjon(elem)

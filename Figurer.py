@@ -113,7 +113,7 @@ def plot_deformasjon(elementer, knutepunkter, deformasjoner, skalar):
         #finner x/y-koordinatene til hvert av knutepunktene i elemntet
         
         
-        plt.plot(x_verdier, y_verdier, 'r-', linewidth=1.5, alpha=0.3)
+        plt.plot(x_verdier, y_verdier, 'r-', linewidth=1.5, alpha=0.5)
         #plotter element
     plt.plot([], [], 'r-', label='Deformasjonsskisse', alpha=0.5)
     plt.legend(loc='upper right')

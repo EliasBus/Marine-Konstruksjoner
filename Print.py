@@ -4,7 +4,7 @@ import matplotlib.pyplot    as plt
 
 #tekstfarger:
 rød_u   ='\033[4;31m'
-rød   ='\033[1;31m'
+rød     ='\033[1;31m'
 gul     ='\033[1;33m'
 magenta ='\033[1;35m'
 blå     ='\033[1;34m'
@@ -15,7 +15,7 @@ gul_b   ='\033[;;43m'
 grønn_b ='\033[;;42m'
 cyan_b  ='\033[;;46m'
 #reset:
-reset = '\033[m'
+reset   = '\033[m'
   
 
 def print_elementer(elementer_utvidet):
@@ -84,6 +84,16 @@ def print_utnyttelse(elementer, utnyttelse):
         #printes i rødt om utnyttelsesgrad er større enn 80%
     print(f'{cyan}{'|':>28}{reset}')
     print(f'{cyan}{'--------UTNYTTELSE---------'}{reset}')
+
+
+def print_fastinnspenningskrefter(S):
+    print(f'{grønn}{'\n\n\n----------------------------FASTE--------------------------------'}{reset}')
+    print(f'{rød_u+'Knutepunkt \031':<25}{'aksial:':<18}{'skjær:':<20}{'Moment:':<13}{reset}{grønn}{'|':>5}{reset}')
+    for i in range(0,len(S),3):
+        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(S[i])} N,':<20}{f'y: {int(S[i+1])} N,':<20}{f'M: {round(S[i+2]/(10**6))} KNm':<17}{grønn}{'|'}{reset}')
+    print(f'{grønn}{'|':>74}{reset}')
+    print(f'{grønn}{'----------------------------FASTE--------------------------------'}{reset}')
+
 
 
 def print_figurer(knutepunkter, elementer, elementer_utvidet, r, skalar):
