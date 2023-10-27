@@ -1,65 +1,89 @@
 import Figurer              as fig
 import numpy                as np
-import matplotlib.pyplot    as plt      
+import matplotlib.pyplot    as plt  
+
+#tekstfarger:
+rød_u   ='\033[4;31m'
+rød   ='\033[1;31m'
+gul     ='\033[1;33m'
+magenta ='\033[1;35m'
+blå     ='\033[1;34m'
+grønn   ='\033[1;32m'
+cyan    ='\033[1;36m'
+#Bakgrunnsfarger:
+gul_b   ='\033[;;43m'
+grønn_b ='\033[;;42m'
+cyan_b  ='\033[;;46m'
+#reset:
+reset = '\033[m'
+  
 
 def print_elementer(elementer_utvidet):
-    print('\n\n\n----------------------------------------------------------------ELEMENTOVERSIKT------------------------------------------------')
-    print(f'{'|':>128}')
+    print(f'{gul}{'\n\n\n------------------------------------------ELEMENTOVERSIKT----------------------------------------------'}{reset}')
+    print(f'{rød_u+'Element \031':<21}{'(k1-k2):':<13}{'Koordinater':<12}{'-- Koordinater':<20}{'Lengde:':<9}{'E-modul:':<11}{'Flyt:':<11}{'Vinkel:'}{reset}{gul}{'|':>7}{reset}')
     for elem in elementer_utvidet:
-        print(f'{f'Element {int(elem[0])}-->':<17}{f'| Koord ({int(elem[1])} - {int(elem[2])}):':<20}{f'({round(elem[3]/1000,2)}, {round(elem[4]/1000,2)})':<14}{f'-- ({round(elem[5]/1000,2)}, {round(elem[6]/1000,2)})':<20}{f'L: {round(elem[7]/1000,1)}m,':<13}{f'E: {int(elem[8]/1000)} GPa,':<15}{f'Fy: {int(elem[9])} MPa':<15}{f'\u03B8: {round(elem[14]*180/np.pi,3)}\u00B0':<13}{'|'}')
-    print(f'{'|':>128}')
-    print('----------------------------------------------------------------ELEMENTOVERSIKT------------------------------------------------')
+        print(f'{f'{int(elem[0])} \u2192':<12}{f'| ({int(elem[1])} - {int(elem[2])}):':<15}{f'({round(elem[3]/1000,1)}, {round(elem[4]/1000,1)})':<12}{f'-- ({round(elem[5]/1000,2)}, {round(elem[6]/1000,2)})':<20}{f'{round(elem[7]/1000,1)}m':<9}{f'{int(elem[8]/1000)} GPa':<11}{f'{int(elem[9])} MPa':<11}{f'\u03B8: {round(elem[14]*180/np.pi,3)}\u00B0':<13}{gul}{'|'}{reset}')
+    print(f'{gul}{'|':>104}{reset}')
+    print(f'{gul}{'------------------------------------------ELEMENTOVERSIKT----------------------------------------------'}{reset}')
 
 def print_tversnittsdata(elementer_utvidet):
-    print('\n\n\n--------------------------------------TVERRSNITTSDATA-------------------------------------------------')
-    print(f'{'|':>103}')
+    print(f'{magenta}{'\n\n\n---------------------------------------TVERRSNITTSDATA------------------------------------'}{reset}')
+    print(f'{rød_u+'Element \031':<21}{'Type:':<13}{'Areal:':<18}{'I\u1d67:':<22}{'Bøyestivhet (EI):':<11}{reset}{magenta}{'|':>7}{reset}')
     for elem in elementer_utvidet:
         if elem[10]==0:
             type='Rør'
+            farge_b=cyan_b
         elif elem[10]==1:
             type='IPE'
+            farge_b=gul_b
         elif elem[10]==2:
             type='Boks'
-        print(f'{f'Element {int(elem[0])}-->':<17}{f'| {type}':<10}{f'Areal: {int(elem[11])} mm^2':<23}{f'I_z: {int(elem[12])}':<18}{f'mm^4':<8}{f'EI: {int(elem[13]/(10**9))}':<13}{f'*10^9 mm^4':<13}{'|'}')
-    print(f'{'|':>103}')
-    print('--------------------------------------TVERRSNITTSDATA-------------------------------------------------')
+            farge_b=grønn_b
+        print(f'{f'{int(elem[0])} \u2192':<12}{f'| {farge_b}{type}{reset}':<25}{f'{int(elem[11])} mm\u00b2':<18}{f'{int(elem[12])}':<14}{f'mm\u2074':<8}{f'{int(elem[13]/(10**9))}':<10}{f'\u22c510\u2079 Nmm\u00b2':<13}{magenta}{'|'}{reset}')
+    print(f'{magenta}{'|':>91}{reset}')
+    print(f'{magenta}{'---------------------------------------TVERRSNITTSDATA------------------------------------'}{reset}')
 
 
 def print_K(K):
-    print('\n\n\n----------------------------------------------------------SYSTEMSTIVHETSMATRISE-------------------------------------------------------------')
+    print(rød+'\n\n\n----------------------------------------------------------SYSTEMSTIVHETSMATRISE---------------------------------------------'+reset)
     for x in range(len(K)):
-        print(f'\n---------------------|Linje {x+1} under|-------------------------------------------------------------------------------------------------------------')
+        print(f'\n---------------------|Linje {x+1} \031|------------------------------------------------------------------------------------------')
         for y in range(len(K)):
             print(f'{round(K[x][y])}, ', end=" ")
         print('\n-----------------------------------------------------------------------------------------------------------------------------')
-    print('-------------------------------------------------------------SYSTEMSTIVHETSMATRISE-----------------------------------------------------------------')
+    print(rød+'----------------------------------------------------------SYSTEMSTIVHETSMATRISE---------------------------------------------'+reset)
 
 
 def print_R(R):
-    print('\n\n\n-------------------------------------------------LASTVEKTOR--------------------------------------------------')
-    print(f'{'|':>111}')
+    print(f'{blå}{'\n\n\n----------------------------LASTVEKTOR--------------------------------'}{reset}')
+    print(f'{rød_u+'Knutepunkt \031':<24}{'Aksial:':<17}{'Skjær:':<17}{'Moment:':<15}{reset}{blå}{'|':>5}{reset}')
     for i in range(0,len(R),3):
-        print(f'{f'Knutepunkt {int(i/3+1)}-->':<17}{f'|':<10}{f' N: {int(R[i])/1000} kN,':<30}{f'V: {(int(R[i+1])/1000)} kN,':<30}{f'M: {int((R[i+2]*180/np.pi)/(10**6))} kNm':<23}{'|'}')
-    print(f'{'|':>111}')
-    print('-------------------------------------------------LASTVEKTOR---------------------------------------------------')
+        print(f'{f'{int(i/3+1)} \u2192':<16}{f'|{int(R[i]/1000)}':<10}{f' kN|':<7}{f'|{(int(R[i+1]/1000))}':<10}{f' kN|':<7}{f'|{int((R[i+2]*180/np.pi)/(10**6))}':<13}{f' kNm|':<7}{blå}{'|'}{reset}')
+    print(f'{blå}{'|':>71}{reset}')
+    print(f'{blå}{'----------------------------LASTVEKTOR--------------------------------'}{reset}')
 
 
 def print_r(r):
-    print('\n\n\n---------------------------------DEFORMASJONER--------------------------------')
-    print(f'{'|':>79}')
+    print(f'{grønn}{'\n\n\n----------------------------DEFORMASJONER--------------------------------'}{reset}')
+    print(f'{rød_u+'Knutepunkt \031':<25}{'Forskyvning \u2192':<18}{'Forskyvning \u2191:':<20}{'Rotasjon \u21ba':<13}{reset}{grønn}{'|':>5}{reset}')
     for i in range(0,len(r),3):
-        print(f'{f'Knutepunkt {int(i/3+1)}-->':<17}{f'| x: {int(r[i])} mm,':<20}{f'y: {int(r[i+1])} mm,':<20}{f'\u03B8: {round(r[i+2]*180/np.pi,3)}\u00B0':<21}{'|'}')
-    print(f'{'|':>79}')
-    print('---------------------------------DEFORMASJONER--------------------------------')
+        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(r[i])} mm,':<20}{f'y: {int(r[i+1])} mm,':<20}{f'\u03B8: {round(r[i+2]*180/np.pi,3)}\u00B0':<17}{grønn}{'|'}{reset}')
+    print(f'{grønn}{'|':>74}{reset}')
+    print(f'{grønn}{'----------------------------DEFORMASJONER--------------------------------'}{reset}')
 
 
 def print_utnyttelse(elementer, utnyttelse):
-    print('\n\n\n---------UTNYTTELSE----------')
-    print(f'{'|':>29}')
+    print(f'{grønn}{'\n\n\n--------UTNYTTELSE---------'}{reset}')
+    print(f'{rød_u+'Element \031':<23}{'\u03c3/f\u1d67\u22c5100%':<11}{reset}{grønn}{'|'}{reset}')
     for i in range(len(elementer)):
-        print(f'{f'Element {int(elementer[i][0])}-->':<17}{f'| {round(utnyttelse[i],2)}%':<11}{'|'}')
-    print(f'{'|':>29}')
-    print('--------UTNYTTELSE----------')
+        utnyttelsesgrad=utnyttelse[i]
+        if utnyttelsesgrad >= 80:
+            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| '}{rød}{f'{round(utnyttelsesgrad,2)} %':<11}{reset}{grønn}{'|'}{reset}')
+        else:
+            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| {round(utnyttelsesgrad,2)} %':<13}{grønn}{'|'}{reset}')
+        #printes i rødt om utnyttelsesgrad er større enn 80%
+    print(f'{grønn}{'|':>28}{reset}')
+    print(f'{grønn}{'--------UTNYTTELSE---------'}{reset}')
 
 
 def print_figurer(knutepunkter, elementer, elementer_utvidet, r, skalar):

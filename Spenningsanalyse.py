@@ -30,7 +30,6 @@ def spenningsanalyse_funksjon(elementer, elementer_utvidet,R):
         prosent = sigma/flytespenning * 100
         #prosent utnyttelse av f_y
         
-
         ind+=1
         utnyttelse.append(prosent)
     return utnyttelse
