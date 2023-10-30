@@ -36,5 +36,3 @@ def fastinnspenningskrefter_funksjon(elementer_utvidet, r, fordelte_laster, n_kn
         S[int(konnektivitetstabell[5][2]-1)] += S_lok[5]
         #legger inn i global fastinnspenningsvektor
     return S
-
-        

@@ -87,4 +87,3 @@ def elementer_utvidet_matrise_funk(antall_element, elementer_matrise, knutepunkt
     # [12] Andre arealmoment, 
     # [13] Bøyestivhet, 
     # [14] Vinkelen til elementet i forhold til x-aksen
-

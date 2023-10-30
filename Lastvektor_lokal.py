@@ -24,11 +24,11 @@ def R_lok_funksjon(elem, fordelte_laster):
             #finner lastintensitet i knutepunktpunkt 1 og 2
     
     N1 = 0
-    V1 = ( 7/20*q1  + 3/20*q2) *l 
-    M1 = (-1/20*q1  - 1/30*q2) *l**2
+    V1 = ( 7/20*q1 + 3/20*q2) *l 
+    M1 = (-1/20*q1 - 1/30*q2) *l**2
     N2 = 0
-    V2 = (-7/20*q2  - 3/20*q1) *l   
-    M2 = ( 1/20*q2  + 1/30*q1) *l**2
+    V2 = (-7/20*q2 - 3/20*q1) *l   
+    M2 = ( 1/20*q2 + 1/30*q1) *l**2
     #V fra momentlikevekt
     #M fra tabell for fastinnspenningmomenter
 

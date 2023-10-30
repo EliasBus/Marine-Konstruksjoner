@@ -50,5 +50,3 @@ def innlesning_funk(fil):
     #lagrer listene med data
 
     return antall_knutepunkt, antall_element, antall_fordelte_laster, antall_punktlaster, knutepunkter_matrise, elementer_matrise, fordelte_laster_matrise, punktlaster_matrise
-
-

@@ -1,23 +1,23 @@
-import numpy                        as np
 import matplotlib.pyplot            as plt
+import numpy                        as np
 
-import Innlesning                   as inn
-import Tverrsnittsdata              as tve
-import Systemstivhetsmatrise        as sys
 import Elementer_utvidet_matrise    as ele
-import Transformasjonsmatrise       as tra
-import Figurer                      as fig
-import Lastvektor                   as las
-import Deformasjoner                as defo
-import Spenningsanalyse             as spe
-import Konnektivitetstabell         as kon
-import Print                        as pri
 import Fastinnspenningskrefter      as fast
+import Transformasjonsmatrise       as tra
+import Systemstivhetsmatrise        as sys
+import Konnektivitetstabell         as kon
+import Spenningsanalyse             as spe
+import Tverrsnittsdata              as tve
+import Deformasjoner                as defo
+import Innlesning                   as inn
+import Lastvektor                   as las
+import Figurer                      as fig
+import Print                        as pri
 
 
-jacket='Z.Input_fil .txt'
-beam  ='Z.3Dbeam    .txt'
-test  ='Z.test      .txt'
+jacket='Z.Input_fil.txt'
+beam  ='Z.3Dbeam.txt'
+test  ='Z.test.txt'
 #Angi en fil programmet skal kjøre
 fil=beam
 

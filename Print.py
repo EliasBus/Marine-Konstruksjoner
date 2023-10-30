@@ -67,7 +67,7 @@ def print_r(r):
     print(f'{grønn}{'\n\n\n----------------------------DEFORMASJONER--------------------------------'}{reset}')
     print(f'{rød_u+'Knutepunkt \031':<25}{'Forskyvning \u2192':<18}{'Forskyvning \u2191:':<20}{'Rotasjon \u21ba':<13}{reset}{grønn}{'|':>5}{reset}')
     for i in range(0,len(r),3):
-        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(r[i])} mm,':<20}{f'y: {int(r[i+1])} mm,':<20}{f'\u03B8: {round(r[i+2]*180/np.pi,3)}\u00B0':<17}{grønn}{'|'}{reset}')
+        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(r[i])} mm':<20}{f'y: {int(r[i+1])} mm':<20}{f'\u03B8: {round(r[i+2]*180/np.pi,3)}\u00B0':<17}{grønn}{'|'}{reset}')
     print(f'{grønn}{'|':>74}{reset}')
     print(f'{grønn}{'----------------------------DEFORMASJONER--------------------------------'}{reset}')
 
@@ -92,6 +92,6 @@ def print_fastinnspenningskrefter(S):
     print(f'{grønn}{'\n\n\n--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
     print(f'{rød_u+'Knutepunkt \031':<25}{'aksial:':<18}{'skjær:':<20}{'Moment:':<13}{reset}{grønn}{'|':>5}{reset}')
     for i in range(0,len(S),3):
-        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(S[i])} N,':<20}{f'y: {int(S[i+1])} N,':<20}{f'M: {round(S[i+2]/(10**6))} KNm':<17}{grønn}{'|'}{reset}')
+        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(S[i])} N':<20}{f'y: {int(S[i+1])} N':<20}{f'M: {round(S[i+2]/(10**6))} KNm':<17}{grønn}{'|'}{reset}')
     print(f'{grønn}{'|':>74}{reset}')
     print(f'{grønn}{'--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')

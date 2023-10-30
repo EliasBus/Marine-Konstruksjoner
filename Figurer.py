@@ -118,5 +118,3 @@ def plot_deformasjon(elementer, knutepunkter, deformasjoner, skalar):
     plt.plot([], [], 'r-', label='Deformasjonsskisse', alpha=0.5)
     plt.legend(loc='upper right')
     #plotter legend
-        
-       

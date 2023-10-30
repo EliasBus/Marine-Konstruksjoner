@@ -37,6 +37,3 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         #legger til aksialkraft fra punktlaster på konstruksjonen i retning den virker i
 
     return R
-
-
-

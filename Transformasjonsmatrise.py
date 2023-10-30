@@ -15,5 +15,3 @@ def transformasjonsmatrise_funksjon(element):
         ])
         
     return transformasjon_matrise
-
-

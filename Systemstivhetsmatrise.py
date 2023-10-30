@@ -56,5 +56,3 @@ def systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepun
 
     return systemstivhetsmatrise
     #returnerer matrisen
-    
-

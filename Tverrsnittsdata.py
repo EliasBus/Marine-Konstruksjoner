@@ -70,4 +70,3 @@ def tverrsnittsdata_funk(elementer_matrise):
         #Legger til hver liste i en matrise for alle elementer
 
     return tverrsnittsdata_matrise
-
