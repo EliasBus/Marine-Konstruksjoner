@@ -22,7 +22,7 @@ def print_elementer(elementer_utvidet):
     print(f'{gul}{'\n\n\n------------------------------------------ELEMENTOVERSIKT----------------------------------------------'}{reset}')
     print(f'{rød_u+'Element \031':<21}{'(k1-k2):':<13}{'Koordinater':<12}{'-- Koordinater':<20}{'Lengde:':<9}{'E-modul:':<11}{'Flyt:':<11}{'Vinkel:'}{reset}{gul}{'|':>7}{reset}')
     for elem in elementer_utvidet:
-        print(f'{f'{int(elem[0])} \u2192':<12}{f'| ({int(elem[1])} - {int(elem[2])}):':<15}{f'({round(elem[3]/1000,1)}, {round(elem[4]/1000,1)})':<12}{f'-- ({round(elem[5]/1000,2)}, {round(elem[6]/1000,2)})':<20}{f'{round(elem[7]/1000,1)}m':<9}{f'{int(elem[8]/1000)} GPa':<11}{f'{int(elem[9])} MPa':<11}{f'\u03B8: {round(elem[14]*180/np.pi,3)}\u00B0':<13}{gul}{'|'}{reset}')
+        print(f'{f'{int(elem[0])} \u2192':<12}{f'| ({int(elem[1])} - {int(elem[2])}):':<15}{f'({round(elem[3]/1000,1)}, {round(elem[4]/1000,1)})':<12}{f'-- ({round(elem[5]/1000,1)}, {round(elem[6]/1000,1)})':<20}{f'{round(elem[7]/1000,1)}m':<9}{f'{int(elem[8]/1000)} GPa':<11}{f'{int(elem[9])} MPa':<11}{f'\u03B8: {round(elem[14]*180/np.pi,3)}\u00B0':<13}{gul}{'|'}{reset}')
     print(f'{gul}{'|':>104}{reset}')
     print(f'{gul}{'------------------------------------------ELEMENTOVERSIKT----------------------------------------------'}{reset}')
 
@@ -79,6 +79,8 @@ def print_utnyttelse(elementer, utnyttelse):
         utnyttelsesgrad=utnyttelse[i]
         if utnyttelsesgrad >= 80:
             print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| '}{rød}{f'{round(utnyttelsesgrad,2)} %':<11}{reset}{cyan}{'|'}{reset}')
+        elif utnyttelsesgrad >=60:
+            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| '}{grønn}{f'{round(utnyttelsesgrad,2)} %':<11}{reset}{cyan}{'|'}{reset}')
         else:
             print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| {round(utnyttelsesgrad,2)} %':<13}{cyan}{'|'}{reset}')
         #printes i rødt om utnyttelsesgrad er større enn 80%
@@ -87,19 +89,9 @@ def print_utnyttelse(elementer, utnyttelse):
 
 
 def print_fastinnspenningskrefter(S):
-    print(f'{grønn}{'\n\n\n----------------------------FASTE--------------------------------'}{reset}')
+    print(f'{grønn}{'\n\n\n--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
     print(f'{rød_u+'Knutepunkt \031':<25}{'aksial:':<18}{'skjær:':<20}{'Moment:':<13}{reset}{grønn}{'|':>5}{reset}')
     for i in range(0,len(S),3):
         print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(S[i])} N,':<20}{f'y: {int(S[i+1])} N,':<20}{f'M: {round(S[i+2]/(10**6))} KNm':<17}{grønn}{'|'}{reset}')
     print(f'{grønn}{'|':>74}{reset}')
-    print(f'{grønn}{'----------------------------FASTE--------------------------------'}{reset}')
-
-
-
-def print_figurer(knutepunkter, elementer, elementer_utvidet, r, skalar):
-    fig.plot_vindu(knutepunkter)
-    fig.plot_elementer(elementer, elementer_utvidet, knutepunkter)
-    fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
-
-    plt.show()
-
+    print(f'{grønn}{'--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')

@@ -26,13 +26,13 @@ def plot_vindu(knutepunkter):
     plt.ylabel('y-koordinater')
     plt.title('Konstruksjon')
     margin = max_x *0.2
-    plt.xlim(min_x -margin , max_x *2.5)
+    plt.xlim(min_x -margin , max_x +margin*4)
     plt.ylim(min_y -margin , max_y +margin)
     #setter sammen og plotter figuren
 
 
 
-def plot_elementer(elementer, elementer_utvidet, knutepunkter):
+def plot_konstruksjon(elementer, elementer_utvidet, knutepunkter):
 #Definerer en funksjon som kan kalles for å tegne konsktruksjonen
 
     for i in range(len(elementer)):

@@ -1,17 +1,18 @@
 import numpy as np
 
 def spenningsanalyse_funksjon(elementer, elementer_utvidet,R):
-    utnyttelse=[]
-    ind=0
+    utnyttelse  =[]
+    ind         =0
     for elem in elementer_utvidet:
-        knute_1=elem[1]
-        knute_2=elem[2]
-        N=R[(knute_1-1)*3 +0]
-        M=R[(knute_1-1)*3 +2]
-        A=elem[11]
-        I=elem[12]
-
-        tverrsnittstype=elem[10]
+        knute_1         =elem[1]
+        knute_2         =elem[2]
+        N               =R[(knute_1-1)*3 +0]
+        M               =R[(knute_1-1)*3 +2]
+        A               =elem[11]
+        I               =elem[12]
+        tverrsnittstype =elem[10]
+        
+        
         if tverrsnittstype == 0:
             z=elementer[ind][7]
             #ytre radius
@@ -32,4 +33,5 @@ def spenningsanalyse_funksjon(elementer, elementer_utvidet,R):
         
         ind+=1
         utnyttelse.append(prosent)
+        
     return utnyttelse

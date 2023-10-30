@@ -1,13 +1,11 @@
-
-
 #Python-fil med kode som tar inn strings fra txt-fil og legger det inn i variabler og matriser.
 
 def innlesning_funk(fil):
 
-    knutepunkter_matrise=[]
-    elementer_matrise=[]
-    fordelte_laster_matrise=[]
-    punktlaster_matrise=[]
+    knutepunkter_matrise    =[]
+    elementer_matrise       =[]
+    fordelte_laster_matrise =[]
+    punktlaster_matrise     =[]
 
     with open(fil, 'r') as input_fil:
         linjer = input_fil.readlines()

@@ -1,3 +1,6 @@
+import numpy                        as np
+import matplotlib.pyplot            as plt
+
 import Innlesning                   as inn
 import Tverrsnittsdata              as tve
 import Systemstivhetsmatrise        as sys
@@ -11,8 +14,6 @@ import Konnektivitetstabell         as kon
 import Print                        as pri
 import Fastinnspenningskrefter      as fast
 
-import numpy                        as np
-import matplotlib.pyplot            as plt
 
 jacket='input_fil.txt'
 beam  ='input_fil_3Dbeam.txt'
@@ -29,10 +30,9 @@ knutepunkter            =inn.innlesning_funk(fil)[4]
 elementer               =inn.innlesning_funk(fil)[5]
 fordelte_laster         =inn.innlesning_funk(fil)[6]
 punktlaster             =inn.innlesning_funk(fil)[7]
-
 tverrsnittsdata         =tve.tverrsnittsdata_funk(elementer)
 elementer_utvidet       =ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
-#Matrisen er på formen: 
+#Matrisen 'elementer_utvidet' er på formen: 
     # [0] Element_ID, 
     # [1] Første knutepunkt, 
     # [2] Andre knutepunkt, 
@@ -48,6 +48,7 @@ elementer_utvidet       =ele.elementer_utvidet_matrise_funk(antall_element, elem
     # [12] Andre arealmoment, 
     # [13] Bøyestivhet, 
     # [14] Vinkelen til elementet i forhold til x-aksen
+
 K                       =sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
 R                       =las.lastvektor_funk(antall_knutepunkt, antall_element, elementer_utvidet, antall_punktlaster, punktlaster, antall_fordelte_laster, fordelte_laster)
 r                       =defo.deformasjoner_funk(R, K)
@@ -65,4 +66,7 @@ pri.print_utnyttelse(elementer, utnyttelse)
 pri.print_fastinnspenningskrefter(S)
 #Angi en skalar som skalerer deformasjonene i figuren
 skalar=100
-pri.print_figurer(knutepunkter, elementer, elementer_utvidet,r,skalar)
+fig.plot_vindu(knutepunkter)
+fig.plot_konstruksjon(elementer, elementer_utvidet, knutepunkter) 
+fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
+plt.show()

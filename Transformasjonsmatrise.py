@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def transformasjonsmatrise_funksjon(element):
     #definerer en funksjon som tar inn et element
     #setter theta lik vinkelen til elementet

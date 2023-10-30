@@ -1,5 +1,5 @@
 import Konnektivitetstabell as kon
-import numpy as np
+import numpy                as np
 
 
 def R_lok_funksjon(elem, fordelte_laster):
@@ -27,7 +27,7 @@ def R_lok_funksjon(elem, fordelte_laster):
     V1 = ( 7/20*q1  + 3/20*q2) *l 
     M1 = (-1/20*q1  - 1/30*q2) *l**2
     N2 = 0
-    V2 = -( 7/20*q2  + 3/20*q1) *l   
+    V2 = (-7/20*q2  - 3/20*q1) *l   
     M2 = ( 1/20*q2  + 1/30*q1) *l**2
     #V fra momentlikevekt
     #M fra tabell for fastinnspenningmomenter
@@ -41,6 +41,5 @@ def R_lok_funksjon(elem, fordelte_laster):
         M2
     ])
     #lokal lastvektor
-    
     
     return R_lok
