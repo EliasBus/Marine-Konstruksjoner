@@ -2,7 +2,7 @@ import numpy as np
 import Transformasjonsmatrise as tra
 import Elementstivhetsmatrise as elesti
 import Konnektivitetstabell   as kon
-import R_lok                  as R_l
+import Lastvektor_lokal               as R_l
 
 def fastinnspenningskrefter_funksjon(elementer_utvidet, r, fordelte_laster, n_knutepunkt):
     S=np.zeros(n_knutepunkt *3)

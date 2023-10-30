@@ -15,10 +15,9 @@ import Print                        as pri
 import Fastinnspenningskrefter      as fast
 
 
-jacket='input_fil.txt'
-beam  ='input_fil_3Dbeam.txt'
-test  ='test_fil.txt'
-
+jacket='Z.Input_fil .txt'
+beam  ='Z.3Dbeam    .txt'
+test  ='Z.test      .txt'
 #Angi en fil programmet skal kjøre
 fil=beam
 

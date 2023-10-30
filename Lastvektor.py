@@ -1,6 +1,6 @@
 import Transformasjonsmatrise as tra
 import Konnektivitetstabell   as kon
-import R_lok                  as R_l
+import Lastvektor_lokal                 as R_l
 import numpy as np
 
 
