@@ -37,7 +37,7 @@ def plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebr
         gjennomsiktighet=1
     elif bakgrunn==1:
     #Funksjonen skal plotte konstruksjonen i bakgrunnen
-        gjennomsiktighet=0.3
+        gjennomsiktighet=0.5
     else:
         print('bakgrunn skal ha verdi 1 for å brukes som bagrunn, 0 for å plotte som konstruksjon')
     for i in range(len(elementer)):

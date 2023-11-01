@@ -69,7 +69,7 @@ pri.print_fastinnspenningskrefter(S)
 skalar_deformasjon=100
 skalar_linjebredde=1 
 fig.plot_konstruksjon               (knutepunkter, elementer, elementer_utvidet,    skalar_linjebredde, 0)
-fig.plot_deformasjon                (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
-fig.plot_rotasjoner                 (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
+#fig.plot_deformasjon                (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
+#fig.plot_rotasjoner                 (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
 fig.plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
 #Plotter forskjellige figurer hver for seg
