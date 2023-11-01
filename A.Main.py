@@ -21,7 +21,6 @@ test  ='Z.test.txt'
 #Angi en fil programmet skal kjøre
 fil=beam
 
-
 antall_knutepunkt       =inn.innlesning_funk(fil)[0]
 antall_element          =inn.innlesning_funk(fil)[1]
 antall_fordelte_laster  =inn.innlesning_funk(fil)[2]
@@ -56,7 +55,6 @@ r                       =defo.deformasjoner_funk(R, K)
 utnyttelse              =spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R)
 S                       =fast.fastinnspenningskrefter_funksjon(elementer_utvidet, r, fordelte_laster, antall_knutepunkt)
 
-
 #print programmet
 pri.print_K(K)
 pri.print_elementer(elementer_utvidet)
@@ -67,12 +65,11 @@ pri.print_utnyttelse(elementer, utnyttelse)
 pri.print_fastinnspenningskrefter(S)
 
 
-
-#Angi en skalar som skalerer deformasjonene i figuren
-skalar=200
-fig.plot_konstruksjon(elementer, elementer_utvidet, knutepunkter)
-plt.show()
-fig.plot_rotasjoner(knutepunkter, elementer, elementer_utvidet, r, skalar)
-plt.show()
-fig.plot_deformasjon(elementer, elementer_utvidet, knutepunkter, r, skalar)
-plt.show()
+#Angi en skalar som skalerer deformasjonene og linjebredden til elementene i figuren
+skalar_deformasjon=100
+skalar_linjebredde=1 
+fig.plot_konstruksjon               (knutepunkter, elementer, elementer_utvidet,    skalar_linjebredde, 0)
+fig.plot_deformasjon                (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
+fig.plot_rotasjoner                 (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
+fig.plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
+#Plotter forskjellige figurer hver for seg
