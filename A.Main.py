@@ -13,7 +13,6 @@ import Innlesning                   as inn
 import Lastvektor                   as las
 import Figurer                      as fig
 import Print                        as pri
-import Visualization                as vis
 
 
 jacket='Z.Input_fil.txt'
@@ -71,16 +70,9 @@ pri.print_fastinnspenningskrefter(S)
 
 #Angi en skalar som skalerer deformasjonene i figuren
 skalar=200
-rot=[]
-for i in range(0, len(r), 3):
-    rot.append(r[i+2]*skalar)
-
-
-
-fig.plot_konstruksjon(elementer, elementer_utvidet, knutepunkter) 
-
-
-fig.plot_rotasjoner(knutepunkter, elementer, 1, 1, rot)
+fig.plot_konstruksjon(elementer, elementer_utvidet, knutepunkter)
 plt.show()
-fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
+fig.plot_rotasjoner(knutepunkter, elementer, elementer_utvidet, r, skalar)
+plt.show()
+fig.plot_deformasjon(elementer, elementer_utvidet, knutepunkter, r, skalar)
 plt.show()

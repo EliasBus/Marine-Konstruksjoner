@@ -14,7 +14,7 @@ def lastvektor_funk(n_knutepunkt,n_elementer, elementer_utvidet, n_punktlaster, 
         R_lok = R_l.R_lok_funksjon(elem, fordelte_laster)
         konnektivitetstabell=kon.konnektivitetstabell_funksjon(elem)
         T = tra.transformasjonsmatrise_funksjon(elem)
-        R_tra = np.linalg.inv(T) @ R_lok
+        R_tra = np.transpose(T) @ R_lok
         #transformerer lokal lastvektor
 
         R[int(konnektivitetstabell[0][2]-1)] += R_tra[0]
