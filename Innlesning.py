@@ -1,3 +1,4 @@
+import numpy as np
 #Python-fil med kode som tar inn strings fra txt-fil og legger det inn i variabler og matriser.
 
 def innlesning_funk(fil):
@@ -48,5 +49,7 @@ def innlesning_funk(fil):
                 punktlaster_matrise.append(punktlast)
                 index+=1
     #lagrer listene med data
+
+    
 
     return antall_knutepunkt, antall_element, antall_fordelte_laster, antall_punktlaster, knutepunkter_matrise, elementer_matrise, fordelte_laster_matrise, punktlaster_matrise

@@ -13,6 +13,7 @@ import Innlesning                   as inn
 import Lastvektor                   as las
 import Figurer                      as fig
 import Print                        as pri
+import Visualization                as vis
 
 
 jacket='Z.Input_fil.txt'
@@ -21,16 +22,18 @@ test  ='Z.test.txt'
 #Angi en fil programmet skal kjøre
 fil=beam
 
+
 antall_knutepunkt       =inn.innlesning_funk(fil)[0]
 antall_element          =inn.innlesning_funk(fil)[1]
 antall_fordelte_laster  =inn.innlesning_funk(fil)[2]
 antall_punktlaster      =inn.innlesning_funk(fil)[3]
-knutepunkter            =inn.innlesning_funk(fil)[4]
-elementer               =inn.innlesning_funk(fil)[5]
+knutepunkter            =np.array(inn.innlesning_funk(fil)[4])
+elementer               =np.array(inn.innlesning_funk(fil)[5])
 fordelte_laster         =inn.innlesning_funk(fil)[6]
 punktlaster             =inn.innlesning_funk(fil)[7]
 tverrsnittsdata         =tve.tverrsnittsdata_funk(elementer)
 elementer_utvidet       =ele.elementer_utvidet_matrise_funk(antall_element, elementer, knutepunkter, tverrsnittsdata)
+
 #Matrisen 'elementer_utvidet' er på formen: 
     # [0] Element_ID, 
     # [1] Første knutepunkt, 
@@ -63,9 +66,21 @@ pri.print_R(R)
 pri.print_r(r)
 pri.print_utnyttelse(elementer, utnyttelse)
 pri.print_fastinnspenningskrefter(S)
+
+
+
 #Angi en skalar som skalerer deformasjonene i figuren
-skalar=100
-fig.plot_vindu(knutepunkter)
+skalar=200
+rot=[]
+for i in range(0, len(r), 3):
+    rot.append(r[i+2]*skalar)
+
+
+
 fig.plot_konstruksjon(elementer, elementer_utvidet, knutepunkter) 
+
+
+fig.plot_rotasjoner(knutepunkter, elementer, 1, 1, rot)
+plt.show()
 fig.plot_deformasjon(elementer_utvidet, knutepunkter, r, skalar)
 plt.show()
