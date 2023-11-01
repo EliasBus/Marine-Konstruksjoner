@@ -13,7 +13,7 @@ import Innlesning                   as inn
 import Lastvektor                   as las
 import Figurer                      as fig
 import Print                        as pri
-
+import Midt_moment as midt
 
 jacket='Z.Input_fil.txt'
 beam  ='Z.3Dbeam.txt'
@@ -54,6 +54,10 @@ R                       =las.lastvektor_funk(antall_knutepunkt, antall_element, 
 r                       =defo.deformasjoner_funk(R, K)
 utnyttelse              =spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R)
 S                       =fast.fastinnspenningskrefter_funksjon(elementer_utvidet, r, fordelte_laster, antall_knutepunkt)
+
+
+
+
 
 #print programmet
 pri.print_K(K)
