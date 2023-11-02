@@ -79,14 +79,14 @@ def plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebr
         plt.text(x_koord, y_koord, f'{int(elementer_utvidet[i][0])}', fontsize=8, alpha=gjennomsiktighet)
         #plotter label til hvert av elementene
         for knute in knutepunkter:
-            plt.plot(knute[1],knute[2], 'ro', alpha=gjennomsiktighet)
+            plt.plot(knute[1],knute[2], 'mo', alpha=gjennomsiktighet)
             plt.text(knute[1]+0.5,knute[2]-2,int(knute[0]), fontsize=14, alpha=gjennomsiktighet)
         #plotter knutepunktene samt label til knutepunktet
     plt.title('Konstruksjon')
-    plt.plot([], [], 'ro',                     label='Knutepunkter',   alpha=gjennomsiktighet)
-    plt.plot([], [], 'y-', linewidth=tykkelse, label='O-Profil',       alpha=gjennomsiktighet)
-    plt.plot([], [], 'c-', linewidth=tykkelse, label='I-Profil',       alpha=gjennomsiktighet)
-    plt.plot([], [], 'g-', linewidth=tykkelse, label='\uF790-Profil',  alpha=gjennomsiktighet)
+    plt.plot([], [], 'mo',              label='Knutepunkter',   alpha=gjennomsiktighet)
+    plt.plot([], [], 'y-', linewidth=6, label='O-Profil',       alpha=gjennomsiktighet)
+    plt.plot([], [], 'c-', linewidth=6, label='I-Profil',       alpha=gjennomsiktighet)
+    plt.plot([], [], 'g-', linewidth=6, label='\uF790-Profil',  alpha=gjennomsiktighet)
     plt.legend(loc='upper right')
     #Plotter legend
     if bakgrunn==0:
@@ -167,16 +167,20 @@ def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet,
     plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, 1)
     plt.title('Deformasjoner (både x-retning, y-retning og rotasjoner)')
     linjebredde=3
+    rotasjoner=[]
     knutepunkter = np.array(knutepunkter[:, 1:3])
     for i in range(len(knutepunkter)):
+        x       =knutepunkter[i][0]
+        y       =knutepunkter[i][1]
+        x_def   =deformasjoner[i*3]
+        y_def   =deformasjoner[i*3+1]
+        rot     =deformasjoner[i*3+2]
+        rotasjoner.append(rot*skalar_deformasjon)
         knutepunkter[i]= [knutepunkter[i][0]+deformasjoner[i*3]*skalar_deformasjon,knutepunkter[i][1]+deformasjoner[i*3+1]*skalar_deformasjon]
-    #legger til deformasjoner til koordinatene fra r
+        #legger til deformasjoner til koordinatene, fra r
+        #skalerer deformasjonene som skal plottes
     elementer = np.array(elementer[:, 1:3], copy =1, dtype=int)
     nod_dof = np.arange(1, knutepunkter.shape[0] + 1, 1, dtype=int)
-    rotasjoner=[]
-    for i in range(0, len(deformasjoner), 3):
-        rotasjoner.append(deformasjoner[i+2]*skalar_deformasjon)
-    #henter kun ut rotasjoner fra r
     for iel in range(0, elementer.shape[0]):
         delta_x = knutepunkter[elementer[iel, 1] - 1, 0] - knutepunkter[elementer[iel, 0] - 1, 0]
         delta_z = knutepunkter[elementer[iel, 1] - 1, 1] - knutepunkter[elementer[iel, 0] - 1, 1]
@@ -191,9 +195,9 @@ def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet,
                 phi[inod] = rotasjoner[nod_dof[elementer[iel, inod] - 1] - 1]
         x = np.array([0, L])
         z = np.array([0, 0])
-        xx = np.arange(0, 1.01, 0.01)*L
-        cs = CubicSpline(x, z, bc_type = ((1, -phi[0, 0]), (1, -phi[1, 0])))
-        zz = cs(xx)
+        xx= np.arange(0, 1.01, 0.01)*L
+        cs= CubicSpline(x, z, bc_type = ((1, -phi[0, 0]), (1, -phi[1, 0])))
+        zz= cs(xx)
         # Rotate
         xxzz = np.array([[np.cos(psi), -np.sin(psi)], [np.sin(psi), np.cos(psi)]]) @ np.vstack([xx, zz])
         # Displace
