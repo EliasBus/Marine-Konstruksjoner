@@ -222,7 +222,7 @@ def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,
         lengde=(10000 + kraft/300)*skalar_krefter
         dx=np.cos(vinkel)*lengde
         dy=np.sin(vinkel)*lengde
-        plt.arrow(x-dx, y-dy, dx, dy, head_width = 1500*skalar_krefter ,width = 700*skalar_krefter,fc ='red', alpha =1)
+        plt.arrow(x-dx, y-dy, dx, dy, head_width = 1000*skalar_krefter ,width = 500*skalar_krefter,fc ='red', alpha =1)
         plt.text(x-dx, y-dy, f'{int(kraft/1000)} kN')
         #Plotter røde piler hvor punktlastene virker
     
@@ -246,8 +246,11 @@ def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,
         dy1=np.sin(vinkel)*lengde1
         dx2=np.cos(vinkel)*lengde2
         dy2=np.sin(vinkel)*lengde2
-        plt.arrow(x1-dx1, y1-dy1, dx1, dy1, head_width = 2000*skalar_krefter,width = 1000*skalar_krefter,fc ='blue', alpha=1)
-        plt.arrow(x2-dx2, y2-dy2, dx2, dy2, head_width = 2000*skalar_krefter,width = 1000*skalar_krefter,fc ='blue', alpha=1)
+        if q1!=0:
+            plt.arrow(x1-dx1, y1-dy1, dx1, dy1, head_width = 1000*skalar_krefter,width = 500*skalar_krefter,fc ='blue', alpha=1)
+        if q2!=0:
+            plt.arrow(x2-dx2, y2-dy2, dx2, dy2, head_width = 1000*skalar_krefter,width = 500*skalar_krefter,fc ='blue', alpha=1)
+        #plotter en pil for fordelt last ved ende, hvis den er ulik 0
         x=[x1-dx1,  x2-dx2]
         y=[y1-dy1, y2-dy2]
         plt.plot(x,y, 'b-', linewidth=1)

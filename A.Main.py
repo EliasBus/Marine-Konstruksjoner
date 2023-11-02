@@ -19,7 +19,7 @@ jacket='Z.Input_fil.txt'
 beam  ='Z.3Dbeam.txt'
 test  ='Z.test.txt'
 #Angi en fil programmet skal kjøre
-fil=beam
+fil=test
 
 antall_knutepunkt       =inn.innlesning_funk(fil)[0]
 antall_element          =inn.innlesning_funk(fil)[1]
@@ -67,11 +67,12 @@ pri.print_fastinnspenningskrefter(S)
 
 #Angi en skalar som skalerer deformasjonene, linjebredden til elementene og størrelsen på kraft-pilene i figuren
 skalar_deformasjon=100
-skalar_linjebredde=1
-skalar_krefter =1
+skalar_linjebredde=10
+skalar_krefter =0.1
 #fig.plot_konstruksjon               (knutepunkter, elementer, elementer_utvidet,    skalar_linjebredde, 0)
 #fig.plot_deformasjon                (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
 #fig.plot_rotasjoner                 (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
 fig.plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,skalar_krefter, fordelte_laster, punktlaster)
 #fig.plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
 #Plotter forskjellige figurer hver for seg 
+
