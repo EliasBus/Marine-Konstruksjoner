@@ -23,8 +23,8 @@ def plot_vindu(knutepunkter):
     plt.xlabel('x-koordinater')
     plt.ylabel('y-koordinater')
     margin = max_x *0.2
-    plt.xlim(min_x -margin , max_x +margin*4)
-    plt.ylim(min_y -margin , max_y +margin*10)
+    plt.xlim(min_x -margin , max_x +margin*2)
+    plt.ylim(min_y -margin , max_y +margin*5)
     #setter sammen og plotter figuren
 
 
@@ -220,7 +220,12 @@ def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,
         kraft = punktlaster[i][2]
         vinkel=punktlaster[i][1]/180*np.pi
         lengde=(10000 + kraft/300)*skalar_krefter
-        plt.annotate(f'{round(kraft/1000)} kN', xy =(x, y), xytext =(x+np.cos(vinkel)*lengde, y-np.sin(vinkel)*lengde), arrowprops = dict(facecolor ='red'))
+        dx=np.cos(vinkel)*lengde
+        dy=np.sin(vinkel)*lengde
+        plt.arrow(x-dx, y-dy, dx, dy, head_width = 1500*skalar_krefter ,width = 700*skalar_krefter,fc ='red', alpha =1)
+        plt.text(x-dx, y-dy, f'{int(kraft/1000)} kN')
+        #Plotter røde piler hvor punktlastene virker
+    
     for i in range(len(fordelte_laster)):
         elem =int(fordelte_laster[i][0])
         punkt1=int(fordelte_laster[i][1])
@@ -235,12 +240,23 @@ def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,
             if elementer_utvidet[i][0]==elem:
                 elem_ind = i
         vinkel=elementer_utvidet[elem_ind][14]-np.pi/2
-        lengde1=q1*50*skalar_krefter
-        lengde2=q2*50*skalar_krefter
-        plt.annotate(f'{int(q1)} kN/m', xy =(x1, y1), xytext =(x1-np.cos(vinkel)*lengde1, y1-np.sin(vinkel)*lengde1), arrowprops=dict(arrowstyle='simple',color='blue', relpos=(0, 0)))
-        plt.annotate(f'{int(q2)} kN/m', xy =(x2, y2), xytext =(x2-np.cos(vinkel)*lengde2, y2-np.sin(vinkel)*lengde2), arrowprops=dict(arrowstyle='simple',color='blue', relpos=(0, 0)))
-    plt.plot([], [], 'r-', linewidth=5, label='Punktlaster', alpha=1)
-    plt.plot([], [], 'b-', linewidth=2, label='Fordelte laster', alpha=1)
+        lengde1=q1*20*skalar_krefter
+        lengde2=q2*20*skalar_krefter
+        dx1=np.cos(vinkel)*lengde1
+        dy1=np.sin(vinkel)*lengde1
+        dx2=np.cos(vinkel)*lengde2
+        dy2=np.sin(vinkel)*lengde2
+        plt.arrow(x1-dx1, y1-dy1, dx1, dy1, head_width = 2000*skalar_krefter,width = 1000*skalar_krefter,fc ='blue', alpha=1)
+        plt.arrow(x2-dx2, y2-dy2, dx2, dy2, head_width = 2000*skalar_krefter,width = 1000*skalar_krefter,fc ='blue', alpha=1)
+        x=[x1-dx1,  x2-dx2]
+        y=[y1-dy1, y2-dy2]
+        plt.plot(x,y, 'b-', linewidth=1)
+        #tegner en strek som markerer fordelt last
+        plt.text(x1-dx1, y1-dy1, f'{q1} kN/m')
+        plt.text(x2-dx2, y2-dy2, f'{q2} kN/m')
+        #Plotter blå piler hvor fordelte laster virker
+    plt.plot([], [], 'r->', linewidth=2, label='Punktlaster', alpha=1)
+    plt.plot([], [], 'b->', linewidth=1, label='Fordelte laster', alpha=1)
     plt.legend(loc='upper right')
     #plotter legend
     plt.show()
