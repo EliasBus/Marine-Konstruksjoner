@@ -24,7 +24,7 @@ def plot_vindu(knutepunkter):
     plt.ylabel('y-koordinater')
     margin = max_x *0.2
     plt.xlim(min_x -margin , max_x +margin*4)
-    plt.ylim(min_y -margin , max_y +margin)
+    plt.ylim(min_y -margin , max_y +margin*10)
     #setter sammen og plotter figuren
 
 
@@ -205,6 +205,42 @@ def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet,
         zz2 = xxzz[1, :] + knutepunkter[elementer[iel, 0] - 1, 1]
         plt.plot(xx2, zz2, 'r-', linewidth = linjebredde, alpha=1)
     plt.plot([], [], 'r-', linewidth=linjebredde, label='Deformasjonsskisse', alpha=1)
+    plt.legend(loc='upper right')
+    #plotter legend
+    plt.show()
+
+
+def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,skalar_krefter, fordelte_laster, punktlaster):
+    plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, 1)
+    plt.title('Punktlaster og fordelte laster')
+    for i in range(len(punktlaster)):
+        punkt=int(punktlaster[i][0])
+        x=knutepunkter[punkt-1][1]
+        y=knutepunkter[punkt-1][2]
+        kraft = punktlaster[i][2]
+        vinkel=punktlaster[i][1]/180*np.pi
+        lengde=(10000 + kraft/300)*skalar_krefter
+        plt.annotate(f'{round(kraft/1000)} kN', xy =(x, y), xytext =(x+np.cos(vinkel)*lengde, y-np.sin(vinkel)*lengde), arrowprops = dict(facecolor ='red'))
+    for i in range(len(fordelte_laster)):
+        elem =int(fordelte_laster[i][0])
+        punkt1=int(fordelte_laster[i][1])
+        punkt2=int(fordelte_laster[i][2])
+        x1=knutepunkter[punkt1-1][1]
+        y1=knutepunkter[punkt1-1][2]
+        x2=knutepunkter[punkt2-1][1]
+        y2=knutepunkter[punkt2-1][2]
+        q1 = fordelte_laster[i][3]
+        q2 = fordelte_laster[i][4]
+        for i in range(len(elementer_utvidet)):
+            if elementer_utvidet[i][0]==elem:
+                elem_ind = i
+        vinkel=elementer_utvidet[elem_ind][14]-np.pi/2
+        lengde1=q1*50*skalar_krefter
+        lengde2=q2*50*skalar_krefter
+        plt.annotate(f'{int(q1)} kN/m', xy =(x1, y1), xytext =(x1-np.cos(vinkel)*lengde1, y1-np.sin(vinkel)*lengde1), arrowprops=dict(arrowstyle='simple',color='blue', relpos=(0, 0)))
+        plt.annotate(f'{int(q2)} kN/m', xy =(x2, y2), xytext =(x2-np.cos(vinkel)*lengde2, y2-np.sin(vinkel)*lengde2), arrowprops=dict(arrowstyle='simple',color='blue', relpos=(0, 0)))
+    plt.plot([], [], 'r-', linewidth=5, label='Punktlaster', alpha=1)
+    plt.plot([], [], 'b-', linewidth=2, label='Fordelte laster', alpha=1)
     plt.legend(loc='upper right')
     #plotter legend
     plt.show()
