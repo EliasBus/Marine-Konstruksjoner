@@ -23,9 +23,10 @@ def fastinnspenningskrefter_funksjon(elementer_utvidet, r, fordelte_laster, n_kn
 
         T                       = tra.transformasjonsmatrise_funksjon(elem)
         k                       = elesti.elementsivhetsmatrise_funskjon(elem)
+        v_lok                   = T @ deformasjonsvektor_element
         R_lok                   = R_l.R_lok_funksjon(elem, fordelte_laster)
-        S_lok                   = np.add(k @ deformasjonsvektor_element , R_lok)
-        S_lok = k @ deformasjonsvektor_element@T
+        S_lok                   = np.add(k @ v_lok , R_lok)
+        
 
         S[int(konnektivitetstabell[0][2]-1)] += S_lok[0]
         S[int(konnektivitetstabell[1][2]-1)] += S_lok[1]

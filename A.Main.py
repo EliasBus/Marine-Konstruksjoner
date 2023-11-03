@@ -74,5 +74,7 @@ fig.plot_konstruksjon               (knutepunkter, elementer, elementer_utvidet,
 #fig.plot_rotasjoner                 (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
 fig.plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,skalar_krefter, fordelte_laster, punktlaster)
 fig.plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
+
+
 #Plotter forskjellige figurer hver for seg 
 

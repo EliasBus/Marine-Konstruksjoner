@@ -125,9 +125,9 @@ def plot_rotasjoner(knutepunkter, elementer, elementer_utvidet, deformasjoner, s
     plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, 1)
     plt.title('Deformasjoner (bøyning i elementene)')
     linjebredde=3
-    knutepunkter = np.array(knutepunkter[:, 1:3], copy =1, dtype=int)
-    elementer = np.array(elementer[:, 1:3], copy =1, dtype=int)
-    nod_dof = np.arange(1, knutepunkter.shape[0] + 1, 1, dtype=int)
+    knutepunkter=np.array(      knutepunkter[:, 1:3],   copy =1, dtype=float)
+    elementer   =np.array(      elementer[:, 1:3],      copy =1, dtype=int)
+    nod_dof     =np.arange(1,   knutepunkter.shape[0]+1, 1,      dtype=int)
     rotasjoner=[]
     for i in range(0, len(deformasjoner), 3):
         rotasjoner.append(deformasjoner[i+2]*skalar_deformasjon)
