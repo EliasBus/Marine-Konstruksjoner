@@ -1,37 +1,44 @@
 import numpy as np
 
-def spenningsanalyse_funksjon(elementer, elementer_utvidet,R):
+def spenningsanalyse_funksjon(elementer, elementer_utvidet,R, momenter):
     utnyttelse  =[]
-    ind         =0
-    for elem in elementer_utvidet:
-        knute_1         =elem[1]
-        knute_2         =elem[2]
+    for i in range(len(elementer_utvidet)):
+        prosenter=[]
+        knute_1         =int(elementer[i][1])
+        knute_2         =int(elementer[i][2])
         N               =R[(knute_1-1)*3 +0]
-        M               =R[(knute_1-1)*3 +2]
-        A               =elem[11]
-        I               =elem[12]
-        tverrsnittstype =elem[10]
+        M_midt          =momenter[i][0]
+        M_1             =momenter[i][1]
+        M_2             =momenter[i][2]
+        A               =elementer_utvidet[i][11]
+        I               =elementer_utvidet[i][12]
+        tverrsnittstype =elementer_utvidet[i][10]
         
         
         if tverrsnittstype == 0:
-            z=elementer[ind][7]
+            z=elementer[i][7]
             #ytre radius
         elif tverrsnittstype ==1:
-            z=elementer[ind][7] + elementer[ind][8]/2
+            z=elementer[i][7] + elementer[i][8]/2
             # høyde flens       + høyde stag/2
         elif tverrsnittstype == 2:
-            z=elementer[ind][7]/2
+            z=elementer[i][7]/2
             #høyde boks/2
         #finner z-verdien (høyde/2) til tverrsnittet
 
-        sigma = abs(N/A) + abs(M*z/I)
+        sigma_midt = abs(N/A) + abs(M_midt*z/I)
+        sigma_1 = abs(N/A) + abs(M_1*z/I)
+        sigma_2 = abs(N/A) + abs(M_2*z/I)
         #Naviers formel
 
-        flytespenning=elem[9]
-        prosent = sigma/flytespenning * 100
+        flytespenning=elementer_utvidet[i][9]
+        prosent_midt = sigma_midt/flytespenning * 100
+        prosent_1 = sigma_1/flytespenning * 100
+        prosent_2 = sigma_2/flytespenning * 100
         #prosent utnyttelse av f_y
         
-        ind+=1
-        utnyttelse.append(prosent)
-        
+        prosenter.append(prosent_midt)
+        prosenter.append(prosent_1)
+        prosenter.append(prosent_2)
+        utnyttelse.append(prosenter)
     return utnyttelse

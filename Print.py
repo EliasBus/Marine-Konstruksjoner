@@ -71,23 +71,6 @@ def print_r(r):
     print(f'{grønn}{'|':>74}{reset}')
     print(f'{grønn}{'----------------------------DEFORMASJONER--------------------------------'}{reset}')
 
-
-def print_utnyttelse(elementer, utnyttelse):
-    print(f'{cyan}{'\n\n\n--------UTNYTTELSE---------'}{reset}')
-    print(f'{rød_u+'Element \031':<23}{'\u03c3/f\u1d67\u22c5100%':<11}{reset}{cyan}{'|'}{reset}')
-    for i in range(len(elementer)):
-        utnyttelsesgrad=utnyttelse[i]
-        if utnyttelsesgrad >= 80:
-            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| '}{rød}{f'{round(utnyttelsesgrad,2)} %':<11}{reset}{cyan}{'|'}{reset}')
-        elif utnyttelsesgrad >=60:
-            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| '}{grønn}{f'{round(utnyttelsesgrad,2)} %':<11}{reset}{cyan}{'|'}{reset}')
-        else:
-            print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| {round(utnyttelsesgrad,2)} %':<13}{cyan}{'|'}{reset}')
-        #printes i rødt om utnyttelsesgrad er større enn 80%
-    print(f'{cyan}{'|':>28}{reset}')
-    print(f'{cyan}{'--------UTNYTTELSE---------'}{reset}')
-
-
 def print_fastinnspenningskrefter(S):
     print(f'{grønn}{'\n\n\n--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
     print(f'{rød_u+'Knutepunkt \031':<25}{'aksial:':<18}{'skjær:':<20}{'Moment:':<13}{reset}{grønn}{'|':>5}{reset}')
@@ -95,3 +78,38 @@ def print_fastinnspenningskrefter(S):
         print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(S[i])} N':<20}{f'y: {int(S[i+1])} N':<20}{f'M: {round(S[i+2]/(10**6))} KNm':<17}{grønn}{'|'}{reset}')
     print(f'{grønn}{'|':>74}{reset}')
     print(f'{grønn}{'--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
+
+def print_momenter(momenter, elementer):
+    print(f'{grønn}{'\n\n\n--------------------------MOMENTER-------------------------'}{reset}')
+    print(f'{rød_u+'Element \031':<25}{'Knute 1:':<18}{'Knute 2:':<20}{'Midtmoment:':<13}{reset}{grønn}{'|':>5}{reset}')
+    for i in range(len(elementer)):
+        print(f'{f'{int(elementer[i][0])} \u2192':<16}{f'| 1: {int(momenter[i][1]/(10**6))} kNm':<20}{f'2: {int(momenter[i][2]/(10**6))} kNm':<20}{f'Midt: {round(momenter[i][0]/(10**6))} kNm':<17}{grønn}{'|'}{reset}')
+    print(f'{grønn}{'|':>74}{reset}')
+    print(f'{grønn}{'--------------------------MOMENTER-------------------------'}{reset}')
+
+def print_utnyttelse(elementer, utnyttelse):
+    print(f'{cyan}{'\n\n\n--------------UTNYTTELSE (\u03c3/f\u1d67\u22c5100%)-------------'}{reset}')
+    print(f'{rød_u+'Element \031':<23}{'Ende 1:':<11}{'Ende 2:':<11}{'Midt:':<7}{reset}{cyan}{'|':>5}{reset}')
+    for i in range(len(elementer)):
+        utnyttelsesgrad_midt    =utnyttelse[i][0]
+        utnyttelsesgrad_1       =utnyttelse[i][1]
+        utnyttelsesgrad_2       =utnyttelse[i][2]
+        farge_midt=reset
+        farge_1=reset
+        farge_2=reset
+        if utnyttelsesgrad_midt >= 80:
+            farge_midt=rød
+        elif utnyttelsesgrad_midt >=60:
+            farge_midt=grønn
+        if utnyttelsesgrad_1 >= 80:
+            farge_1=rød
+        elif utnyttelsesgrad_1 >=60:
+            farge_1=grønn
+        if utnyttelsesgrad_2 >= 80:
+            farge_2=rød
+        elif utnyttelsesgrad_2 >=60:
+            farge_2=grønn
+        print(f'{f'{int(elementer[i][0])} \u2192':<14}{f'| '}{farge_1}{f'{round(utnyttelsesgrad_1,2)} %':<11}{reset}{farge_2}{f'{round(utnyttelsesgrad_2,2)} %':<11}{reset}{farge_midt}{f'{round(utnyttelsesgrad_midt,2)} %':<11}{reset}{cyan}{'|'}{reset}')
+        #printes i rødt om utnyttelsesgrad er større enn 80%, grønn hvis større enn 60%, men mindre enn 80%.
+    print(f'{cyan}{'|':>50}{reset}')
+    print(f'{cyan}{'--------------UTNYTTELSE-------------------------'}{reset}')

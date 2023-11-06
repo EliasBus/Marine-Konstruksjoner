@@ -1,0 +1,36 @@
+#Antall knutepunkt
+4
+#Antall element
+3
+#Antall fordelte laster
+0
+#Antall punktlaster
+1
+
+#Her kommer info om alle knutepunktene i rekkefølgen:
+#knutepunktsnummer, x-koordinat [mm], y-koordinat [mm], Hvordan det er innspent(0 for fri, 1 for fast innspent)
+#Knutepunkter:
+1, 0,       0,      1
+2, 0,   5000,      0
+3, 5000,    5000,  0
+4, 5000,   0,  1
+
+
+#Her kommer informasjon om hvert element i rekkefolgen:
+#Element-ID, Knutepunkt 1, Knutepunkt 2, E-modul [Mpa = N/mm^2], Flytespenning [MPa], Geometri (0 for ror, 1 for I-profil, 2 for boks), Dimensjonene til profilene [mm] (0: indre_radius,ytre_radius, (Må ha fire dimensjoner, så legg inn 0 på to siste for rør) 1: b_flens, h_flens, h_stag, b_stag 2: b_boks, h_boks, b_stag, h_flens)
+#Elementer:
+12,     1,  2,  210000, 420, 0, 40,  50,    0,  0
+23,     2,  3,  210000, 420, 0, 40,  50,    0,  0
+34,     3,  4,  210000, 420, 0, 40,  50,    0,  0
+
+#Info om de fordelte lastene, de vil bli behandlet med medlemsfunksjonen til klassen for fordelte laster.
+#Info kommer i rekkefolgen:
+#Element-ID, Knutepunkt 1 den virker på, knutepunkt 2 den virker på, Intensitet ved lokalt knutepunkt 1 [N/mm], Intensitet ved knutepunkt 2 [N/mm]
+#Fordelte laster:
+
+
+
+#Info om punktlastene kommer i rekkefølge:
+#knutepunktsnummer, Hvilken retning det virker i (i forhold til global x-akse), Intensitet [N]
+#Punktlaster:
+2,  0, 1000 
