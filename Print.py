@@ -80,12 +80,12 @@ def print_fastinnspenningskrefter(S):
     print(f'{grønn}{'--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
 
 def print_momenter(momenter, elementer):
-    print(f'{grønn}{'\n\n\n--------------------------MOMENTER-------------------------'}{reset}')
+    print(f'{grønn}{'\n\n\n--------------------------MOMENTER---------------------------------------'}{reset}')
     print(f'{rød_u+'Element \031':<25}{'Knute 1:':<18}{'Knute 2:':<20}{'Midtmoment:':<13}{reset}{grønn}{'|':>5}{reset}')
     for i in range(len(elementer)):
         print(f'{f'{int(elementer[i][0])} \u2192':<16}{f'| 1: {int(momenter[i][1]/(10**6))} kNm':<20}{f'2: {int(momenter[i][2]/(10**6))} kNm':<20}{f'Midt: {round(momenter[i][0]/(10**6))} kNm':<17}{grønn}{'|'}{reset}')
     print(f'{grønn}{'|':>74}{reset}')
-    print(f'{grønn}{'--------------------------MOMENTER-------------------------'}{reset}')
+    print(f'{grønn}{'--------------------------MOMENTER---------------------------------------'}{reset}')
 
 def print_utnyttelse(elementer, utnyttelse):
     print(f'{cyan}{'\n\n\n--------------UTNYTTELSE (\u03c3/f\u1d67\u22c5100%)-------------'}{reset}')

@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math
 
 def midtmoment_funksjon(elementer_utvidet, fordelte_laster, fastinnspenningskrefter):
     result=[]
@@ -20,14 +19,15 @@ def midtmoment_funksjon(elementer_utvidet, fordelte_laster, fastinnspenningskref
                     q2 = ford[3]
                     q1 = ford[4]
                 #finner lastintensitet i knutepunktpunkt 1 og 2
-                m_midt=1/16*L**2*(q1+q2)
+                m_midt=1/24*L**2*(q1+q2)/2
                 #midtmoment pga fordelt last (parabel)
-        m_ende1=fastinnspenningskrefter[(knute_1-1)*3+2]
-        m_ende2=fastinnspenningskrefter[(knute_2-1)*3+2]
-        m_midt+=(m_ende1+m_ende2)/2
+        m_ende1 =fastinnspenningskrefter[(knute_1-1)*3+2]
+        m_ende2 =fastinnspenningskrefter[(knute_2-1)*3+2]
+        m_midt +=m_ende1/2
+        m_midt +=m_ende2/2
+        #midmtmoment pga innspenningsmomenter
         momenter.append(m_midt)
         momenter.append(m_ende1)
         momenter.append(m_ende2)
         result.append(momenter)
-
     return result

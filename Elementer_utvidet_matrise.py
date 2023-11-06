@@ -1,4 +1,4 @@
-import math
+import numpy as np
 
 def elementer_utvidet_matrise_funk(antall_element, elementer_matrise, knutepunkter_matrise, tverrsnittsdata_matrise):
     
@@ -57,10 +57,10 @@ def elementer_utvidet_matrise_funk(antall_element, elementer_matrise, knutepunkt
         hypotenus = lengde
         #finner lengde på hypotenus
         
-        theta= math.acos(hosliggende_katet / hypotenus)
+        theta= np.arccos(hosliggende_katet / hypotenus)
         #regner vinkelen med cosinus
-        if x_2>x_1 and y_2<y_1 and theta<(math.pi/2):
-            theta+=math.pi/2
+        if x_2>x_1 and y_2<y_1 and theta<(np.pi/2):
+            theta+=np.pi/2
         #korrigerer for fortegnsfeil
         
         elementdata.append(theta)

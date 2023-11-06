@@ -14,11 +14,11 @@ import Lastvektor                   as las
 import Figurer                      as fig
 import Print                        as pri
 import Midt_moment                  as midt
-import Momentdiagram                as momen
+import Momentdiagram                as mom
 
 jacket='Z.Input_fil.txt'
 beam  ='Z.3Dbeam.txt'
-test  ='Z.test.txt'
+bjelke  ='Z.fastbjelke.txt'
 portal ='Z.Portal.txt'
 #Angi en fil programmet skal kjøre
 fil=beam
@@ -52,9 +52,9 @@ elementer_utvidet       =ele.elementer_utvidet_matrise_funk(antall_element, elem
     # [14] Vinkelen til elementet i forhold til x-aksen
 
 K                       =sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
-R                       =las.lastvektor_funk(antall_knutepunkt, antall_element, elementer_utvidet, antall_punktlaster, punktlaster, antall_fordelte_laster, fordelte_laster)
-r                       =defo.deformasjoner_funk(R, K)
-S                       =fast.fastinnspenningskrefter_funksjon(elementer_utvidet, r, fordelte_laster, antall_knutepunkt)
+R                       =las.lastvektor_funk(antall_knutepunkt, elementer_utvidet,  punktlaster,  fordelte_laster)
+v                       =defo.deformasjoner_funk(R, K)
+S                       =fast.fastinnspenningskrefter_funksjon(elementer_utvidet, v, fordelte_laster, antall_knutepunkt)
 momenter                =midt.midtmoment_funksjon(elementer_utvidet, fordelte_laster, S)
 utnyttelse              =spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R, momenter)
 
@@ -64,22 +64,22 @@ pri.print_K(K)
 pri.print_elementer(elementer_utvidet)
 pri.print_tversnittsdata(elementer_utvidet)
 pri.print_R(R)
-pri.print_r(r)
+pri.print_r(v)
 pri.print_fastinnspenningskrefter(S)
 pri.print_momenter(momenter, elementer)
 pri.print_utnyttelse(elementer, utnyttelse)
 
 
 #Angi en skalar som skalerer deformasjonene, linjebredden til elementene og størrelsen på kraft-pilene i figuren
-skalar_deformasjon=10
-skalar_linjebredde=10
-skalar_krefter =0.1
+skalar_deformasjon=100
+skalar_linjebredde=1
+skalar_krefter =1
 #fig.plot_konstruksjon               (knutepunkter, elementer, elementer_utvidet,    skalar_linjebredde, 0)
-#fig.plot_deformasjon               (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
-#fig.plot_rotasjoner                (knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
+#fig.plot_deformasjon               (knutepunkter, elementer, elementer_utvidet, v, skalar_deformasjon, skalar_linjebredde)
+#fig.plot_rotasjoner                (knutepunkter, elementer, elementer_utvidet, v, skalar_deformasjon, skalar_linjebredde)
 #fig.plot_krefter                    (knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,skalar_krefter, fordelte_laster, punktlaster)
-#fig.plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, r, skalar_deformasjon, skalar_linjebredde)
+fig.plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, v, skalar_deformasjon, skalar_linjebredde)
 
 #Plotter forskjellige figurer hver for seg
 
-momen.momentdiagram_funksjon(momenter, elementer_utvidet, fordelte_laster)
+mom.momentdiagram_funksjon(momenter, elementer_utvidet, fordelte_laster)
