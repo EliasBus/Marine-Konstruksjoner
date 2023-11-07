@@ -59,4 +59,5 @@ def tverrsnittsdata_funk(elementer_matrise):
         #Legger inn hver av verdiene inn i en liste for hver av elementene
         tverrsnittsdata_matrise.append(tverrsnittsdata)
         #Legger til hver liste i en matrise for alle elementer
+
     return tverrsnittsdata_matrise

@@ -1,6 +1,5 @@
 import numpy                as np
 
-
 def R_lok_funksjon(elem, fordelte_laster):
     q1=0
     q2=0

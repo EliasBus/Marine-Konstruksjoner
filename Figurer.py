@@ -154,7 +154,8 @@ def plot_rotasjoner(knutepunkter, elementer, elementer_utvidet, deformasjoner, s
     #plotter legend
     plt.show()
 
-def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, deformasjoner, skalar_deformasjon, skalar_linjebredde):
+def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, deformasjoner,
+ skalar_deformasjon, skalar_linjebredde):
 #funksjon for å plotte alle deformasjoner
     plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, 1)
     plt.title('Deformasjoner (både x-retning, y-retning og rotasjoner)')
@@ -168,7 +169,8 @@ def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet,
         y_def   =deformasjoner[i*3+1]
         rot     =deformasjoner[i*3+2]
         rotasjoner.append(rot*skalar_deformasjon)
-        knutepunkter[i]= [knutepunkter[i][0]+deformasjoner[i*3]*skalar_deformasjon,knutepunkter[i][1]+deformasjoner[i*3+1]*skalar_deformasjon]
+        knutepunkter[i]= [knutepunkter[i][0]+deformasjoner[i*3]*skalar_deformasjon,knutepunkter[i][1]+
+        deformasjoner[i*3+1]*skalar_deformasjon]
         #legger til deformasjoner til koordinatene, fra r
         #skalerer deformasjonene som skal plottes
     elementer = np.array(elementer[:, 1:3], copy =1, dtype=int)
@@ -201,7 +203,8 @@ def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet,
     #plotter legend
     plt.show()
 
-def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,skalar_krefter, fordelte_laster, punktlaster):
+def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,skalar_krefter, fordelte_laster,
+ punktlaster):
     plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, 1)
     plt.title('Punktlaster og fordelte laster')
     for i in range(len(punktlaster)):
@@ -238,9 +241,11 @@ def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,
         dx2=np.cos(vinkel)*lengde2
         dy2=np.sin(vinkel)*lengde2
         if q1!=0:
-            plt.arrow(x1-dx1, y1-dy1, dx1, dy1, head_width = 1000*skalar_krefter,width = 500*skalar_krefter,fc ='blue', alpha=1)
+            plt.arrow(x1-dx1, y1-dy1, dx1, dy1, head_width = 1000*skalar_krefter,
+            width = 500*skalar_krefter,fc ='blue', alpha=1)
         if q2!=0:
-            plt.arrow(x2-dx2, y2-dy2, dx2, dy2, head_width = 1000*skalar_krefter,width = 500*skalar_krefter,fc ='blue', alpha=1)
+            plt.arrow(x2-dx2, y2-dy2, dx2, dy2, head_width = 1000*skalar_krefter,
+            width = 500*skalar_krefter,fc ='blue', alpha=1)
         #plotter en pil for fordelt last ved ende, hvis den er ulik 0
         x=[x1-dx1,  x2-dx2]
         y=[y1-dy1, y2-dy2]

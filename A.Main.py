@@ -1,5 +1,3 @@
-import numpy                        as np
-
 import Elementer_utvidet_matrise    as ele
 import Fastinnspenningskrefter      as fast
 import Systemstivhetsmatrise        as sys
@@ -32,7 +30,7 @@ tverrsnittsdata         =tve.tverrsnittsdata_funk           (elementer)
 elementer_utvidet       =ele.elementer_utvidet_matrise_funk (antall_element, elementer, knutepunkter, tverrsnittsdata)
 
 K               =sys.systemstivhetsmatrise_funksjon     (elementer_utvidet,antall_knutepunkt, knutepunkter)
-R               =las.lastvektor_funk                    (antall_knutepunkt, elementer_utvidet,  punktlaster,  fordelte_laster)
+R               =las.lastvektor_funk                    (antall_knutepunkt, elementer_utvidet,  punktlaster, fordelte_laster)
 v               =defo.deformasjoner_funk                (R, K)
 S               =fast.fastinnspenningskrefter_funksjon  (elementer_utvidet, v, fordelte_laster, antall_knutepunkt)
 momenter        =midt_M.midtmoment_funksjon             (elementer_utvidet, fordelte_laster, S)
@@ -44,7 +42,7 @@ pri.print_K                         (K)
 pri.print_elementer                 (elementer_utvidet)
 pri.print_tversnittsdata            (elementer_utvidet)
 pri.print_R                         (R)
-pri.print_r                         (v)
+pri.print_v                         (v)
 pri.print_fastinnspenningskrefter   (S)
 pri.print_momenter                  (momenter, elementer)
 pri.print_skjærkrefter              (skjærkrefter, elementer)

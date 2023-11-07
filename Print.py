@@ -56,11 +56,11 @@ def print_R(R):
     print(f'{blå}{'|':>71}{reset}')
     print(f'{blå}{'----------------------------LASTVEKTOR--------------------------------'}{reset}')
 
-def print_r(r):
+def print_v(v):
     print(f'{grønn}{'\n\n\n----------------------------DEFORMASJONER--------------------------------'}{reset}')
     print(f'{rød_u+'Knutepunkt \031':<25}{'Forskyvning \u2192':<18}{'Forskyvning \u2191:':<20}{'Rotasjon \u21ba':<13}{reset}{grønn}{'|':>5}{reset}')
-    for i in range(0,len(r),3):
-        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(r[i])} mm':<20}{f'y: {int(r[i+1])} mm':<20}{f'\u03B8: {round(r[i+2]*180/np.pi,3)}\u00B0':<17}{grønn}{'|'}{reset}')
+    for i in range(0,len(v),3):
+        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(v[i])} mm':<20}{f'y: {int(v[i+1])} mm':<20}{f'\u03B8: {round(v[i+2]*180/np.pi,3)}\u00B0':<17}{grønn}{'|'}{reset}')
     print(f'{grønn}{'|':>74}{reset}')
     print(f'{grønn}{'----------------------------DEFORMASJONER--------------------------------'}{reset}')
 
