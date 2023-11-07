@@ -1,6 +1,4 @@
-import Figurer              as fig
 import numpy                as np
-import matplotlib.pyplot    as plt  
 
 #tekstfarger:
 rød_u   ='\033[4;31m'
@@ -72,20 +70,28 @@ def print_r(r):
     print(f'{grønn}{'----------------------------DEFORMASJONER--------------------------------'}{reset}')
 
 def print_fastinnspenningskrefter(S):
-    print(f'{grønn}{'\n\n\n--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
-    print(f'{rød_u+'Knutepunkt \031':<25}{'aksial:':<18}{'skjær:':<20}{'Moment:':<13}{reset}{grønn}{'|':>5}{reset}')
+    print(f'{gul}{'\n\n\n--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
+    print(f'{rød_u+'Knutepunkt \031':<25}{'aksial:':<18}{'skjær:':<20}{'Moment:':<13}{reset}{gul}{'|':>5}{reset}')
     for i in range(0,len(S),3):
-        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(S[i])} N':<20}{f'y: {int(S[i+1])} N':<20}{f'M: {round(S[i+2]/(10**6))} KNm':<17}{grønn}{'|'}{reset}')
-    print(f'{grønn}{'|':>74}{reset}')
-    print(f'{grønn}{'--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
+        print(f'{f'{int(i/3+1)} \u2192':<16}{f'| x: {int(S[i])} N':<20}{f'y: {int(S[i+1])} N':<20}{f'M: {round(S[i+2]/(10**6))} KNm':<17}{gul}{'|'}{reset}')
+    print(f'{gul}{'|':>74}{reset}')
+    print(f'{gul}{'--------------------------FASTINNSPENNINGKREFTER-------------------------'}{reset}')
 
 def print_momenter(momenter, elementer):
     print(f'{grønn}{'\n\n\n--------------------------MOMENTER---------------------------------------'}{reset}')
-    print(f'{rød_u+'Element \031':<25}{'Knute 1:':<18}{'Knute 2:':<20}{'Midtmoment:':<13}{reset}{grønn}{'|':>5}{reset}')
+    print(f'{rød_u+'Element \031':<25}{'Ende 1:':<18}{'Ende 2:':<20}{'Midtmoment:':<13}{reset}{grønn}{'|':>5}{reset}')
     for i in range(len(elementer)):
         print(f'{f'{int(elementer[i][0])} \u2192':<16}{f'| 1: {int(momenter[i][1]/(10**6))} kNm':<20}{f'2: {int(momenter[i][2]/(10**6))} kNm':<20}{f'Midt: {round(momenter[i][0]/(10**6))} kNm':<17}{grønn}{'|'}{reset}')
     print(f'{grønn}{'|':>74}{reset}')
     print(f'{grønn}{'--------------------------MOMENTER---------------------------------------'}{reset}')
+
+def print_skjærkrefter(skjærkrefter, elementer):
+    print(f'{grønn}{'\n\n\n--------------------------SKJÆRKREFTER---------------------------------------'}{reset}')
+    print(f'{rød_u+'Element \031':<25}{'Ende 1:':<18}{'Ende 2:':<20}{'Midtskjærkraft:':<17}{reset}{grønn}{'|':>5}{reset}')
+    for i in range(len(elementer)):
+        print(f'{f'{int(elementer[i][0])} \u2192':<16}{f'| 1: {int(skjærkrefter[i][1]/(10**3))} kN':<20}{f'2: {int(skjærkrefter[i][2]/(10**3))} kN':<20}{f'Midt: {round(skjærkrefter[i][0]/(10**3))} kN':<21}{grønn}{'|'}{reset}')
+    print(f'{grønn}{'|':>78}{reset}')
+    print(f'{grønn}{'--------------------------SKJÆRKREFTER---------------------------------------'}{reset}')
 
 def print_utnyttelse(elementer, utnyttelse):
     print(f'{cyan}{'\n\n\n--------------UTNYTTELSE (\u03c3/f\u1d67\u22c5100%)-------------'}{reset}')

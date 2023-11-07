@@ -1,5 +1,3 @@
-import numpy as np
-
 def spenningsanalyse_funksjon(elementer, elementer_utvidet,R, momenter):
     utnyttelse  =[]
     for i in range(len(elementer_utvidet)):
@@ -7,9 +5,6 @@ def spenningsanalyse_funksjon(elementer, elementer_utvidet,R, momenter):
         knute_1         =int(elementer[i][1])
         knute_2         =int(elementer[i][2])
         N               =R[(knute_1-1)*3 +0]
-        N_1               =R[(knute_1-1)*3 +0]
-        N_2               =R[(knute_2-1)*3 +0]
-        print(f'elem {elementer[i][0]}  N1: {N_1}, n2: {N_2} ')
         M_midt          =momenter[i][0]
         M_1             =momenter[i][1]
         M_2             =momenter[i][2]

@@ -1,11 +1,8 @@
-import matplotlib.pyplot            as plt
 import numpy                        as np
 
 import Elementer_utvidet_matrise    as ele
 import Fastinnspenningskrefter      as fast
-import Transformasjonsmatrise       as tra
 import Systemstivhetsmatrise        as sys
-import Konnektivitetstabell         as kon
 import Spenningsanalyse             as spe
 import Tverrsnittsdata              as tve
 import Deformasjoner                as defo
@@ -13,8 +10,10 @@ import Innlesning                   as inn
 import Lastvektor                   as las
 import Figurer                      as fig
 import Print                        as pri
-import Midt_moment                  as midt
+import Midt_moment                  as midt_M
+import Midt_skjær                   as midt_Q
 import Momentdiagram                as mom
+
 
 jacket='Z.Input_fil.txt'
 beam  ='Z.3Dbeam.txt'
@@ -51,12 +50,13 @@ elementer_utvidet       =ele.elementer_utvidet_matrise_funk(antall_element, elem
     # [13] Bøyestivhet, 
     # [14] Vinkelen til elementet i forhold til x-aksen
 
-K                       =sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
-R                       =las.lastvektor_funk(antall_knutepunkt, elementer_utvidet,  punktlaster,  fordelte_laster)
-v                       =defo.deformasjoner_funk(R, K)
-S                       =fast.fastinnspenningskrefter_funksjon(elementer_utvidet, v, fordelte_laster, antall_knutepunkt)
-momenter                =midt.midtmoment_funksjon(elementer_utvidet, fordelte_laster, S)
-utnyttelse              =spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R, momenter)
+K               =sys.systemstivhetsmatrise_funksjon(elementer_utvidet,antall_knutepunkt, knutepunkter)
+R               =las.lastvektor_funk(antall_knutepunkt, elementer_utvidet,  punktlaster,  fordelte_laster)
+v               =defo.deformasjoner_funk(R, K)
+S               =fast.fastinnspenningskrefter_funksjon(elementer_utvidet, v, fordelte_laster, antall_knutepunkt)
+momenter        =midt_M.midtmoment_funksjon(elementer_utvidet, fordelte_laster, S)
+skjærkrefter    =midt_Q.midtskjær_funksjon(elementer_utvidet, fordelte_laster, S)
+utnyttelse      =spe.spenningsanalyse_funksjon(elementer, elementer_utvidet, R, momenter)
 
 
 #print programmet
@@ -67,6 +67,7 @@ pri.print_R(R)
 pri.print_r(v)
 pri.print_fastinnspenningskrefter(S)
 pri.print_momenter(momenter, elementer)
+pri.print_skjærkrefter(skjærkrefter, elementer)
 pri.print_utnyttelse(elementer, utnyttelse)
 
 
@@ -78,8 +79,8 @@ skalar_krefter =1
 #fig.plot_deformasjon               (knutepunkter, elementer, elementer_utvidet, v, skalar_deformasjon, skalar_linjebredde)
 #fig.plot_rotasjoner                (knutepunkter, elementer, elementer_utvidet, v, skalar_deformasjon, skalar_linjebredde)
 #fig.plot_krefter                    (knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,skalar_krefter, fordelte_laster, punktlaster)
-fig.plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, v, skalar_deformasjon, skalar_linjebredde)
+#fig.plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, v, skalar_deformasjon, skalar_linjebredde)
+#mom.momentdiagram_funksjon(momenter, elementer_utvidet, fordelte_laster)
 
 #Plotter forskjellige figurer hver for seg
 
-mom.momentdiagram_funksjon(momenter, elementer_utvidet, fordelte_laster)

@@ -1,9 +1,7 @@
-import numpy as np
 #Python-fil med kode som tar inn strings fra txt-fil og legger det inn i variabler og matriser.
 rød     ='\033[1;31m'
 reset   = '\033[m'
 feilmelding     =rød+'FEILMELDING: '+reset
-
 
 def innlesning_funk(fil):
     knutepunkter_matrise    =[]

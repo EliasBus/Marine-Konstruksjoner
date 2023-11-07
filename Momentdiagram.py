@@ -1,5 +1,5 @@
-import matplotlib.pyplot as plt
-import numpy as np
+import matplotlib.pyplot    as plt
+import numpy                as np
 
 def momentdiagram_funksjon(momenter, elementer_utvidet, fordelte_laster):
     num_plots = int(len(elementer_utvidet))

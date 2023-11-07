@@ -1,8 +1,5 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
 def midtmoment_funksjon(elementer_utvidet, fordelte_laster, fastinnspenningskrefter):
-    result=[]
+    mom_result=[]
     for i in range(len(elementer_utvidet)):
         knute_1=int(elementer_utvidet[i][1])
         knute_2=int(elementer_utvidet[i][2])
@@ -29,5 +26,5 @@ def midtmoment_funksjon(elementer_utvidet, fordelte_laster, fastinnspenningskref
         momenter.append(m_midt)
         momenter.append(m_ende1)
         momenter.append(m_ende2)
-        result.append(momenter)
-    return result
+        mom_result.append(momenter)
+    return mom_result

@@ -1,4 +1,4 @@
-import numpy as np
+import numpy                  as np
 import Transformasjonsmatrise as tra
 import Elementstivhetsmatrise as elesti
 import Konnektivitetstabell   as kon
