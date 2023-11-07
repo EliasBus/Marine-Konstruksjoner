@@ -7,7 +7,6 @@ import Lastvektor_lokal       as R_l
 def fastinnspenningskrefter_funksjon(elementer_utvidet, v, fordelte_laster, n_knutepunkt):
     S=np.zeros(n_knutepunkt *3)
     #oppretter S
-    
     for elem in elementer_utvidet:
         deformasjonsvektor_element  =np.zeros(6)
         knutepunkt_1                =elem[1]
@@ -26,7 +25,6 @@ def fastinnspenningskrefter_funksjon(elementer_utvidet, v, fordelte_laster, n_kn
         S_lok                   = np.add(k @ v_lok , R_lok)
         S_glob                  = T @ S_lok
         
-
         S[int(konnektivitetstabell[0][2]-1)] += S_glob[0]
         S[int(konnektivitetstabell[1][2]-1)] += S_glob[1]
         S[int(konnektivitetstabell[2][2]-1)] += S_glob[2]

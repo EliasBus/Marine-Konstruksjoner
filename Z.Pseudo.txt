@@ -1,14 +1,52 @@
-
-Her skal pseudokode komme
-
 OPPGAVE a:
 
 Lager kode som leser inn data fra txt-fil (Innlesning.py);
-Lagrer antall knutepunkt, elementer, fordelte laster, punktlastene i variabler.
-Lagrer knutepunktene, elementer, fordelte laster, punktlaster i matriser.
+Lagrer antall knutepunkt, elementer, fordelte laster,
+punktlastene i variabler.
+Lagrer knutepunktene, elementer, fordelte laster, punktlaster
+i matriser.
+
+Lager kode som regner ut tverrsnittsdata;
+Finner areal for tverrsnitt.
+Finner andre arealmoment om z-aksen (I).
+Regner ut boyestivheten for tverrsnitt (EI).
+
+Legger inn alle nyttige data for hvert element inn i en stor
+matrise.
 
 
-Lager kode som regner ut tverrsnittsdata (Tverrsnittsdata.py);
-Finner areal for tverrsnitt
-Finner andre arealmoment om z-aksen (I)
-Regner ut boyestivheten for tverrsnitt(EI)
+OPPGAVE b:
+
+Oppretter kode for å regne ut stivhetsmatrise for hvert enkelt 
+element og setter det så sammen til systemstivhetsmatrise.
+I systemstivhetsmatrisen legges en stor fjærstivhet hvor 
+knutepunktene er fast innspente.
+Vi setter også opp kode som lager en transformasjonsmatrise 
+for hvert element som senere kan brukes for å orientere lokale 
+verdier til globalt system.
+
+Lastvektor regnes først ut for hvert element, og implementeres 
+deretter til global lastvektor, hvor punktlaster i knutepunkt
+også legges inn.
+
+Vi finner så moment og skjærkraft i midten og endene til hvert
+element, for så å sjekke flyt her.
+
+
+OPPGAVE c:
+
+Vi lager kode som kan printe dataene programmet regner ut, både
+i form av tabeller med verdier, og i figurer ved hjelp av
+matplotlib.pyplot.
+Dette gjør det lettere å feilsæke og sjekke koden.
+
+
+OPPGAVE d:
+
+Dimensjoneringen utfører vi ved hjelp av Nauticus 3D Beam
+og legger så disse tverrsnittsdimensjonene inn i input-filen 
+Python-programmet leser inn.
+
+OPPGAVE e:
+
+Plotter momentdiagram for hvert enkelt element.

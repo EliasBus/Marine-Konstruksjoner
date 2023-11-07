@@ -5,10 +5,8 @@ def konnektivitetstabell_funksjon(element):
     knutepunkt_2 = element[2]
     #Finner knutepunktene i elemententet
     lokale_frihetsgrader=6
-
     konnektivitetstabell =np.zeros((lokale_frihetsgrader,3))
     #oppretter tom tabell
-    
     for i in range(1,lokale_frihetsgrader+1):
         rad = np.array([])
         if i <= 3:
@@ -21,5 +19,4 @@ def konnektivitetstabell_funksjon(element):
             rad = np.append(rad, 3*(knutepunkt_2-1) + (i - 3))
 
         konnektivitetstabell[i-1] = rad
-    
     return konnektivitetstabell

@@ -12,7 +12,6 @@ def midtskjær_funksjon(elementer_utvidet, fordelte_laster, fastinnspenningskref
 
         Q= -(m_ende1+m_ende2)/L
         #finner total skjærkraft fra to endemomenter
-
         skjærkrefter.append(Q)
         skjærkrefter.append(Q_ende1)
         skjærkrefter.append(Q_ende2)

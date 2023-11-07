@@ -1,5 +1,4 @@
 import numpy                as np
-
 #tekstfarger:
 rød_u   ='\033[4;31m'
 rød     ='\033[1;31m'
@@ -15,7 +14,6 @@ cyan_b  ='\033[;;46m'
 #reset:
 reset   = '\033[m'
   
-
 def print_elementer(elementer_utvidet):
     print(f'{gul}{'\n\n\n------------------------------------------ELEMENTOVERSIKT----------------------------------------------'}{reset}')
     print(f'{rød_u+'Element \031':<21}{'(k1-k2):':<13}{'Koordinater':<12}{'-- Koordinater':<20}{'Lengde:':<9}{'E-modul:':<11}{'Flyt:':<11}{'Vinkel:'}{reset}{gul}{'|':>7}{reset}')
@@ -41,7 +39,6 @@ def print_tversnittsdata(elementer_utvidet):
     print(f'{magenta}{'|':>91}{reset}')
     print(f'{magenta}{'---------------------------------------TVERRSNITTSDATA------------------------------------'}{reset}')
 
-
 def print_K(K):
     print(rød+'\n\n\n----------------------------------------------------------SYSTEMSTIVHETSMATRISE---------------------------------------------'+reset)
     for x in range(len(K)):
@@ -51,7 +48,6 @@ def print_K(K):
         print('\n-----------------------------------------------------------------------------------------------------------------------------')
     print(rød+'----------------------------------------------------------SYSTEMSTIVHETSMATRISE---------------------------------------------'+reset)
 
-
 def print_R(R):
     print(f'{blå}{'\n\n\n----------------------------LASTVEKTOR--------------------------------'}{reset}')
     print(f'{rød_u+'Knutepunkt \031':<24}{'Aksial:':<17}{'Skjær:':<17}{'Moment:':<15}{reset}{blå}{'|':>5}{reset}')
@@ -59,7 +55,6 @@ def print_R(R):
         print(f'{f'{int(i/3+1)} \u2192':<16}{f'|{int(R[i]/1000)}':<10}{f' kN|':<7}{f'|{(int(R[i+1]/1000))}':<10}{f' kN|':<7}{f'|{int((R[i+2]*180/np.pi)/(10**6))}':<13}{f' kNm|':<7}{blå}{'|'}{reset}')
     print(f'{blå}{'|':>71}{reset}')
     print(f'{blå}{'----------------------------LASTVEKTOR--------------------------------'}{reset}')
-
 
 def print_r(r):
     print(f'{grønn}{'\n\n\n----------------------------DEFORMASJONER--------------------------------'}{reset}')

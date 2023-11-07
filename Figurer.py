@@ -27,8 +27,6 @@ def plot_vindu(knutepunkter):
     plt.ylim(min_y -margin , max_y +margin*5)
     #setter sammen og plotter figuren
 
-
-
 def plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, bakgrunn):
 #Definerer en funksjon som kan kalles for å tegne konsktruksjonen
     plot_vindu(knutepunkter)
@@ -93,8 +91,6 @@ def plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebr
         plt.show()
     #Plotter konstruskjonen hvis den ikke er ment som bakgrunn
 
-
-
 def plot_deformasjon(knutepunkter, elementer, elementer_utvidet, deformasjoner, skalar_deformasjon, skalar_linjebredde):
 #Definerer en funksjon som kan kalles for å tegne figur med deformasjoner i x- og y-retning
     plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, 1)
@@ -118,12 +114,10 @@ def plot_deformasjon(knutepunkter, elementer, elementer_utvidet, deformasjoner, 
     #plotter legend
     plt.show()
 
-
-
 def plot_rotasjoner(knutepunkter, elementer, elementer_utvidet, deformasjoner, skalar_deformasjon, skalar_linjebredde):
 #funksjon for å plotte bøyninger i elementene (rotasjoner)
     plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, 1)
-    plt.title('Deformasjoner (bøyning i elementene)')
+    plt.title('Deformasjoner (kun rotasjoner)')
     linjebredde=3
     knutepunkter=np.array(      knutepunkter[:, 1:3],   copy =1, dtype=float)
     elementer   =np.array(      elementer[:, 1:3],      copy =1, dtype=int)
@@ -159,8 +153,6 @@ def plot_rotasjoner(knutepunkter, elementer, elementer_utvidet, deformasjoner, s
     plt.legend(loc='upper right')
     #plotter legend
     plt.show()
-
-
 
 def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet, deformasjoner, skalar_deformasjon, skalar_linjebredde):
 #funksjon for å plotte alle deformasjoner
@@ -208,7 +200,6 @@ def plot_rotasjoner_og_deformasjoner(knutepunkter, elementer, elementer_utvidet,
     plt.legend(loc='upper right')
     #plotter legend
     plt.show()
-
 
 def plot_krefter(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde,skalar_krefter, fordelte_laster, punktlaster):
     plot_konstruksjon(knutepunkter, elementer, elementer_utvidet, skalar_linjebredde, 1)

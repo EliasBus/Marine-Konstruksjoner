@@ -1,3 +1,5 @@
+import numpy as np
+
 #Python-fil med kode som tar inn strings fra txt-fil og legger det inn i variabler og matriser.
 rød     ='\033[1;31m'
 reset   = '\033[m'
@@ -62,5 +64,9 @@ def innlesning_funk(fil):
                 punktlaster_matrise.append(punktlast)
                 index+=1
     #lagrer matrisene med data
+    knutepunkter_matrise    =np.array(knutepunkter_matrise)
+    elementer_matrise       =np.array(elementer_matrise)
+    fordelte_laster_matrise =np.array(fordelte_laster_matrise)
+    punktlaster_matrise     =np.array(punktlaster_matrise)
 
     return antall_knutepunkt, antall_element, antall_fordelte_laster, antall_punktlaster, knutepunkter_matrise, elementer_matrise, fordelte_laster_matrise, punktlaster_matrise

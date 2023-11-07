@@ -15,5 +15,4 @@ def elementsivhetsmatrise_funskjon(elem):
     [0     , -6*E*I/(L**2) , 2*E*I/L      , 0     , 6*E*I/(L**2)  , 4*E*I/L      ],
     ])   
     #ovenfor er elementstivhetsmatrisen
-
     return elementstivhetsmatrise

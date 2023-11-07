@@ -12,7 +12,6 @@ def spenningsanalyse_funksjon(elementer, elementer_utvidet,R, momenter):
         I               =elementer_utvidet[i][12]
         tverrsnittstype =elementer_utvidet[i][10]
         
-        
         if tverrsnittstype == 0:
             z=elementer[i][7]
             #ytre radius
@@ -29,10 +28,10 @@ def spenningsanalyse_funksjon(elementer, elementer_utvidet,R, momenter):
         sigma_2 = abs(N/A) + abs(M_2*z/I)
         #Naviers formel
 
-        flytespenning=elementer_utvidet[i][9]
-        prosent_midt = sigma_midt/flytespenning * 100
-        prosent_1 = sigma_1/flytespenning * 100
-        prosent_2 = sigma_2/flytespenning * 100
+        flytespenning   =elementer_utvidet[i][9]
+        prosent_midt    =sigma_midt/flytespenning * 100
+        prosent_1       =sigma_1/flytespenning * 100
+        prosent_2       =sigma_2/flytespenning * 100
         #prosent utnyttelse av f_y
         
         prosenter.append(prosent_midt)
